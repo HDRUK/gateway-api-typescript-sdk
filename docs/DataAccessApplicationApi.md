@@ -4,8 +4,6 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**deleteDarApplicationFiles**](#deletedarapplicationfiles) | **DELETE** /api/v1/dar/applications/{id}/files/{fileId} | DataAccessApplication@destroyFile|
-|[**deleteDarApplications**](#deletedarapplications) | **DELETE** /api/v1/dar/applications/{id} | DataAccessApplication@destroy|
 |[**deleteTeamDarApplicationFile**](#deleteteamdarapplicationfile) | **DELETE** /api/v1/teams/{teamId}/dar/applications/{id}/files/{fileId} | DataAccessApplication@destroyFile|
 |[**fetchTeamDarApplicationAnswers**](#fetchteamdarapplicationanswers) | **GET** /api/v1/teams/{teamId}/dar/applications/{id}/answers | DataAccessApplication@showAnswers|
 |[**fetchTeamDarApplicationDownloadZip**](#fetchteamdarapplicationdownloadzip) | **GET** /api/v1/teams/{teamId}/dar/applications/{id}/download | DataAccessApplication@download|
@@ -13,115 +11,6 @@ All URIs are relative to *http://localhost*
 |[**fetchTeamDarApplicationFiles**](#fetchteamdarapplicationfiles) | **GET** /api/v1/teams/{teamId}/dar/applications/{id}/files | DataAccessApplication@showFiles|
 |[**fetchTeamDarApplicationStatusHistory**](#fetchteamdarapplicationstatushistory) | **GET** /api/v1/teams/{teamId}/dar/applications/{id}/status | DataAccessApplication@status|
 |[**updateTeamDarApplication**](#updateteamdarapplication) | **PATCH** /api/v1/teams/{teamId}/dar/applications/{id} | DataAccessApplication@update|
-
-# **deleteDarApplicationFiles**
-> DeleteApplications200Response deleteDarApplicationFiles()
-
-Delete a file associated with a DAR application
-
-### Example
-
-```typescript
-import {
-    DataAccessApplicationApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DataAccessApplicationApi(configuration);
-
-let id: number; //DAR application id (default to undefined)
-let fileId: string; //File id (default to undefined)
-
-const { status, data } = await apiInstance.deleteDarApplicationFiles(
-    id,
-    fileId
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **id** | [**number**] | DAR application id | defaults to undefined|
-| **fileId** | [**string**] | File id | defaults to undefined|
-
-
-### Return type
-
-**DeleteApplications200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**404** | Not found response |  -  |
-|**200** | Success |  -  |
-|**500** | Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteDarApplications**
-> DeleteApplications200Response deleteDarApplications()
-
-Delete a system DAR application
-
-### Example
-
-```typescript
-import {
-    DataAccessApplicationApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DataAccessApplicationApi(configuration);
-
-let id: number; //DAR application id (default to undefined)
-
-const { status, data } = await apiInstance.deleteDarApplications(
-    id
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **id** | [**number**] | DAR application id | defaults to undefined|
-
-
-### Return type
-
-**DeleteApplications200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**404** | Not found response |  -  |
-|**200** | Success |  -  |
-|**500** | Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteTeamDarApplicationFile**
 > DeleteApplications200Response deleteTeamDarApplicationFile()

@@ -1,4 +1,4 @@
-## @hdruk/gateway-api-sdk@0.0.0-test5
+## @hdruk/gateway-api-sdk@0.0.0-test6
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @hdruk/gateway-api-sdk@0.0.0-test5 --save
+npm install @hdruk/gateway-api-sdk@0.0.0-test6 --save
 ```
 
 _unPublished (not recommended):_
@@ -51,10 +51,6 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AdminDataCustodianNetworksApi* | [**fetchAdminDataCustodianNetworks**](docs/AdminDataCustodianNetworksApi.md#fetchadmindatacustodiannetworks) | **GET** /api/v2/admin/data_custodian_networks | DataCustodianNetworks@adminIndex
-*AdminSearchApi* | [**createAdminSearchReindex**](docs/AdminSearchApi.md#createadminsearchreindex) | **POST** /api/v1/admin/search/reindex | Queue a drop+recreate+import of a search entity\&#39;s Typesense collection
-*AdminSearchApi* | [**fetchAdminSearchStatus**](docs/AdminSearchApi.md#fetchadminsearchstatus) | **GET** /api/v1/admin/search/status | Get Typesense collection status for every onboarded search entity
-*AdminSearchApi* | [**updateAdminSearchFeature**](docs/AdminSearchApi.md#updateadminsearchfeature) | **POST** /api/v1/admin/search/feature | Activate or deactivate a search-related Pennant feature flag
 *ApplicationApi* | [**createApplications**](docs/ApplicationApi.md#createapplications) | **POST** /api/v1/applications | ApplicationController@store
 *ApplicationApi* | [**deleteApplications**](docs/ApplicationApi.md#deleteapplications) | **DELETE** /api/v1/applications/{id} | ApplicationController@delete
 *ApplicationApi* | [**editApplications**](docs/ApplicationApi.md#editapplications) | **PATCH** /api/v1/applications/{id} | ApplicationController@edit
@@ -86,8 +82,6 @@ Class | Method | HTTP request | Description
 *DarIntegrationApi* | [**fetchAllDarIntegrations**](docs/DarIntegrationApi.md#fetchalldarintegrations) | **GET** /api/v1/dar-integration | DarIntegration@index
 *DarIntegrationApi* | [**fetchDarIntegration**](docs/DarIntegrationApi.md#fetchdarintegration) | **GET** /api/v1/dar-integration/{id} | DarIntegration@show
 *DarIntegrationApi* | [**updateDarIntegration**](docs/DarIntegrationApi.md#updatedarintegration) | **PUT** /api/v1/dar-integration/{id} | DarIntegration@update
-*DataAccessApplicationApi* | [**deleteDarApplicationFiles**](docs/DataAccessApplicationApi.md#deletedarapplicationfiles) | **DELETE** /api/v1/dar/applications/{id}/files/{fileId} | DataAccessApplication@destroyFile
-*DataAccessApplicationApi* | [**deleteDarApplications**](docs/DataAccessApplicationApi.md#deletedarapplications) | **DELETE** /api/v1/dar/applications/{id} | DataAccessApplication@destroy
 *DataAccessApplicationApi* | [**deleteTeamDarApplicationFile**](docs/DataAccessApplicationApi.md#deleteteamdarapplicationfile) | **DELETE** /api/v1/teams/{teamId}/dar/applications/{id}/files/{fileId} | DataAccessApplication@destroyFile
 *DataAccessApplicationApi* | [**fetchTeamDarApplicationAnswers**](docs/DataAccessApplicationApi.md#fetchteamdarapplicationanswers) | **GET** /api/v1/teams/{teamId}/dar/applications/{id}/answers | DataAccessApplication@showAnswers
 *DataAccessApplicationApi* | [**fetchTeamDarApplicationDownloadZip**](docs/DataAccessApplicationApi.md#fetchteamdarapplicationdownloadzip) | **GET** /api/v1/teams/{teamId}/dar/applications/{id}/download | DataAccessApplication@download
@@ -97,8 +91,6 @@ Class | Method | HTTP request | Description
 *DataAccessApplicationApi* | [**updateTeamDarApplication**](docs/DataAccessApplicationApi.md#updateteamdarapplication) | **PATCH** /api/v1/teams/{teamId}/dar/applications/{id} | DataAccessApplication@update
 *DataAccessApplicationReviewApi* | [**createTeamDarApplicationQuestionReview**](docs/DataAccessApplicationReviewApi.md#createteamdarapplicationquestionreview) | **POST** /api/v1/teams/{team_id}/dar/applications/{id}/questions/{questionId}/reviews | DataAccessApplicationReview@store
 *DataAccessApplicationReviewApi* | [**createTeamDarApplicationReview**](docs/DataAccessApplicationReviewApi.md#createteamdarapplicationreview) | **POST** /api/v1/teams/{team_id}/dar/applications/{id}/reviews | DataAccessApplicationReview@storeGlobal
-*DataAccessApplicationReviewApi* | [**deleteTeamDarApplicationQuestionReview**](docs/DataAccessApplicationReviewApi.md#deleteteamdarapplicationquestionreview) | **DELETE** /api/v1/teams/{team_id}/dar/applications/{id}/questions/{questionId}/reviews/{reviewId} | DataAccessApplicationReview@destroy
-*DataAccessApplicationReviewApi* | [**deleteTeamDarApplicationReview**](docs/DataAccessApplicationReviewApi.md#deleteteamdarapplicationreview) | **DELETE** /api/v1/teams/{team_id}/dar/applications/{id}/reviews/{reviewId} | DataAccessApplicationReview@destroyGlobal
 *DataAccessApplicationReviewApi* | [**deleteTeamDarApplicationReviewFile**](docs/DataAccessApplicationReviewApi.md#deleteteamdarapplicationreviewfile) | **DELETE** /api/v1/teams/{teamId}/dar/applications/{id}/reviews/{reviewId}/files/{fileId} | DataAccessApplicationReview@destroyFile
 *DataAccessApplicationReviewApi* | [**fetchTeamDarApplicationReviewFile**](docs/DataAccessApplicationReviewApi.md#fetchteamdarapplicationreviewfile) | **GET** /api/v1/teams/{teamId}/dar/applications/{id}/reviews/{reviewId}/download/{fileId} | DataAccessApplicationReview@downloadFile
 *DataAccessApplicationReviewApi* | [**fetchTeamDarApplicationReviews**](docs/DataAccessApplicationReviewApi.md#fetchteamdarapplicationreviews) | **GET** /api/v1/teams/{team_id}/dar/applications/{id}/reviews | DataAccessApplicationReview@index
@@ -115,23 +107,15 @@ Class | Method | HTTP request | Description
 *DataAccessTemplateApi* | [**patchDarTemplate**](docs/DataAccessTemplateApi.md#patchdartemplate) | **PATCH** /api/v1/dar/templates/{id} | DataAccessTemplate@update
 *DataAccessTemplateApi* | [**updateDarTemplate**](docs/DataAccessTemplateApi.md#updatedartemplate) | **PUT** /api/v1/dar/templates/{id} | DataAccessTemplate@update
 *DataAccessTemplatesApi* | [**darTemplateCountUniqueFields**](docs/DataAccessTemplatesApi.md#dartemplatecountuniquefields) | **GET** /api/v1/dar/templates/count/{field} | DataAccessTemplateController@count
-*DataCustodianNetworksApi* | [**createDataCustodianNetwork**](docs/DataCustodianNetworksApi.md#createdatacustodiannetwork) | **POST** /api/v2/data_custodian_networks | DataCustodianNetworks@store
-*DataCustodianNetworksApi* | [**deleteDataCustodianNetwork**](docs/DataCustodianNetworksApi.md#deletedatacustodiannetwork) | **DELETE** /api/v2/data_custodian_networks/{id} | DataCustodianNetworks@destroy
-*DataCustodianNetworksApi* | [**editDataCustodianNetwork**](docs/DataCustodianNetworksApi.md#editdatacustodiannetwork) | **PATCH** /api/v2/data_custodian_networks/{id} | DataCustodianNetworks@edit
 *DataCustodianNetworksApi* | [**fetchDataCustodianNetwork**](docs/DataCustodianNetworksApi.md#fetchdatacustodiannetwork) | **GET** /api/v2/data_custodian_networks/{id} | DataCustodianNetworks@show
 *DataCustodianNetworksApi* | [**fetchDataCustodianNetworkCustodiansSummary**](docs/DataCustodianNetworksApi.md#fetchdatacustodiannetworkcustodianssummary) | **GET** /api/v2/data_custodian_networks/{id}/custodians_summary | DataCustodianNetworks@showCustodiansSummary
 *DataCustodianNetworksApi* | [**fetchDataCustodianNetworkDatasetsSummary**](docs/DataCustodianNetworksApi.md#fetchdatacustodiannetworkdatasetssummary) | **GET** /api/v2/data_custodian_networks/{id}/datasets_summary | DataCustodianNetworks@showDatasetsSummary
 *DataCustodianNetworksApi* | [**fetchDataCustodianNetworkEntitiesSummary**](docs/DataCustodianNetworksApi.md#fetchdatacustodiannetworkentitiessummary) | **GET** /api/v2/data_custodian_networks/{id}/entities_summary | DataCustodianNetworks@showSummary
 *DataCustodianNetworksApi* | [**fetchDataCustodianNetworkInfo**](docs/DataCustodianNetworksApi.md#fetchdatacustodiannetworkinfo) | **GET** /api/v2/data_custodian_networks/{id}/info | DataCustodianNetworks@showInfoSummary
 *DataCustodianNetworksApi* | [**fetchDataCustodianNetworks**](docs/DataCustodianNetworksApi.md#fetchdatacustodiannetworks) | **GET** /api/v2/data_custodian_networks | DataCustodianNetworks@index
-*DataCustodianNetworksApi* | [**updateDataCustodianNetwork**](docs/DataCustodianNetworksApi.md#updatedatacustodiannetwork) | **PUT** /api/v2/data_custodian_networks/{id} | DataCustodianNetworks@update
-*DataProviderCollApi* | [**createDataProviderColl**](docs/DataProviderCollApi.md#createdataprovidercoll) | **POST** /api/v1/data_provider_colls | DataProviderColl@store
-*DataProviderCollApi* | [**deleteDataProviderColl**](docs/DataProviderCollApi.md#deletedataprovidercoll) | **DELETE** /api/v1/data_provider_colls/{id} | DataProviderColl@destroy
-*DataProviderCollApi* | [**editDataProviderColl**](docs/DataProviderCollApi.md#editdataprovidercoll) | **PATCH** /api/v1/data_provider_colls/{id} | DataProviderColl@edit
 *DataProviderCollApi* | [**fetchDataProviderColl**](docs/DataProviderCollApi.md#fetchdataprovidercoll) | **GET** /api/v1/data_provider_colls/{id} | DataProviderColl@show
 *DataProviderCollApi* | [**fetchDataProviderCollSummary**](docs/DataProviderCollApi.md#fetchdataprovidercollsummary) | **GET** /api/v1/data_provider_colls/{id}/summary | DataProviderColl@showSummary
 *DataProviderCollApi* | [**fetchDataProviderColls**](docs/DataProviderCollApi.md#fetchdataprovidercolls) | **GET** /api/v1/data_provider_colls | DataProviderColl@index
-*DataProviderCollApi* | [**updateDataProviderColl**](docs/DataProviderCollApi.md#updatedataprovidercoll) | **PUT** /api/v1/data_provider_colls/{id} | DataProviderColl@update
 *DataUseRegistersApi* | [**createDur**](docs/DataUseRegistersApi.md#createdur) | **POST** /api/v1/dur | DurController@store
 *DataUseRegistersApi* | [**createDurByTeamV2**](docs/DataUseRegistersApi.md#createdurbyteamv2) | **POST** /api/v2/teams/{teamId}/dur | TeamDurController@store
 *DataUseRegistersApi* | [**deleteDur**](docs/DataUseRegistersApi.md#deletedur) | **DELETE** /api/v1/dur/{id} | Delete a dur
@@ -151,8 +135,6 @@ Class | Method | HTTP request | Description
 *DatasetsApi* | [**countUniqueFields**](docs/DatasetsApi.md#countuniquefields) | **GET** /api/v1/datasets/count/{field} | DatasetController@count
 *DatasetsApi* | [**createDatasets**](docs/DatasetsApi.md#createdatasets) | **POST** /api/v1/datasets | DatasetController@store
 *DatasetsApi* | [**createDatasetsIntegrations**](docs/DatasetsApi.md#createdatasetsintegrations) | **POST** /api/v1/integrations/datasets | IntegrationDatasetController@store
-*DatasetsApi* | [**createDatasetsLinkageExtraction**](docs/DatasetsApi.md#createdatasetslinkageextraction) | **POST** /api/v1/datasets/admin_ctrl/trigger/linkage_extraction | Trigger Term Extraction for Datasets
-*DatasetsApi* | [**createDatasetsTermExtraction**](docs/DatasetsApi.md#createdatasetstermextraction) | **POST** /api/v1/datasets/admin_ctrl/trigger/term_extraction | Trigger Term Extraction for Datasets
 *DatasetsApi* | [**createDatasetsV2**](docs/DatasetsApi.md#createdatasetsv2) | **POST** /api/v2/datasets | DatasetController@store
 *DatasetsApi* | [**createTeamDatasetsV2**](docs/DatasetsApi.md#createteamdatasetsv2) | **POST** /api/v2/teams/{teamId}/datasets | TeamDatasetController@store
 *DatasetsApi* | [**deleteDatasets**](docs/DatasetsApi.md#deletedatasets) | **DELETE** /api/v1/datasets/{id} | DatasetController@destroy
@@ -194,22 +176,9 @@ Class | Method | HTTP request | Description
 *IntegrationDataUseRegistersApi* | [**fetchDurByIdIntegrations**](docs/IntegrationDataUseRegistersApi.md#fetchdurbyidintegrations) | **GET** /api/v1/integrations/dur/{id} | IntegrationDurController@show
 *IntegrationDataUseRegistersApi* | [**updateDurIntegrations**](docs/IntegrationDataUseRegistersApi.md#updatedurintegrations) | **PUT** /api/v1/integrations/dur/{id} | Update a dur by id
 *IntegrationsDatasetsTestApi* | [**integrationsDatasetsTest**](docs/IntegrationsDatasetsTestApi.md#integrationsdatasetstest) | **POST** /api/v1/integrations/datasets/test | IntegrationDatasetController@datasetTest
-*LicenseApi* | [**createLicenses**](docs/LicenseApi.md#createlicenses) | **POST** /api/v1/licenses | License@store
-*LicenseApi* | [**deleteLicenses**](docs/LicenseApi.md#deletelicenses) | **DELETE** /api/v1/licenses/{id} | License@destroy
-*LicenseApi* | [**editLicenses**](docs/LicenseApi.md#editlicenses) | **PATCH** /api/v1/licenses/{id} | License@edit
 *LicenseApi* | [**fetchAllLicenses**](docs/LicenseApi.md#fetchalllicenses) | **GET** /api/v1/licenses | License@index
 *LicenseApi* | [**fetchLicenses**](docs/LicenseApi.md#fetchlicenses) | **GET** /api/v1/licenses/{id} | License@show
-*LicenseApi* | [**updateLicenses**](docs/LicenseApi.md#updatelicenses) | **PUT** /api/v1/licenses/{id} | License@update
 *MetricsApi* | [**fetchKeyMetricsV2**](docs/MetricsApi.md#fetchkeymetricsv2) | **GET** /api/v2/metrics | KeyMetricController@index
-*NotificationApi* | [**deleteNotifications**](docs/NotificationApi.md#deletenotifications) | **DELETE** /api/v1/notifications/{id} | Notification@destroy
-*ProgrammingLanguageApi* | [**createProgrammingLanguages**](docs/ProgrammingLanguageApi.md#createprogramminglanguages) | **POST** /api/v1/programming_languages | ProgrammingLanguage@store
-*ProgrammingLanguageApi* | [**deleteProgrammingLanguages**](docs/ProgrammingLanguageApi.md#deleteprogramminglanguages) | **DELETE** /api/v1/programming_languages/{id} | ProgrammingLanguage@destroy
-*ProgrammingLanguageApi* | [**editProgrammingLanguages**](docs/ProgrammingLanguageApi.md#editprogramminglanguages) | **PATCH** /api/v1/programming_languages/{id} | ProgrammingLanguage@update
-*ProgrammingLanguageApi* | [**updateProgrammingLanguages**](docs/ProgrammingLanguageApi.md#updateprogramminglanguages) | **PUT** /api/v1/programming_languages/{id} | ProgrammingLanguage@update
-*ProgrammingPackageApi* | [**createProgrammingPackages**](docs/ProgrammingPackageApi.md#createprogrammingpackages) | **POST** /api/v1/programming_packages | ProgrammingPackage@store
-*ProgrammingPackageApi* | [**deleteProgrammingPackages**](docs/ProgrammingPackageApi.md#deleteprogrammingpackages) | **DELETE** /api/v1/programming_packages/{id} | ProgrammingPackage@destroy
-*ProgrammingPackageApi* | [**editProgrammingPackages**](docs/ProgrammingPackageApi.md#editprogrammingpackages) | **PATCH** /api/v1/programming_packages/{id} | ProgrammingPackage@update
-*ProgrammingPackageApi* | [**updateProgrammingPackages**](docs/ProgrammingPackageApi.md#updateprogrammingpackages) | **PUT** /api/v1/programming_packages/{id} | ProgrammingPackage@update
 *ProjectGrantApi* | [**fetchAllProjectGrants**](docs/ProjectGrantApi.md#fetchallprojectgrants) | **GET** /api/v1/project_grants | ProjectGrantController@index
 *ProjectGrantApi* | [**fetchProjectGrant**](docs/ProjectGrantApi.md#fetchprojectgrant) | **GET** /api/v1/project_grants/{id} | ProjectGrantController@show
 *PublicationApi* | [**countUniqueFieldsPublications**](docs/PublicationApi.md#countuniquefieldspublications) | **GET** /api/v1/publication/count/{field} | PublicationController@count
@@ -234,9 +203,6 @@ Class | Method | HTTP request | Description
 *QuestionBankApi* | [**fetchTeamQuestionBankQuestionsBySection**](docs/QuestionBankApi.md#fetchteamquestionbankquestionsbysection) | **GET** /api/v1/teams/{teamId}/questions/section/{sectionId} | TeamQuestionBank@indexBySection
 *QuestionBankApi* | [**updateQuestionBankQuestion**](docs/QuestionBankApi.md#updatequestionbankquestion) | **PUT** /api/v1/questions/{id} | QuestionBank@update
 *QuestionBankApi* | [**updateQuestionBankQuestionStatus**](docs/QuestionBankApi.md#updatequestionbankquestionstatus) | **PATCH** /api/v1/questions/{id}/{status} | QuestionBank@updateStatus
-*ReviewsApi* | [**deleteReviews**](docs/ReviewsApi.md#deletereviews) | **DELETE** /api/v1/reviews/{id} | Delete a review
-*ReviewsApi* | [**editReviews**](docs/ReviewsApi.md#editreviews) | **PATCH** /api/v1/reviews/{id} | Edit a review
-*ReviewsApi* | [**updateReviews**](docs/ReviewsApi.md#updatereviews) | **PUT** /api/v1/reviews/{id} | Update a review
 *SearchCollectionsApi* | [**searchCollections**](docs/SearchCollectionsApi.md#searchcollections) | **POST** /api/v1/search/collections | Search@collections
 *SearchDataCustodianNetworksApi* | [**searchDataCustodianNetworks**](docs/SearchDataCustodianNetworksApi.md#searchdatacustodiannetworks) | **POST** /api/v1/search/data_custodian_networks | Search@data_custodian_networks
 *SearchDataCustodiansApi* | [**searchDataCustodians**](docs/SearchDataCustodiansApi.md#searchdatacustodians) | **POST** /api/v1/search/data_custodians | Search@data_custodians
@@ -281,16 +247,6 @@ Class | Method | HTTP request | Description
 *ToolsApi* | [**updateTools**](docs/ToolsApi.md#updatetools) | **PUT** /api/v1/tools/{id} | ToolController@update
 *ToolsApi* | [**updateToolsByTeamidV2**](docs/ToolsApi.md#updatetoolsbyteamidv2) | **PUT** /api/v2/teams/{teamId}/tools/{id} | TeamToolController@update
 *ToolsApi* | [**updateToolsIntegrations**](docs/ToolsApi.md#updatetoolsintegrations) | **PUT** /api/v1/integrations/tools/{id} | IntegrationToolController@update
-*TypeCategoryApi* | [**createTypeCategories**](docs/TypeCategoryApi.md#createtypecategories) | **POST** /api/v1/type_categories | TypeCategory@store
-*TypeCategoryApi* | [**deleteTypeCategories**](docs/TypeCategoryApi.md#deletetypecategories) | **DELETE** /api/v1/type_categories/{id} | TypeCategory@destroy
-*TypeCategoryApi* | [**editTypeCategories**](docs/TypeCategoryApi.md#edittypecategories) | **PATCH** /api/v1/type_categories/{id} | TypeCategory@update
-*TypeCategoryApi* | [**updateTypeCategories**](docs/TypeCategoryApi.md#updatetypecategories) | **PUT** /api/v1/type_categories/{id} | TypeCategory@update
-*UserRolesApi* | [**createUserHasRoles**](docs/UserRolesApi.md#createuserhasroles) | **POST** /api/v1/users/{userId}/roles | UserRoleController@store
-*UserRolesApi* | [**deleteUserHasRoles**](docs/UserRolesApi.md#deleteuserhasroles) | **DELETE** /api/v1/users/{userId}/roles | UserRoleController@destroy
-*UserRolesApi* | [**updateUserHasRoles**](docs/UserRolesApi.md#updateuserhasroles) | **PATCH** /api/v1/users/{userId}/roles | UserRoleController@edit
-*UsersApi* | [**createUsers**](docs/UsersApi.md#createusers) | **POST** /api/v1/users | UserController@store
-*UsersApi* | [**deleteUsers**](docs/UsersApi.md#deleteusers) | **DELETE** /api/v1/users/{id} | UserController@destroy
-*UsersApi* | [**editUsers**](docs/UsersApi.md#editusers) | **PATCH** /api/v1/users/{id} | UserController@edit
 *UsersApi* | [**verifySecondaryEmail**](docs/UsersApi.md#verifysecondaryemail) | **GET** /api/v1/users/verify-secondary-email/{uuid} | Verify user\&#39;s secondary email using a UUID
 *WidgetsApi* | [**createWidget**](docs/WidgetsApi.md#createwidget) | **POST** /api/v1/teams/{teamId}/widgets | Create a new widget
 *WidgetsApi* | [**deleteWidget**](docs/WidgetsApi.md#deletewidget) | **DELETE** /api/v1/teams/{teamId}/widgets/{id} | Delete a widget
@@ -311,7 +267,6 @@ Class | Method | HTTP request | Description
  - [Category](docs/Category.md)
  - [Collection](docs/Collection.md)
  - [CountUniqueFieldsCollections200Response](docs/CountUniqueFieldsCollections200Response.md)
- - [CreateAdminSearchReindexRequest](docs/CreateAdminSearchReindexRequest.md)
  - [CreateApplications200Response](docs/CreateApplications200Response.md)
  - [CreateApplications200ResponseDataInner](docs/CreateApplications200ResponseDataInner.md)
  - [CreateApplications500Response](docs/CreateApplications500Response.md)
@@ -325,13 +280,7 @@ Class | Method | HTTP request | Description
  - [CreateDarSectionRequest](docs/CreateDarSectionRequest.md)
  - [CreateDarTemplateRequest](docs/CreateDarTemplateRequest.md)
  - [CreateDarTemplateRequestQuestionsInner](docs/CreateDarTemplateRequestQuestionsInner.md)
- - [CreateDataProviderCollRequest](docs/CreateDataProviderCollRequest.md)
- - [CreateDatasetsLinkageExtraction200Response](docs/CreateDatasetsLinkageExtraction200Response.md)
- - [CreateDatasetsLinkageExtractionRequest](docs/CreateDatasetsLinkageExtractionRequest.md)
  - [CreateDatasetsRequest](docs/CreateDatasetsRequest.md)
- - [CreateDatasetsTermExtraction200Response](docs/CreateDatasetsTermExtraction200Response.md)
- - [CreateDatasetsTermExtraction500Response](docs/CreateDatasetsTermExtraction500Response.md)
- - [CreateDatasetsTermExtractionRequest](docs/CreateDatasetsTermExtractionRequest.md)
  - [CreateDatasetsV2Request](docs/CreateDatasetsV2Request.md)
  - [CreateDurIntegrationsRequest](docs/CreateDurIntegrationsRequest.md)
  - [CreateDurRequest](docs/CreateDurRequest.md)
@@ -340,8 +289,6 @@ Class | Method | HTTP request | Description
  - [CreateDurRequestTeamInner](docs/CreateDurRequestTeamInner.md)
  - [CreateDurRequestUsersInner](docs/CreateDurRequestUsersInner.md)
  - [CreateFederationTeamRequest](docs/CreateFederationTeamRequest.md)
- - [CreateLicensesRequest](docs/CreateLicensesRequest.md)
- - [CreateProgrammingLanguagesRequest](docs/CreateProgrammingLanguagesRequest.md)
  - [CreatePublicationsRequest](docs/CreatePublicationsRequest.md)
  - [CreatePublicationsRequestDatasetsInner](docs/CreatePublicationsRequestDatasetsInner.md)
  - [CreatePublicationsRequestToolsInner](docs/CreatePublicationsRequestToolsInner.md)
@@ -357,9 +304,6 @@ Class | Method | HTTP request | Description
  - [CreateToolsIntegrationsRequestPublicationsInner](docs/CreateToolsIntegrationsRequestPublicationsInner.md)
  - [CreateToolsRequest](docs/CreateToolsRequest.md)
  - [CreateToolsRequestCollectionsInner](docs/CreateToolsRequestCollectionsInner.md)
- - [CreateTypeCategoriesRequest](docs/CreateTypeCategoriesRequest.md)
- - [CreateUserHasRolesRequest](docs/CreateUserHasRolesRequest.md)
- - [CreateUsersRequest](docs/CreateUsersRequest.md)
  - [CreateWidget201Response](docs/CreateWidget201Response.md)
  - [CreateWidget400Response](docs/CreateWidget400Response.md)
  - [CreateWidgetRequest](docs/CreateWidgetRequest.md)
@@ -378,11 +322,7 @@ Class | Method | HTTP request | Description
  - [EditCsat200Response](docs/EditCsat200Response.md)
  - [EditCsatRequest](docs/EditCsatRequest.md)
  - [EditDarIntegrationRequest](docs/EditDarIntegrationRequest.md)
- - [EditDataProviderCollRequest](docs/EditDataProviderCollRequest.md)
- - [EditProgrammingLanguagesRequest](docs/EditProgrammingLanguagesRequest.md)
  - [EditQuestionBankQuestionRequest](docs/EditQuestionBankQuestionRequest.md)
- - [EditUsers200Response](docs/EditUsers200Response.md)
- - [EditUsersRequest](docs/EditUsersRequest.md)
  - [ExportDatasetMetadata400Response](docs/ExportDatasetMetadata400Response.md)
  - [ExportMockDataset404Response](docs/ExportMockDataset404Response.md)
  - [FetchAllApplications200Response](docs/FetchAllApplications200Response.md)
@@ -527,7 +467,6 @@ Class | Method | HTTP request | Description
  - [Tool](docs/Tool.md)
  - [TrackWidgetEventRequest](docs/TrackWidgetEventRequest.md)
  - [TypeCategory](docs/TypeCategory.md)
- - [UpdateAdminSearchFeatureRequest](docs/UpdateAdminSearchFeatureRequest.md)
  - [UpdateApplications200Response](docs/UpdateApplications200Response.md)
  - [UpdateApplications200ResponseData](docs/UpdateApplications200ResponseData.md)
  - [UpdateApplications404Response](docs/UpdateApplications404Response.md)
@@ -538,33 +477,19 @@ Class | Method | HTTP request | Description
  - [UpdateDarSection200Response](docs/UpdateDarSection200Response.md)
  - [UpdateDarSection200ResponseData](docs/UpdateDarSection200ResponseData.md)
  - [UpdateDarTemplateRequest](docs/UpdateDarTemplateRequest.md)
- - [UpdateDataCustodianNetwork200Response](docs/UpdateDataCustodianNetwork200Response.md)
- - [UpdateDataProviderColl200Response](docs/UpdateDataProviderColl200Response.md)
- - [UpdateDataProviderCollRequest](docs/UpdateDataProviderCollRequest.md)
  - [UpdateDatasetsRequest](docs/UpdateDatasetsRequest.md)
  - [UpdateDur200Response](docs/UpdateDur200Response.md)
  - [UpdateDurIntegrations200Response](docs/UpdateDurIntegrations200Response.md)
  - [UpdateDurIntegrations200ResponseData](docs/UpdateDurIntegrations200ResponseData.md)
  - [UpdateFederationTeamRequest](docs/UpdateFederationTeamRequest.md)
- - [UpdateLicenses200Response](docs/UpdateLicenses200Response.md)
- - [UpdateProgrammingLanguages200Response](docs/UpdateProgrammingLanguages200Response.md)
- - [UpdateProgrammingLanguagesRequest](docs/UpdateProgrammingLanguagesRequest.md)
- - [UpdateProgrammingPackages200Response](docs/UpdateProgrammingPackages200Response.md)
  - [UpdatePublicationsRequest](docs/UpdatePublicationsRequest.md)
  - [UpdateQuestionBankQuestion200Response](docs/UpdateQuestionBankQuestion200Response.md)
  - [UpdateQuestionBankQuestionRequest](docs/UpdateQuestionBankQuestionRequest.md)
  - [UpdateQuestionBankQuestionStatus200Response](docs/UpdateQuestionBankQuestionStatus200Response.md)
- - [UpdateReviews200Response](docs/UpdateReviews200Response.md)
- - [UpdateReviews200ResponseData](docs/UpdateReviews200ResponseData.md)
- - [UpdateReviewsRequest](docs/UpdateReviewsRequest.md)
  - [UpdateTeamDarApplicationQuestionReview200Response](docs/UpdateTeamDarApplicationQuestionReview200Response.md)
  - [UpdateTeamDarApplicationRequest](docs/UpdateTeamDarApplicationRequest.md)
  - [UpdateToolsIntegrationsRequest](docs/UpdateToolsIntegrationsRequest.md)
  - [UpdateToolsRequest](docs/UpdateToolsRequest.md)
- - [UpdateTypeCategories200Response](docs/UpdateTypeCategories200Response.md)
- - [UpdateTypeCategoriesRequest](docs/UpdateTypeCategoriesRequest.md)
- - [UpdateUserHasRolesRequest](docs/UpdateUserHasRolesRequest.md)
- - [UpdateUserHasRolesRequestRoles](docs/UpdateUserHasRolesRequestRoles.md)
  - [UpdateWidget200Response](docs/UpdateWidget200Response.md)
  - [UpdateWidgetRequest](docs/UpdateWidgetRequest.md)
  - [UploadDurRequest](docs/UploadDurRequest.md)

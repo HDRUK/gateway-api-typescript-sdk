@@ -6,8 +6,6 @@ All URIs are relative to *http://localhost*
 |------------- | ------------- | -------------|
 |[**createTeamDarApplicationQuestionReview**](#createteamdarapplicationquestionreview) | **POST** /api/v1/teams/{team_id}/dar/applications/{id}/questions/{questionId}/reviews | DataAccessApplicationReview@store|
 |[**createTeamDarApplicationReview**](#createteamdarapplicationreview) | **POST** /api/v1/teams/{team_id}/dar/applications/{id}/reviews | DataAccessApplicationReview@storeGlobal|
-|[**deleteTeamDarApplicationQuestionReview**](#deleteteamdarapplicationquestionreview) | **DELETE** /api/v1/teams/{team_id}/dar/applications/{id}/questions/{questionId}/reviews/{reviewId} | DataAccessApplicationReview@destroy|
-|[**deleteTeamDarApplicationReview**](#deleteteamdarapplicationreview) | **DELETE** /api/v1/teams/{team_id}/dar/applications/{id}/reviews/{reviewId} | DataAccessApplicationReview@destroyGlobal|
 |[**deleteTeamDarApplicationReviewFile**](#deleteteamdarapplicationreviewfile) | **DELETE** /api/v1/teams/{teamId}/dar/applications/{id}/reviews/{reviewId}/files/{fileId} | DataAccessApplicationReview@destroyFile|
 |[**fetchTeamDarApplicationReviewFile**](#fetchteamdarapplicationreviewfile) | **GET** /api/v1/teams/{teamId}/dar/applications/{id}/reviews/{reviewId}/download/{fileId} | DataAccessApplicationReview@downloadFile|
 |[**fetchTeamDarApplicationReviews**](#fetchteamdarapplicationreviews) | **GET** /api/v1/teams/{team_id}/dar/applications/{id}/reviews | DataAccessApplicationReview@index|
@@ -130,127 +128,6 @@ const { status, data } = await apiInstance.createTeamDarApplicationReview(
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**500** | Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteTeamDarApplicationQuestionReview**
-> DeleteApplications200Response deleteTeamDarApplicationQuestionReview()
-
-Delete a review from a DAR application
-
-### Example
-
-```typescript
-import {
-    DataAccessApplicationReviewApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DataAccessApplicationReviewApi(configuration);
-
-let teamId: number; //Team id (default to undefined)
-let id: number; //DAR application id (default to undefined)
-let questionId: number; //DAR application question id (default to undefined)
-let reviewId: number; //DAR application review id (default to undefined)
-
-const { status, data } = await apiInstance.deleteTeamDarApplicationQuestionReview(
-    teamId,
-    id,
-    questionId,
-    reviewId
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **teamId** | [**number**] | Team id | defaults to undefined|
-| **id** | [**number**] | DAR application id | defaults to undefined|
-| **questionId** | [**number**] | DAR application question id | defaults to undefined|
-| **reviewId** | [**number**] | DAR application review id | defaults to undefined|
-
-
-### Return type
-
-**DeleteApplications200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**404** | Not found response |  -  |
-|**200** | Success |  -  |
-|**500** | Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteTeamDarApplicationReview**
-> DeleteApplications200Response deleteTeamDarApplicationReview()
-
-Delete a review from a DAR application
-
-### Example
-
-```typescript
-import {
-    DataAccessApplicationReviewApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DataAccessApplicationReviewApi(configuration);
-
-let teamId: number; //Team id (default to undefined)
-let id: number; //DAR application id (default to undefined)
-let reviewId: number; //DAR application review id (default to undefined)
-
-const { status, data } = await apiInstance.deleteTeamDarApplicationReview(
-    teamId,
-    id,
-    reviewId
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **teamId** | [**number**] | Team id | defaults to undefined|
-| **id** | [**number**] | DAR application id | defaults to undefined|
-| **reviewId** | [**number**] | DAR application review id | defaults to undefined|
-
-
-### Return type
-
-**DeleteApplications200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**404** | Not found response |  -  |
 |**200** | Success |  -  |
 |**500** | Error |  -  |
 

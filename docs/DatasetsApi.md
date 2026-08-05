@@ -7,8 +7,6 @@ All URIs are relative to *http://localhost*
 |[**countUniqueFields**](#countuniquefields) | **GET** /api/v1/datasets/count/{field} | DatasetController@count|
 |[**createDatasets**](#createdatasets) | **POST** /api/v1/datasets | DatasetController@store|
 |[**createDatasetsIntegrations**](#createdatasetsintegrations) | **POST** /api/v1/integrations/datasets | IntegrationDatasetController@store|
-|[**createDatasetsLinkageExtraction**](#createdatasetslinkageextraction) | **POST** /api/v1/datasets/admin_ctrl/trigger/linkage_extraction | Trigger Term Extraction for Datasets|
-|[**createDatasetsTermExtraction**](#createdatasetstermextraction) | **POST** /api/v1/datasets/admin_ctrl/trigger/term_extraction | Trigger Term Extraction for Datasets|
 |[**createDatasetsV2**](#createdatasetsv2) | **POST** /api/v2/datasets | DatasetController@store|
 |[**createTeamDatasetsV2**](#createteamdatasetsv2) | **POST** /api/v2/teams/{teamId}/datasets | TeamDatasetController@store|
 |[**deleteDatasets**](#deletedatasets) | **DELETE** /api/v1/datasets/{id} | DatasetController@destroy|
@@ -200,121 +198,6 @@ const { status, data } = await apiInstance.createDatasetsIntegrations(
 |**201** | Created |  -  |
 |**401** | Unauthorized |  -  |
 |**500** | Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createDatasetsLinkageExtraction**
-> CreateDatasetsLinkageExtraction200Response createDatasetsLinkageExtraction(createDatasetsLinkageExtractionRequest)
-
-Triggers the term extraction job for datasets within a specified range and controls whether data is partially indexed in Elasticsearch.
-
-### Example
-
-```typescript
-import {
-    DatasetsApi,
-    Configuration,
-    CreateDatasetsLinkageExtractionRequest
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DatasetsApi(configuration);
-
-let authorization: string; //JWT token for authorization in the format \'Bearer {token}\' (default to undefined)
-let createDatasetsLinkageExtractionRequest: CreateDatasetsLinkageExtractionRequest; //
-
-const { status, data } = await apiInstance.createDatasetsLinkageExtraction(
-    authorization,
-    createDatasetsLinkageExtractionRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **createDatasetsLinkageExtractionRequest** | **CreateDatasetsLinkageExtractionRequest**|  | |
-| **authorization** | [**string**] | JWT token for authorization in the format \&#39;Bearer {token}\&#39; | defaults to undefined|
-
-
-### Return type
-
-**CreateDatasetsLinkageExtraction200Response**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Linkage extraction triggered successfully |  -  |
-|**500** | Internal server error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createDatasetsTermExtraction**
-> CreateDatasetsTermExtraction200Response createDatasetsTermExtraction(createDatasetsTermExtractionRequest)
-
-Triggers the term extraction job for datasets within a specified range and controls whether data is partially indexed in Elasticsearch.
-
-### Example
-
-```typescript
-import {
-    DatasetsApi,
-    Configuration,
-    CreateDatasetsTermExtractionRequest
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DatasetsApi(configuration);
-
-let authorization: string; //JWT token for authorization in the format \'Bearer {token}\' (default to undefined)
-let role: string; //Role required to access this endpoint, e.g., \'hdruk.superadmin\' (default to undefined)
-let createDatasetsTermExtractionRequest: CreateDatasetsTermExtractionRequest; //
-
-const { status, data } = await apiInstance.createDatasetsTermExtraction(
-    authorization,
-    role,
-    createDatasetsTermExtractionRequest
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **createDatasetsTermExtractionRequest** | **CreateDatasetsTermExtractionRequest**|  | |
-| **authorization** | [**string**] | JWT token for authorization in the format \&#39;Bearer {token}\&#39; | defaults to undefined|
-| **role** | [**string**] | Role required to access this endpoint, e.g., \&#39;hdruk.superadmin\&#39; | defaults to undefined|
-
-
-### Return type
-
-**CreateDatasetsTermExtraction200Response**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Term extraction triggered successfully |  -  |
-|**500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
