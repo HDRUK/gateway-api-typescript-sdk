@@ -1,4 +1,4 @@
-# UpdateCollectionsV2Request
+# CreateCollectionsIntegrationsRequest
 
 
 ## Properties
@@ -13,15 +13,14 @@ Name | Type | Description | Notes
 **datasets** | [**Array&lt;CreateCollectionsIntegrationsRequestDatasetsInner&gt;**](CreateCollectionsIntegrationsRequestDatasetsInner.md) |  | [optional] [default to undefined]
 **dur** | [**Array&lt;CreateCollectionsIntegrationsRequestDatasetsInner&gt;**](CreateCollectionsIntegrationsRequestDatasetsInner.md) |  | [optional] [default to undefined]
 **publications** | [**Array&lt;CreateCollectionsIntegrationsRequestDatasetsInner&gt;**](CreateCollectionsIntegrationsRequestDatasetsInner.md) |  | [optional] [default to undefined]
-**collaborators** | **Array&lt;number&gt;** |  | [optional] [default to undefined]
 **_public** | **boolean** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { UpdateCollectionsV2Request } from '@hdruk/gateway-api-sdk';
+import { CreateCollectionsIntegrationsRequest } from '@hdruk/gateway-api-sdk';
 
-const instance: UpdateCollectionsV2Request = {
+const instance: CreateCollectionsIntegrationsRequest = {
     name,
     description,
     image_link,
@@ -30,7 +29,6 @@ const instance: UpdateCollectionsV2Request = {
     datasets,
     dur,
     publications,
-    collaborators,
     _public,
 };
 ```

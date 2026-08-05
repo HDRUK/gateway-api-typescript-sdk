@@ -7,7 +7,7 @@ All URIs are relative to *http://localhost*
 |[**datasetsTest**](#datasetstest) | **POST** /api/v1/datasets/test | DatasetController@datasetTest|
 
 # **datasetsTest**
-> CreateCategories200Response datasetsTest(datasetsTestRequest)
+> CreateDarIntegration201Response datasetsTest(datasetsTestRequest)
 
 Datasets test
 
@@ -39,7 +39,7 @@ const { status, data } = await apiInstance.datasetsTest(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 

@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost*
 |[**teamDarTemplateCountUniqueFields**](#teamdartemplatecountuniquefields) | **GET** /api/v1/teams/{teamId}/dar/templates/count/{field} | TeamDataAccessTemplateController@count|
 
 # **deleteTeamDarTemplateFile**
-> DeleteAliases200Response deleteTeamDarTemplateFile()
+> DeleteApplications200Response deleteTeamDarTemplateFile()
 
 Delete a file associated with a DAR template
 
@@ -46,7 +46,7 @@ const { status, data } = await apiInstance.deleteTeamDarTemplateFile(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 

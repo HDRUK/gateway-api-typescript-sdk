@@ -4,7 +4,6 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**countTeamUniqueFieldsDurV2**](#countteamuniquefieldsdurv2) | **GET** /api/v2/teams/{teamId}/dur/count/{field} | TeamDurController@count|
 |[**createDur**](#createdur) | **POST** /api/v1/dur | DurController@store|
 |[**createDurByTeamV2**](#createdurbyteamv2) | **POST** /api/v2/teams/{teamId}/dur | TeamDurController@store|
 |[**deleteDur**](#deletedur) | **DELETE** /api/v1/dur/{id} | Delete a dur|
@@ -16,70 +15,14 @@ All URIs are relative to *http://localhost*
 |[**exportDurV2**](#exportdurv2) | **GET** /api/v2/dur/export | DurController@export|
 |[**fetchAllDur**](#fetchalldur) | **GET** /api/v1/dur | DurController@index|
 |[**fetchAllDurV2**](#fetchalldurv2) | **GET** /api/v2/dur | DurController@indexActive|
-|[**fetchAllTeamDurStatus**](#fetchallteamdurstatus) | **GET** /api/v2/teams/{teamId}/dur/status/{status} | TeamDurController@indexStatus|
 |[**fetchDurById**](#fetchdurbyid) | **GET** /api/v1/dur/{id} | DurController@show|
 |[**fetchDurByIdV2**](#fetchdurbyidv2) | **GET** /api/v2/dur/{id} | DurController@showActive|
-|[**fetchDurByTeamAndByIdV2**](#fetchdurbyteamandbyidv2) | **GET** /api/v1/teams/{teamId}/dur/{id} | TeamDurController@show|
 |[**updateDur**](#updatedur) | **PUT** /api/v1/dur/{id} | Update a dur by id|
 |[**updateDurV2ByTeamId**](#updatedurv2byteamid) | **PUT** /api/v2/teams/{teamId}/dur/{id} | TeamDurController@update|
 |[**uploadDur**](#uploaddur) | **POST** /api/v1/dur/upload | DurController@upload|
 
-# **countTeamUniqueFieldsDurV2**
-> CountUniqueFieldsCollections200Response countTeamUniqueFieldsDurV2()
-
-Get team counts for distinct entries of a field in the model
-
-### Example
-
-```typescript
-import {
-    DataUseRegistersApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DataUseRegistersApi(configuration);
-
-let teamId: number; //team id (default to undefined)
-let field: string; //name of the field to perform a count on (default to undefined)
-
-const { status, data } = await apiInstance.countTeamUniqueFieldsDurV2(
-    teamId,
-    field
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **teamId** | [**number**] | team id | defaults to undefined|
-| **field** | [**string**] | name of the field to perform a count on | defaults to undefined|
-
-
-### Return type
-
-**CountUniqueFieldsCollections200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Success response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **createDur**
-> CreateCategories200Response createDur(createDurRequest)
+> CreateDarIntegration201Response createDur(createDurRequest)
 
 Create a new dur
 
@@ -111,7 +54,7 @@ const { status, data } = await apiInstance.createDur(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -133,7 +76,7 @@ const { status, data } = await apiInstance.createDur(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createDurByTeamV2**
-> CreateCategories200Response createDurByTeamV2(createDurRequest)
+> CreateDarIntegration201Response createDurByTeamV2(createDurRequest)
 
 Create a new dur by team v2
 
@@ -168,7 +111,7 @@ const { status, data } = await apiInstance.createDurByTeamV2(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -190,7 +133,7 @@ const { status, data } = await apiInstance.createDurByTeamV2(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteDur**
-> DeleteAliases200Response deleteDur()
+> DeleteApplications200Response deleteDur()
 
 Delete a dur
 
@@ -221,7 +164,7 @@ const { status, data } = await apiInstance.deleteDur(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 
@@ -243,7 +186,7 @@ const { status, data } = await apiInstance.deleteDur(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteDursV2ByTeamId**
-> DeleteAliases200Response deleteDursV2ByTeamId()
+> DeleteApplications200Response deleteDursV2ByTeamId()
 
 Delete a dur by team and id v2
 
@@ -277,7 +220,7 @@ const { status, data } = await apiInstance.deleteDursV2ByTeamId(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 
@@ -679,73 +622,6 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **fetchAllTeamDurStatus**
-> FetchAllDur200Response fetchAllTeamDurStatus()
-
-Returns a list of dur owned by this team with given status
-
-### Example
-
-```typescript
-import {
-    DataUseRegistersApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DataUseRegistersApi(configuration);
-
-let teamId: number; //team id (default to undefined)
-let status: 'active' | 'draft' | 'archived'; //Status of the DUR (active, draft, or archived). Defaults to active if not provided. (default to 'active')
-let sort: ProjectTitleAscupdatedAtAsc; //Sort fields in the format field:direction, e.g., project_title:asc,updated_at:asc (optional) (default to undefined)
-let projectTitle: string; //Filter dur by project title (optional) (default to undefined)
-let perPage: number; //per page (optional) (default to undefined)
-let withRelated: boolean; //Show related entities (optional) (default to undefined)
-
-const { status, data } = await apiInstance.fetchAllTeamDurStatus(
-    teamId,
-    status,
-    sort,
-    projectTitle,
-    perPage,
-    withRelated
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **teamId** | [**number**] | team id | defaults to undefined|
-| **status** | [**&#39;active&#39; | &#39;draft&#39; | &#39;archived&#39;**]**Array<&#39;active&#39; &#124; &#39;draft&#39; &#124; &#39;archived&#39;>** | Status of the DUR (active, draft, or archived). Defaults to active if not provided. | defaults to 'active'|
-| **sort** | **ProjectTitleAscupdatedAtAsc** | Sort fields in the format field:direction, e.g., project_title:asc,updated_at:asc | (optional) defaults to undefined|
-| **projectTitle** | [**string**] | Filter dur by project title | (optional) defaults to undefined|
-| **perPage** | [**number**] | per page | (optional) defaults to undefined|
-| **withRelated** | [**boolean**] | Show related entities | (optional) defaults to undefined|
-
-
-### Return type
-
-**FetchAllDur200Response**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **fetchDurById**
 > FetchDurById200Response fetchDurById()
 
@@ -824,60 +700,6 @@ const { status, data } = await apiInstance.fetchDurByIdV2(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **id** | [**number**] | data use register id | defaults to undefined|
-
-
-### Return type
-
-**UpdateDur200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Success response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **fetchDurByTeamAndByIdV2**
-> UpdateDur200Response fetchDurByTeamAndByIdV2()
-
-Get dur by team id and by id
-
-### Example
-
-```typescript
-import {
-    DataUseRegistersApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DataUseRegistersApi(configuration);
-
-let teamId: number; //team id (default to undefined)
-let id: number; //data use register id (default to undefined)
-
-const { status, data } = await apiInstance.fetchDurByTeamAndByIdV2(
-    teamId,
-    id
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **teamId** | [**number**] | team id | defaults to undefined|
 | **id** | [**number**] | data use register id | defaults to undefined|
 
 
@@ -1020,7 +842,7 @@ const { status, data } = await apiInstance.updateDurV2ByTeamId(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **uploadDur**
-> CreateCategories200Response uploadDur(uploadDurRequest)
+> CreateDarIntegration201Response uploadDur(uploadDurRequest)
 
 Create a new dur with upload data
 
@@ -1052,7 +874,7 @@ const { status, data } = await apiInstance.uploadDur(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 

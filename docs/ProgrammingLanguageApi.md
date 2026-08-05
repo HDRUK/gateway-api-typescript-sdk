@@ -7,12 +7,10 @@ All URIs are relative to *http://localhost*
 |[**createProgrammingLanguages**](#createprogramminglanguages) | **POST** /api/v1/programming_languages | ProgrammingLanguage@store|
 |[**deleteProgrammingLanguages**](#deleteprogramminglanguages) | **DELETE** /api/v1/programming_languages/{id} | ProgrammingLanguage@destroy|
 |[**editProgrammingLanguages**](#editprogramminglanguages) | **PATCH** /api/v1/programming_languages/{id} | ProgrammingLanguage@update|
-|[**fetchAllProgrammingLanguages**](#fetchallprogramminglanguages) | **GET** /api/v1/programming_languages | ProgrammingLanguage@index|
-|[**fetchProgrammingLanguages**](#fetchprogramminglanguages) | **GET** /api/v1/programming_languages/{id} | ProgrammingLanguage@show|
 |[**updateProgrammingLanguages**](#updateprogramminglanguages) | **PUT** /api/v1/programming_languages/{id} | ProgrammingLanguage@update|
 
 # **createProgrammingLanguages**
-> CreateCategories200Response createProgrammingLanguages(createCategoriesRequest)
+> CreateDarIntegration201Response createProgrammingLanguages(createProgrammingLanguagesRequest)
 
 Creates a new system programming language
 
@@ -22,16 +20,16 @@ Creates a new system programming language
 import {
     ProgrammingLanguageApi,
     Configuration,
-    CreateCategoriesRequest
+    CreateProgrammingLanguagesRequest
 } from '@hdruk/gateway-api-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new ProgrammingLanguageApi(configuration);
 
-let createCategoriesRequest: CreateCategoriesRequest; //Programming language definition
+let createProgrammingLanguagesRequest: CreateProgrammingLanguagesRequest; //Programming language definition
 
 const { status, data } = await apiInstance.createProgrammingLanguages(
-    createCategoriesRequest
+    createProgrammingLanguagesRequest
 );
 ```
 
@@ -39,12 +37,12 @@ const { status, data } = await apiInstance.createProgrammingLanguages(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **createCategoriesRequest** | **CreateCategoriesRequest**| Programming language definition | |
+| **createProgrammingLanguagesRequest** | **CreateProgrammingLanguagesRequest**| Programming language definition | |
 
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -65,7 +63,7 @@ const { status, data } = await apiInstance.createProgrammingLanguages(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteProgrammingLanguages**
-> DeleteAliases200Response deleteProgrammingLanguages()
+> DeleteApplications200Response deleteProgrammingLanguages()
 
 Delete a system programming language
 
@@ -96,7 +94,7 @@ const { status, data } = await apiInstance.deleteProgrammingLanguages(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 
@@ -118,7 +116,7 @@ const { status, data } = await apiInstance.deleteProgrammingLanguages(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **editProgrammingLanguages**
-> UpdateProgrammingLanguages200Response editProgrammingLanguages(editCategoriesRequest)
+> UpdateProgrammingLanguages200Response editProgrammingLanguages(editProgrammingLanguagesRequest)
 
 Edit a system programming language
 
@@ -128,18 +126,18 @@ Edit a system programming language
 import {
     ProgrammingLanguageApi,
     Configuration,
-    EditCategoriesRequest
+    EditProgrammingLanguagesRequest
 } from '@hdruk/gateway-api-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new ProgrammingLanguageApi(configuration);
 
 let id: number; //programming language id (default to undefined)
-let editCategoriesRequest: EditCategoriesRequest; //ProgrammingLanguage definition
+let editProgrammingLanguagesRequest: EditProgrammingLanguagesRequest; //ProgrammingLanguage definition
 
 const { status, data } = await apiInstance.editProgrammingLanguages(
     id,
-    editCategoriesRequest
+    editProgrammingLanguagesRequest
 );
 ```
 
@@ -147,7 +145,7 @@ const { status, data } = await apiInstance.editProgrammingLanguages(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **editCategoriesRequest** | **EditCategoriesRequest**| ProgrammingLanguage definition | |
+| **editProgrammingLanguagesRequest** | **EditProgrammingLanguagesRequest**| ProgrammingLanguage definition | |
 | **id** | [**number**] | programming language id | defaults to undefined|
 
 
@@ -174,104 +172,8 @@ const { status, data } = await apiInstance.editProgrammingLanguages(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **fetchAllProgrammingLanguages**
-> FetchAllProgrammingLanguages200Response fetchAllProgrammingLanguages()
-
-Returns a list of programming languages enabled on the system
-
-### Example
-
-```typescript
-import {
-    ProgrammingLanguageApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new ProgrammingLanguageApi(configuration);
-
-const { status, data } = await apiInstance.fetchAllProgrammingLanguages();
-```
-
-### Parameters
-This endpoint does not have any parameters.
-
-
-### Return type
-
-**FetchAllProgrammingLanguages200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Success |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **fetchProgrammingLanguages**
-> FetchProgrammingLanguages200Response fetchProgrammingLanguages()
-
-Return a single system programming language
-
-### Example
-
-```typescript
-import {
-    ProgrammingLanguageApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new ProgrammingLanguageApi(configuration);
-
-let id: number; //programming language id (default to undefined)
-
-const { status, data } = await apiInstance.fetchProgrammingLanguages(
-    id
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **id** | [**number**] | programming language id | defaults to undefined|
-
-
-### Return type
-
-**FetchProgrammingLanguages200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**404** | Not found response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **updateProgrammingLanguages**
-> UpdateProgrammingLanguages200Response updateProgrammingLanguages(updateCategoriesRequest)
+> UpdateProgrammingLanguages200Response updateProgrammingLanguages(updateProgrammingLanguagesRequest)
 
 Update a system programming language
 
@@ -281,18 +183,18 @@ Update a system programming language
 import {
     ProgrammingLanguageApi,
     Configuration,
-    UpdateCategoriesRequest
+    UpdateProgrammingLanguagesRequest
 } from '@hdruk/gateway-api-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new ProgrammingLanguageApi(configuration);
 
 let id: number; //programming language id (default to undefined)
-let updateCategoriesRequest: UpdateCategoriesRequest; //ProgrammingLanguage definition
+let updateProgrammingLanguagesRequest: UpdateProgrammingLanguagesRequest; //ProgrammingLanguage definition
 
 const { status, data } = await apiInstance.updateProgrammingLanguages(
     id,
-    updateCategoriesRequest
+    updateProgrammingLanguagesRequest
 );
 ```
 
@@ -300,7 +202,7 @@ const { status, data } = await apiInstance.updateProgrammingLanguages(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updateCategoriesRequest** | **UpdateCategoriesRequest**| ProgrammingLanguage definition | |
+| **updateProgrammingLanguagesRequest** | **UpdateProgrammingLanguagesRequest**| ProgrammingLanguage definition | |
 | **id** | [**number**] | programming language id | defaults to undefined|
 
 

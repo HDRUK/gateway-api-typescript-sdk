@@ -12,7 +12,7 @@ All URIs are relative to *http://localhost*
 |[**updateLicenses**](#updatelicenses) | **PUT** /api/v1/licenses/{id} | License@update|
 
 # **createLicenses**
-> CreateCategories200Response createLicenses(createLicensesRequest)
+> CreateDarIntegration201Response createLicenses(createLicensesRequest)
 
 Creates a new license
 
@@ -44,7 +44,7 @@ const { status, data } = await apiInstance.createLicenses(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -65,7 +65,7 @@ const { status, data } = await apiInstance.createLicenses(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteLicenses**
-> DeleteAliases200Response deleteLicenses()
+> DeleteApplications200Response deleteLicenses()
 
 Delete a License
 
@@ -96,7 +96,7 @@ const { status, data } = await apiInstance.deleteLicenses(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 

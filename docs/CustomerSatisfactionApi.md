@@ -8,7 +8,7 @@ All URIs are relative to *http://localhost*
 |[**editCsat**](#editcsat) | **PATCH** /api/v1/csat/{id} | Update Customer Satisfaction Description|
 
 # **createCsat**
-> DeleteAliases200Response createCsat(createCsatRequest)
+> DeleteApplications200Response createCsat(createCsatRequest)
 
 Creates a customer satisfaction score between 0 and 5
 
@@ -40,7 +40,7 @@ const { status, data } = await apiInstance.createCsat(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 

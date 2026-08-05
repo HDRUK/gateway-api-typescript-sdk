@@ -6,7 +6,6 @@ All URIs are relative to *http://localhost*
 |------------- | ------------- | -------------|
 |[**authentication**](#authentication) | **POST** /api/v1/auth | AuthController@checkAuthorization|
 |[**login**](#login) | **POST** /api/v1/auth/login | AuthController@login|
-|[**refreshToken**](#refreshtoken) | **POST** /api/v1/refresh_token | AuthController@refreshToken|
 |[**register**](#register) | **POST** /api/v1/auth/register | AuthController@register|
 
 # **authentication**
@@ -113,51 +112,6 @@ No authorization required
 |**200** | Success response |  -  |
 |**400** | Validation error |  -  |
 |**401** | Invalid credentials |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **refreshToken**
-> Authentication200Response refreshToken()
-
-Regenerate jwt token
-
-### Example
-
-```typescript
-import {
-    AuthenticationApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new AuthenticationApi(configuration);
-
-const { status, data } = await apiInstance.refreshToken();
-```
-
-### Parameters
-This endpoint does not have any parameters.
-
-
-### Return type
-
-**Authentication200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Success response |  -  |
-|**401** | Missing Property |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

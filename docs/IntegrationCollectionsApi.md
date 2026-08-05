@@ -12,7 +12,7 @@ All URIs are relative to *http://localhost*
 |[**updateCollectionsIntegrations**](#updatecollectionsintegrations) | **PUT** /api/v1/integrations/collections/{id} | Update a collection|
 
 # **createCollectionsIntegrations**
-> CreateCategories200Response createCollectionsIntegrations(updateTeamCollectionsRequest)
+> CreateDarIntegration201Response createCollectionsIntegrations(createCollectionsIntegrationsRequest)
 
 Create a new collection
 
@@ -22,16 +22,16 @@ Create a new collection
 import {
     IntegrationCollectionsApi,
     Configuration,
-    UpdateTeamCollectionsRequest
+    CreateCollectionsIntegrationsRequest
 } from '@hdruk/gateway-api-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new IntegrationCollectionsApi(configuration);
 
-let updateTeamCollectionsRequest: UpdateTeamCollectionsRequest; //Pass user credentials
+let createCollectionsIntegrationsRequest: CreateCollectionsIntegrationsRequest; //Pass user credentials
 
 const { status, data } = await apiInstance.createCollectionsIntegrations(
-    updateTeamCollectionsRequest
+    createCollectionsIntegrationsRequest
 );
 ```
 
@@ -39,12 +39,12 @@ const { status, data } = await apiInstance.createCollectionsIntegrations(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updateTeamCollectionsRequest** | **UpdateTeamCollectionsRequest**| Pass user credentials | |
+| **createCollectionsIntegrationsRequest** | **CreateCollectionsIntegrationsRequest**| Pass user credentials | |
 
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -66,7 +66,7 @@ const { status, data } = await apiInstance.createCollectionsIntegrations(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteCollectionsIntegrations**
-> DeleteAliases200Response deleteCollectionsIntegrations()
+> DeleteApplications200Response deleteCollectionsIntegrations()
 
 Delete a collection
 
@@ -97,7 +97,7 @@ const { status, data } = await apiInstance.deleteCollectionsIntegrations(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 
@@ -119,7 +119,7 @@ const { status, data } = await apiInstance.deleteCollectionsIntegrations(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **editCollectionsIntegrations**
-> FetchCollections200Response editCollectionsIntegrations(updateTeamCollectionsRequest)
+> FetchCollections200Response editCollectionsIntegrations(createCollectionsIntegrationsRequest)
 
 Edit a collection
 
@@ -129,18 +129,18 @@ Edit a collection
 import {
     IntegrationCollectionsApi,
     Configuration,
-    UpdateTeamCollectionsRequest
+    CreateCollectionsIntegrationsRequest
 } from '@hdruk/gateway-api-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new IntegrationCollectionsApi(configuration);
 
 let id: number; //collection id (default to undefined)
-let updateTeamCollectionsRequest: UpdateTeamCollectionsRequest; //Pass user credentials
+let createCollectionsIntegrationsRequest: CreateCollectionsIntegrationsRequest; //Pass user credentials
 
 const { status, data } = await apiInstance.editCollectionsIntegrations(
     id,
-    updateTeamCollectionsRequest
+    createCollectionsIntegrationsRequest
 );
 ```
 
@@ -148,7 +148,7 @@ const { status, data } = await apiInstance.editCollectionsIntegrations(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updateTeamCollectionsRequest** | **UpdateTeamCollectionsRequest**| Pass user credentials | |
+| **createCollectionsIntegrationsRequest** | **CreateCollectionsIntegrationsRequest**| Pass user credentials | |
 | **id** | [**number**] | collection id | defaults to undefined|
 
 
@@ -281,7 +281,7 @@ const { status, data } = await apiInstance.fetchCollectionsIntegrations(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateCollectionsIntegrations**
-> FetchCollections200Response updateCollectionsIntegrations(updateTeamCollectionsRequest)
+> FetchCollections200Response updateCollectionsIntegrations(createCollectionsIntegrationsRequest)
 
 Update a collection
 
@@ -291,18 +291,18 @@ Update a collection
 import {
     IntegrationCollectionsApi,
     Configuration,
-    UpdateTeamCollectionsRequest
+    CreateCollectionsIntegrationsRequest
 } from '@hdruk/gateway-api-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new IntegrationCollectionsApi(configuration);
 
 let id: number; //collection id (default to undefined)
-let updateTeamCollectionsRequest: UpdateTeamCollectionsRequest; //Pass user credentials
+let createCollectionsIntegrationsRequest: CreateCollectionsIntegrationsRequest; //Pass user credentials
 
 const { status, data } = await apiInstance.updateCollectionsIntegrations(
     id,
-    updateTeamCollectionsRequest
+    createCollectionsIntegrationsRequest
 );
 ```
 
@@ -310,7 +310,7 @@ const { status, data } = await apiInstance.updateCollectionsIntegrations(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **updateTeamCollectionsRequest** | **UpdateTeamCollectionsRequest**| Pass user credentials | |
+| **createCollectionsIntegrationsRequest** | **CreateCollectionsIntegrationsRequest**| Pass user credentials | |
 | **id** | [**number**] | collection id | defaults to undefined|
 
 

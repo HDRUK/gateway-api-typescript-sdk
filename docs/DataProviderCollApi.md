@@ -13,7 +13,7 @@ All URIs are relative to *http://localhost*
 |[**updateDataProviderColl**](#updatedataprovidercoll) | **PUT** /api/v1/data_provider_colls/{id} | DataProviderColl@update|
 
 # **createDataProviderColl**
-> CreateCategories200Response createDataProviderColl(createDataProviderCollRequest)
+> CreateDarIntegration201Response createDataProviderColl(createDataProviderCollRequest)
 
 Creates a new DataProviderColl
 
@@ -45,7 +45,7 @@ const { status, data } = await apiInstance.createDataProviderColl(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -66,7 +66,7 @@ const { status, data } = await apiInstance.createDataProviderColl(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteDataProviderColl**
-> DeleteAliases200Response deleteDataProviderColl()
+> DeleteApplications200Response deleteDataProviderColl()
 
 Delete a DataProviderColl
 
@@ -97,7 +97,7 @@ const { status, data } = await apiInstance.deleteDataProviderColl(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 

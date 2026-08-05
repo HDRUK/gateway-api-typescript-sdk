@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost*
 |[**updateUserHasRoles**](#updateuserhasroles) | **PATCH** /api/v1/users/{userId}/roles | UserRoleController@edit|
 
 # **createUserHasRoles**
-> DeleteAliases200Response createUserHasRoles(createUserHasRolesRequest)
+> DeleteApplications200Response createUserHasRoles(createUserHasRolesRequest)
 
 Create user has roles
 
@@ -44,7 +44,7 @@ const { status, data } = await apiInstance.createUserHasRoles(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 
@@ -120,7 +120,7 @@ const { status, data } = await apiInstance.deleteUserHasRoles(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateUserHasRoles**
-> DeleteAliases200Response updateUserHasRoles(updateUserHasRolesRequest)
+> DeleteApplications200Response updateUserHasRoles(updateUserHasRolesRequest)
 
 Update user has roles
 
@@ -155,7 +155,7 @@ const { status, data } = await apiInstance.updateUserHasRoles(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 

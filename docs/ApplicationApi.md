@@ -67,7 +67,7 @@ const { status, data } = await apiInstance.createApplications(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteApplications**
-> DeleteAliases200Response deleteApplications()
+> DeleteApplications200Response deleteApplications()
 
 Delete application
 
@@ -98,7 +98,7 @@ const { status, data } = await apiInstance.deleteApplications(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 

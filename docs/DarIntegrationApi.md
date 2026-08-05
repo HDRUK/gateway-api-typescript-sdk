@@ -12,7 +12,7 @@ All URIs are relative to *http://localhost*
 |[**updateDarIntegration**](#updatedarintegration) | **PUT** /api/v1/dar-integration/{id} | DarIntegration@update|
 
 # **createDarIntegration**
-> CreateCategories200Response createDarIntegration(updateDarIntegrationRequest)
+> CreateDarIntegration201Response createDarIntegration(updateDarIntegrationRequest)
 
 Creates a new DAR integration enabled on the system
 
@@ -47,7 +47,7 @@ const { status, data } = await apiInstance.createDarIntegration(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -69,7 +69,7 @@ const { status, data } = await apiInstance.createDarIntegration(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteDarIntegration**
-> DeleteAliases200Response deleteDarIntegration()
+> DeleteApplications200Response deleteDarIntegration()
 
 Delete a system Dar Integration
 
@@ -100,7 +100,7 @@ const { status, data } = await apiInstance.deleteDarIntegration(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 

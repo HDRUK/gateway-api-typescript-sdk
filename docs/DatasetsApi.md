@@ -4,7 +4,6 @@ All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**countTeamUniqueFieldsDatasetsV2**](#countteamuniquefieldsdatasetsv2) | **GET** /api/v2/teams/{teamId}/datasets/count/{field} | TeamDatasetController@count|
 |[**countUniqueFields**](#countuniquefields) | **GET** /api/v1/datasets/count/{field} | DatasetController@count|
 |[**createDatasets**](#createdatasets) | **POST** /api/v1/datasets | DatasetController@store|
 |[**createDatasetsIntegrations**](#createdatasetsintegrations) | **POST** /api/v1/integrations/datasets | IntegrationDatasetController@store|
@@ -27,8 +26,6 @@ All URIs are relative to *http://localhost*
 |[**fetchDatasets**](#fetchdatasets) | **GET** /api/v1/datasets/{id} | DatasetController@show|
 |[**fetchDatasetsIntegrations**](#fetchdatasetsintegrations) | **GET** /api/v1/integrations/datasets/{id} | IntegrationDatasetController@show|
 |[**fetchDatasetsV2**](#fetchdatasetsv2) | **GET** /api/v2/datasets/{id} | DatasetController@showActive|
-|[**fetchTeamDatasetsStatus**](#fetchteamdatasetsstatus) | **GET** /api/v2/teams/{teamId}/datasets/status/{status} | TeamDatasetController@indexStatus|
-|[**fetchTeamDatasetsV2**](#fetchteamdatasetsv2) | **GET** /api/v2/teams/{teamId}/datasets/{id} | TeamDatasetController@show|
 |[**patchDatasets**](#patchdatasets) | **PATCH** /api/v1/datasets/{id} | DatasetController@edit|
 |[**patchDatasetsIntegrations**](#patchdatasetsintegrations) | **PATCH** /api/v1/integrations/datasets/{id} | IntegrationDatasetController@edit|
 |[**patchDatasetsV2**](#patchdatasetsv2) | **PATCH** /api/v2/datasets/{id} | DatasetController@edit|
@@ -37,60 +34,6 @@ All URIs are relative to *http://localhost*
 |[**updateDatasetsIntegrations**](#updatedatasetsintegrations) | **PUT** /api/v1/integrations/datasets/{id} | IntegrationDatasetController@update|
 |[**updateDatasetsV2**](#updatedatasetsv2) | **PUT** /api/v2/datasets/{id} | DatasetController@update|
 |[**updateTeamDatasetsV2**](#updateteamdatasetsv2) | **PUT** /api/v2/teams/{teamId}/datasets/{id} | TeamDatasetController@update|
-
-# **countTeamUniqueFieldsDatasetsV2**
-> CountUniqueFieldsCollections200Response countTeamUniqueFieldsDatasetsV2()
-
-Get team counts for distinct entries of a field in the model
-
-### Example
-
-```typescript
-import {
-    DatasetsApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DatasetsApi(configuration);
-
-let teamId: number; //team id (default to undefined)
-let field: string; //name of the field to perform a count on (default to undefined)
-
-const { status, data } = await apiInstance.countTeamUniqueFieldsDatasetsV2(
-    teamId,
-    field
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **teamId** | [**number**] | team id | defaults to undefined|
-| **field** | [**string**] | name of the field to perform a count on | defaults to undefined|
-
-
-### Return type
-
-**CountUniqueFieldsCollections200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Success response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **countUniqueFields**
 > CountUniqueFieldsCollections200Response countUniqueFields()
@@ -147,7 +90,7 @@ const { status, data } = await apiInstance.countUniqueFields(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createDatasets**
-> CreateCategories200Response createDatasets(createDatasetsRequest)
+> CreateDarIntegration201Response createDatasets(createDatasetsRequest)
 
 Create a new dataset
 
@@ -179,7 +122,7 @@ const { status, data } = await apiInstance.createDatasets(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -201,7 +144,7 @@ const { status, data } = await apiInstance.createDatasets(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createDatasetsIntegrations**
-> CreateCategories200Response createDatasetsIntegrations(datasetsTestRequest)
+> CreateDarIntegration201Response createDatasetsIntegrations(datasetsTestRequest)
 
 Create a new dataset
 
@@ -239,7 +182,7 @@ const { status, data } = await apiInstance.createDatasetsIntegrations(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -376,7 +319,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createDatasetsV2**
-> CreateCategories200Response createDatasetsV2(createDatasetsV2Request)
+> CreateDarIntegration201Response createDatasetsV2(createDatasetsV2Request)
 
 Create a new dataset
 
@@ -408,7 +351,7 @@ const { status, data } = await apiInstance.createDatasetsV2(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -430,7 +373,7 @@ const { status, data } = await apiInstance.createDatasetsV2(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createTeamDatasetsV2**
-> CreateCategories200Response createTeamDatasetsV2(createTeamDatasetsV2Request)
+> CreateDarIntegration201Response createTeamDatasetsV2(createTeamDatasetsV2Request)
 
 Create a new dataset for a team
 
@@ -465,7 +408,7 @@ const { status, data } = await apiInstance.createTeamDatasetsV2(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -487,7 +430,7 @@ const { status, data } = await apiInstance.createTeamDatasetsV2(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteDatasets**
-> DeleteAliases200Response deleteDatasets()
+> DeleteApplications200Response deleteDatasets()
 
 Delete a dataset
 
@@ -518,7 +461,7 @@ const { status, data } = await apiInstance.deleteDatasets(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 
@@ -540,7 +483,7 @@ const { status, data } = await apiInstance.deleteDatasets(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteDatasetsIntegrations**
-> DeleteAliases200Response deleteDatasetsIntegrations()
+> DeleteApplications200Response deleteDatasetsIntegrations()
 
 Delete a dataset
 
@@ -571,7 +514,7 @@ const { status, data } = await apiInstance.deleteDatasetsIntegrations(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 
@@ -593,7 +536,7 @@ const { status, data } = await apiInstance.deleteDatasetsIntegrations(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteDatasetsV2**
-> DeleteAliases200Response deleteDatasetsV2()
+> DeleteApplications200Response deleteDatasetsV2()
 
 Delete a dataset
 
@@ -624,7 +567,7 @@ const { status, data } = await apiInstance.deleteDatasetsV2(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 
@@ -646,7 +589,7 @@ const { status, data } = await apiInstance.deleteDatasetsV2(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteTeamDatasetsV2**
-> DeleteAliases200Response deleteTeamDatasetsV2()
+> DeleteApplications200Response deleteTeamDatasetsV2()
 
 Delete a team\'s dataset
 
@@ -680,7 +623,7 @@ const { status, data } = await apiInstance.deleteTeamDatasetsV2(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 
@@ -1341,133 +1284,8 @@ const { status, data } = await apiInstance.fetchDatasetsV2(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **fetchTeamDatasetsStatus**
-> FetchAllDatasets200Response fetchTeamDatasetsStatus()
-
-Returns a list of a team\'s datasets with the given status
-
-### Example
-
-```typescript
-import {
-    DatasetsApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DatasetsApi(configuration);
-
-let teamId: number; //ID of the team to filter by (default to undefined)
-let status: 'active' | 'draft' | 'archived'; //Status of the dataset (active, draft, or archived). Defaults to active if not provided. (default to 'active')
-let sort: string; //Field and direction (colon separated) to sort by (default: \'created:desc\') ... <br/> <br/>         - ?sort=\\<field\\>:\\<direction\\> <br/>         - \\<direction\\> can only be \'asc\' or \'desc\'  <br/>         - \\<field\\> can only be a valid field for the dataset table that can be ordered on  <br/>         - \\<field\\> can start with the prefix \'metadata.\' so that nested values within the field \'metadata\'  <br/>             (represented by the GWDM JSON structure) can be used to order on.  <br/>  <br/> (optional) (default to undefined)
-let withMetadata: string; //Boolean whether to return dataset metadata (optional) (default to undefined)
-
-const { status, data } = await apiInstance.fetchTeamDatasetsStatus(
-    teamId,
-    status,
-    sort,
-    withMetadata
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **teamId** | [**number**] | ID of the team to filter by | defaults to undefined|
-| **status** | [**&#39;active&#39; | &#39;draft&#39; | &#39;archived&#39;**]**Array<&#39;active&#39; &#124; &#39;draft&#39; &#124; &#39;archived&#39;>** | Status of the dataset (active, draft, or archived). Defaults to active if not provided. | defaults to 'active'|
-| **sort** | [**string**] | Field and direction (colon separated) to sort by (default: \&#39;created:desc\&#39;) ... &lt;br/&gt; &lt;br/&gt;         - ?sort&#x3D;\\&lt;field\\&gt;:\\&lt;direction\\&gt; &lt;br/&gt;         - \\&lt;direction\\&gt; can only be \&#39;asc\&#39; or \&#39;desc\&#39;  &lt;br/&gt;         - \\&lt;field\\&gt; can only be a valid field for the dataset table that can be ordered on  &lt;br/&gt;         - \\&lt;field\\&gt; can start with the prefix \&#39;metadata.\&#39; so that nested values within the field \&#39;metadata\&#39;  &lt;br/&gt;             (represented by the GWDM JSON structure) can be used to order on.  &lt;br/&gt;  &lt;br/&gt; | (optional) defaults to undefined|
-| **withMetadata** | [**string**] | Boolean whether to return dataset metadata | (optional) defaults to undefined|
-
-
-### Return type
-
-**FetchAllDatasets200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Success response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **fetchTeamDatasetsV2**
-> FetchDatasets200Response fetchTeamDatasetsV2()
-
-Get dataset by id
-
-### Example
-
-```typescript
-import {
-    DatasetsApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DatasetsApi(configuration);
-
-let teamId: number; //team id (default to undefined)
-let id: number; //dataset id (default to undefined)
-let _export: string; //Alternative output schema model. (optional) (default to undefined)
-let schemaModel: string; //Alternative output schema model. (optional) (default to undefined)
-let schemaVersion: string; //Alternative output schema version. (optional) (default to undefined)
-
-const { status, data } = await apiInstance.fetchTeamDatasetsV2(
-    teamId,
-    id,
-    _export,
-    schemaModel,
-    schemaVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **teamId** | [**number**] | team id | defaults to undefined|
-| **id** | [**number**] | dataset id | defaults to undefined|
-| **_export** | [**string**] | Alternative output schema model. | (optional) defaults to undefined|
-| **schemaModel** | [**string**] | Alternative output schema model. | (optional) defaults to undefined|
-| **schemaVersion** | [**string**] | Alternative output schema version. | (optional) defaults to undefined|
-
-
-### Return type
-
-**FetchDatasets200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Success response |  -  |
-|**401** | Unauthorized |  -  |
-|**404** | Not found response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **patchDatasets**
-> DeleteAliases200Response patchDatasets()
+> DeleteApplications200Response patchDatasets()
 
 Patch dataset by id
 
@@ -1501,7 +1319,7 @@ const { status, data } = await apiInstance.patchDatasets(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 
@@ -1522,7 +1340,7 @@ const { status, data } = await apiInstance.patchDatasets(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchDatasetsIntegrations**
-> DeleteAliases200Response patchDatasetsIntegrations()
+> DeleteApplications200Response patchDatasetsIntegrations()
 
 Patch dataset by id
 
@@ -1556,7 +1374,7 @@ const { status, data } = await apiInstance.patchDatasetsIntegrations(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 
@@ -1577,7 +1395,7 @@ const { status, data } = await apiInstance.patchDatasetsIntegrations(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchDatasetsV2**
-> DeleteAliases200Response patchDatasetsV2(patchDatasetsV2Request)
+> DeleteApplications200Response patchDatasetsV2(patchDatasetsV2Request)
 
 Patch dataset by id
 
@@ -1612,7 +1430,7 @@ const { status, data } = await apiInstance.patchDatasetsV2(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 
@@ -1633,7 +1451,7 @@ const { status, data } = await apiInstance.patchDatasetsV2(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchTeamDatasetsV2**
-> DeleteAliases200Response patchTeamDatasetsV2(patchDatasetsV2Request)
+> DeleteApplications200Response patchTeamDatasetsV2(patchDatasetsV2Request)
 
 Edit a dataset owned by a team
 
@@ -1671,7 +1489,7 @@ const { status, data } = await apiInstance.patchTeamDatasetsV2(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 
@@ -1692,7 +1510,7 @@ const { status, data } = await apiInstance.patchTeamDatasetsV2(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateDatasets**
-> CreateCategories200Response updateDatasets(updateDatasetsRequest)
+> CreateDarIntegration201Response updateDatasets(updateDatasetsRequest)
 
 Update a dataset with a new dataset version
 
@@ -1727,7 +1545,7 @@ const { status, data } = await apiInstance.updateDatasets(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -1812,7 +1630,7 @@ const { status, data } = await apiInstance.updateDatasetsIntegrations(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateDatasetsV2**
-> CreateCategories200Response updateDatasetsV2(updateDatasetsRequest)
+> CreateDarIntegration201Response updateDatasetsV2(updateDatasetsRequest)
 
 Update a dataset with a new dataset version
 
@@ -1847,7 +1665,7 @@ const { status, data } = await apiInstance.updateDatasetsV2(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -1869,7 +1687,7 @@ const { status, data } = await apiInstance.updateDatasetsV2(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateTeamDatasetsV2**
-> CreateCategories200Response updateTeamDatasetsV2(patchDatasetsV2Request)
+> CreateDarIntegration201Response updateTeamDatasetsV2(patchDatasetsV2Request)
 
 Update a team dataset with a new dataset version
 
@@ -1907,7 +1725,7 @@ const { status, data } = await apiInstance.updateTeamDatasetsV2(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 

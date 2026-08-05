@@ -72,7 +72,7 @@ const { status, data } = await apiInstance.createWidget(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteWidget**
-> DeleteAliases200Response deleteWidget()
+> DeleteApplications200Response deleteWidget()
 
 Soft delete a widget belonging to a specific team
 
@@ -106,7 +106,7 @@ const { status, data } = await apiInstance.deleteWidget(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 

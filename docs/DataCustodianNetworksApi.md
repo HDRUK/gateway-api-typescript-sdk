@@ -16,7 +16,7 @@ All URIs are relative to *http://localhost*
 |[**updateDataCustodianNetwork**](#updatedatacustodiannetwork) | **PUT** /api/v2/data_custodian_networks/{id} | DataCustodianNetworks@update|
 
 # **createDataCustodianNetwork**
-> CreateCategories200Response createDataCustodianNetwork(createDataProviderCollRequest)
+> CreateDarIntegration201Response createDataCustodianNetwork(createDataProviderCollRequest)
 
 Creates a new DataCustodianNetwork
 
@@ -48,7 +48,7 @@ const { status, data } = await apiInstance.createDataCustodianNetwork(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -69,7 +69,7 @@ const { status, data } = await apiInstance.createDataCustodianNetwork(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteDataCustodianNetwork**
-> DeleteAliases200Response deleteDataCustodianNetwork()
+> DeleteApplications200Response deleteDataCustodianNetwork()
 
 Delete a DataCustodianNetwork
 
@@ -100,7 +100,7 @@ const { status, data } = await apiInstance.deleteDataCustodianNetwork(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 

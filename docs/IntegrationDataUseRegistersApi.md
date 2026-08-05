@@ -12,7 +12,7 @@ All URIs are relative to *http://localhost*
 |[**updateDurIntegrations**](#updatedurintegrations) | **PUT** /api/v1/integrations/dur/{id} | Update a dur by id|
 
 # **createDurIntegrations**
-> CreateCategories200Response createDurIntegrations(createDurIntegrationsRequest)
+> CreateDarIntegration201Response createDurIntegrations(createDurIntegrationsRequest)
 
 Create a new dur
 
@@ -44,7 +44,7 @@ const { status, data } = await apiInstance.createDurIntegrations(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -66,7 +66,7 @@ const { status, data } = await apiInstance.createDurIntegrations(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteDurIntegrations**
-> DeleteAliases200Response deleteDurIntegrations()
+> DeleteApplications200Response deleteDurIntegrations()
 
 Delete a dur
 
@@ -97,7 +97,7 @@ const { status, data } = await apiInstance.deleteDurIntegrations(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 

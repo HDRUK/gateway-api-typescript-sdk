@@ -19,7 +19,7 @@ All URIs are relative to *http://localhost*
 |[**updateQuestionBankQuestionStatus**](#updatequestionbankquestionstatus) | **PATCH** /api/v1/questions/{id}/{status} | QuestionBank@updateStatus|
 
 # **createQuestionBankQuestion**
-> CreateCategories200Response createQuestionBankQuestion(createQuestionBankQuestionRequest)
+> CreateDarIntegration201Response createQuestionBankQuestion(createQuestionBankQuestionRequest)
 
 Create a new system question bank question with FE-helpful input format
 
@@ -51,7 +51,7 @@ const { status, data } = await apiInstance.createQuestionBankQuestion(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -72,7 +72,7 @@ const { status, data } = await apiInstance.createQuestionBankQuestion(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteQuestionBankQuestion**
-> DeleteAliases200Response deleteQuestionBankQuestion()
+> DeleteApplications200Response deleteQuestionBankQuestion()
 
 Delete a system question bank question
 
@@ -103,7 +103,7 @@ const { status, data } = await apiInstance.deleteQuestionBankQuestion(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 
@@ -125,7 +125,7 @@ const { status, data } = await apiInstance.deleteQuestionBankQuestion(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **downloadQuestionBankQuestionFile**
-> DeleteAliases200Response downloadQuestionBankQuestionFile()
+> DeleteApplications200Response downloadQuestionBankQuestionFile()
 
 Download a system question bank question
 
@@ -159,7 +159,7 @@ const { status, data } = await apiInstance.downloadQuestionBankQuestionFile(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 

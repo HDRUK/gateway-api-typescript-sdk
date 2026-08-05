@@ -6,14 +6,13 @@ All URIs are relative to *http://localhost*
 |------------- | ------------- | -------------|
 |[**createDarTemplate**](#createdartemplate) | **POST** /api/v1/dar/templates | DataAccessTemplate@store|
 |[**deleteDarTemplate**](#deletedartemplate) | **DELETE** /api/v1/dar/templates/{id} | DataAccessTemplate@destroy|
-|[**downloadDarTemplateFile**](#downloaddartemplatefile) | **GET** /api/v1/dar/templates/{id}/download | DataAccessTemplate@downloadFile|
 |[**fetchDarTemplate**](#fetchdartemplate) | **GET** /api/v1/dar/templates/{id} | DataAccessTemplate@show|
 |[**fetchDarTemplates**](#fetchdartemplates) | **GET** /api/v1/dar/templates | DataAccessTemplate@index|
 |[**patchDarTemplate**](#patchdartemplate) | **PATCH** /api/v1/dar/templates/{id} | DataAccessTemplate@update|
 |[**updateDarTemplate**](#updatedartemplate) | **PUT** /api/v1/dar/templates/{id} | DataAccessTemplate@update|
 
 # **createDarTemplate**
-> CreateCategories200Response createDarTemplate(createDarTemplateRequest)
+> CreateDarIntegration201Response createDarTemplate(createDarTemplateRequest)
 
 Creates a new DAR template
 
@@ -45,7 +44,7 @@ const { status, data } = await apiInstance.createDarTemplate(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -66,7 +65,7 @@ const { status, data } = await apiInstance.createDarTemplate(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteDarTemplate**
-> DeleteAliases200Response deleteDarTemplate()
+> DeleteApplications200Response deleteDarTemplate()
 
 Delete a system DAR template
 
@@ -97,7 +96,7 @@ const { status, data } = await apiInstance.deleteDarTemplate(
 
 ### Return type
 
-**DeleteAliases200Response**
+**DeleteApplications200Response**
 
 ### Authorization
 
@@ -115,58 +114,6 @@ const { status, data } = await apiInstance.deleteDarTemplate(
 |**404** | Not found response |  -  |
 |**200** | Success |  -  |
 |**500** | Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **downloadDarTemplateFile**
-> downloadDarTemplateFile()
-
-Download the template for a file based DAR application
-
-### Example
-
-```typescript
-import {
-    DataAccessTemplateApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DataAccessTemplateApi(configuration);
-
-let id: number; //DAR template id (default to undefined)
-
-const { status, data } = await apiInstance.downloadDarTemplateFile(
-    id
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **id** | [**number**] | DAR template id | defaults to undefined|
-
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: file, application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**404** | Not found response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

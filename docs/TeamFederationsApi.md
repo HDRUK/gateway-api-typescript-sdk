@@ -15,7 +15,7 @@ All URIs are relative to *http://localhost*
 |[**updateFederationTeam**](#updatefederationteam) | **PUT** /api/v1/teams/{teamId}/federations/{federationId} | FederationController@update|
 
 # **createFederationTeam**
-> CreateCategories200Response createFederationTeam(createFederationTeamRequest)
+> CreateDarIntegration201Response createFederationTeam(createFederationTeamRequest)
 
 Create federation
 
@@ -50,7 +50,7 @@ const { status, data } = await apiInstance.createFederationTeam(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -129,7 +129,7 @@ const { status, data } = await apiInstance.deleteFederation(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **editFederationTeam**
-> CreateCategories200Response editFederationTeam(createFederationTeamRequest)
+> CreateDarIntegration201Response editFederationTeam(createFederationTeamRequest)
 
 Edit federation for team
 
@@ -167,7 +167,7 @@ const { status, data } = await apiInstance.editFederationTeam(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
@@ -456,7 +456,7 @@ const { status, data } = await apiInstance.testFederation(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateFederationTeam**
-> CreateCategories200Response updateFederationTeam(updateFederationTeamRequest)
+> CreateDarIntegration201Response updateFederationTeam(updateFederationTeamRequest)
 
 Update federation for team
 
@@ -494,7 +494,7 @@ const { status, data } = await apiInstance.updateFederationTeam(
 
 ### Return type
 
-**CreateCategories200Response**
+**CreateDarIntegration201Response**
 
 ### Authorization
 
