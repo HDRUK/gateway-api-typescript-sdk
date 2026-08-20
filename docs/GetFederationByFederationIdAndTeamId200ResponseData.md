@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **run_time_hour** | **number** |  | [optional] [default to undefined]
 **run_time_minute** | **string** |  | [optional] [default to undefined]
 **enabled** | **boolean** |  | [optional] [default to undefined]
+**enabled_at** | **string** |  | [optional] [default to undefined]
 **counter** | **number** |  | [optional] [default to undefined]
 **created_at** | **string** |  | [optional] [default to undefined]
 **updated_at** | **string** |  | [optional] [default to undefined]
@@ -39,6 +40,7 @@ const instance: GetFederationByFederationIdAndTeamId200ResponseData = {
     run_time_hour,
     run_time_minute,
     enabled,
+    enabled_at,
     counter,
     created_at,
     updated_at,

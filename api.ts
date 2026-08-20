@@ -353,6 +353,10 @@ export interface CreateFederationTeamRequest {
     'notifications'?: Array<Array<any>>;
     'tested'?: boolean;
 }
+export interface CreateProjectGrant201Response {
+    'message'?: string;
+    'data'?: object;
+}
 export interface CreatePublicationsRequest {
     'paper_title'?: string;
     'authors'?: string;
@@ -1145,6 +1149,10 @@ export interface FetchDataProviderColls200ResponseDataInner {
     'enabled'?: boolean;
     'service'?: string;
 }
+export interface FetchDatasetLinkCheckResultsV2200Response {
+    'message'?: string;
+    'data'?: Array<Array<any>>;
+}
 export interface FetchDatasets200Response {
     'message'?: string;
     'data'?: Dataset;
@@ -1223,10 +1231,6 @@ export const FetchDurByIdIntegrations200ResponseDataInnerStatusEnum = {
 
 export type FetchDurByIdIntegrations200ResponseDataInnerStatusEnum = typeof FetchDurByIdIntegrations200ResponseDataInnerStatusEnum[keyof typeof FetchDurByIdIntegrations200ResponseDataInnerStatusEnum];
 
-export interface FetchKeyMetricsV2200Response {
-    'message'?: string;
-    'data'?: Array<Array<any>>;
-}
 export interface FetchLicenses200Response {
     'message'?: string;
     'data'?: License;
@@ -1410,6 +1414,7 @@ export interface GetFederationByFederationIdAndTeamId200ResponseData {
     'run_time_hour'?: number;
     'run_time_minute'?: string;
     'enabled'?: boolean;
+    'enabled_at'?: string | null;
     'counter'?: number;
     'created_at'?: string;
     'updated_at'?: string;
@@ -1480,6 +1485,7 @@ export interface GetFederationTeamId200ResponseDataInner {
     'run_time_hour'?: number;
     'run_time_minute'?: string;
     'enabled'?: boolean;
+    'enabled_at'?: string | null;
     'created_at'?: string;
     'updated_at'?: string;
     'deleted_at'?: string;
@@ -9313,6 +9319,100 @@ export class DataUseRegistersApi extends BaseAPI {
 
 
 /**
+ * DatasetLinkCheckResultsApi - axios parameter creator
+ */
+export const DatasetLinkCheckResultsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Get the confirmed dead links (HTTP 404, verified across multiple checks) found in active dataset metadata by the nightly link check
+         * @summary DatasetLinkCheckResultController@index
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        fetchDatasetLinkCheckResultsV2: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v2/dataset_link_check_results`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * DatasetLinkCheckResultsApi - functional programming interface
+ */
+export const DatasetLinkCheckResultsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = DatasetLinkCheckResultsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Get the confirmed dead links (HTTP 404, verified across multiple checks) found in active dataset metadata by the nightly link check
+         * @summary DatasetLinkCheckResultController@index
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async fetchDatasetLinkCheckResultsV2(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FetchDatasetLinkCheckResultsV2200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.fetchDatasetLinkCheckResultsV2(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DatasetLinkCheckResultsApi.fetchDatasetLinkCheckResultsV2']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * DatasetLinkCheckResultsApi - factory interface
+ */
+export const DatasetLinkCheckResultsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = DatasetLinkCheckResultsApiFp(configuration)
+    return {
+        /**
+         * Get the confirmed dead links (HTTP 404, verified across multiple checks) found in active dataset metadata by the nightly link check
+         * @summary DatasetLinkCheckResultController@index
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        fetchDatasetLinkCheckResultsV2(options?: RawAxiosRequestConfig): AxiosPromise<FetchDatasetLinkCheckResultsV2200Response> {
+            return localVarFp.fetchDatasetLinkCheckResultsV2(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * DatasetLinkCheckResultsApi - object-oriented interface
+ */
+export class DatasetLinkCheckResultsApi extends BaseAPI {
+    /**
+     * Get the confirmed dead links (HTTP 404, verified across multiple checks) found in active dataset metadata by the nightly link check
+     * @summary DatasetLinkCheckResultController@index
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public fetchDatasetLinkCheckResultsV2(options?: RawAxiosRequestConfig) {
+        return DatasetLinkCheckResultsApiFp(this.configuration).fetchDatasetLinkCheckResultsV2(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * DatasetsApi - axios parameter creator
  */
 export const DatasetsApiAxiosParamCreator = function (configuration?: Configuration) {
@@ -9397,56 +9497,6 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(createDatasetsRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Create a new dataset
-         * @summary IntegrationDatasetController@store
-         * @param {DatasetsTestRequest} datasetsTestRequest Pass user credentials
-         * @param {string} [inputSchema] Input schema model.
-         * @param {string} [inputVersion] Input schema version.
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        createDatasetsIntegrations: async (datasetsTestRequest: DatasetsTestRequest, inputSchema?: string, inputVersion?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'datasetsTestRequest' is not null or undefined
-            assertParamExists('createDatasetsIntegrations', 'datasetsTestRequest', datasetsTestRequest)
-            const localVarPath = `/api/v1/integrations/datasets`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            if (inputSchema !== undefined) {
-                localVarQueryParameter['input_schema'] = inputSchema;
-            }
-
-            if (inputVersion !== undefined) {
-                localVarQueryParameter['input_version'] = inputVersion;
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarHeaderParameter['Accept'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(datasetsTestRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -9547,45 +9597,6 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteDatasets', 'id', id)
             const localVarPath = `/api/v1/datasets/{id}`
-                .replace('{id}', encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            localVarHeaderParameter['Accept'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Delete a dataset
-         * @summary IntegrationDatasetController@destroy
-         * @param {number} id dataset id
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        deleteDatasetsIntegrations: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('deleteDatasetsIntegrations', 'id', id)
-            const localVarPath = `/api/v1/integrations/datasets/{id}`
                 .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -9975,68 +9986,6 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
-         * Get All Datasets
-         * @summary IntegrationDatasetController@index
-         * @param {number} teamId team id
-         * @param {string} [pid] get based on a pid
-         * @param {string} [sort] Field and direction (colon separated) to sort by (default: \&#39;created:desc\&#39;) ... &lt;br/&gt; &lt;br/&gt;         - ?sort&#x3D;\\&lt;field\\&gt;:\\&lt;direction\\&gt; &lt;br/&gt;         - \\&lt;direction\\&gt; can only be \&#39;asc\&#39; or \&#39;desc\&#39;  &lt;br/&gt;         - \\&lt;field\\&gt; can only be a valid field for the dataset table that can be ordered on  &lt;br/&gt;         - \\&lt;field\\&gt; can start with the prefix \&#39;metadata.\&#39; so that nested values within the field \&#39;metadata\&#39;  &lt;br/&gt;             (represented by the GWDM JSON structure) can be used to order on.  &lt;br/&gt;  &lt;br/&gt;
-         * @param {string} [title] Three or more characters to filter dataset titles by
-         * @param {string} [status] Dataset status to filter by (\&#39;ACTIVE\&#39;, \&#39;DRAFT\&#39;, \&#39;ARCHIVED\&#39;)
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        fetchAllDatasetsIntegrations: async (teamId: number, pid?: string, sort?: string, title?: string, status?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'teamId' is not null or undefined
-            assertParamExists('fetchAllDatasetsIntegrations', 'teamId', teamId)
-            const localVarPath = `/api/v1/integrations/datasets`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            if (teamId !== undefined) {
-                localVarQueryParameter['team_id'] = teamId;
-            }
-
-            if (pid !== undefined) {
-                localVarQueryParameter['pid'] = pid;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-            if (title !== undefined) {
-                localVarQueryParameter['title'] = title;
-            }
-
-            if (status !== undefined) {
-                localVarQueryParameter['status'] = status;
-            }
-
-            localVarHeaderParameter['Accept'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Returns a list of all datasets
          * @summary DatasetController@index
          * @param {string} [sort] Field and direction (colon separated) to sort by (default: \&#39;created:desc\&#39;) ... &lt;br/&gt; &lt;br/&gt;         - ?sort&#x3D;\\&lt;field\\&gt;:\\&lt;direction\\&gt; &lt;br/&gt;         - \\&lt;direction\\&gt; can only be \&#39;asc\&#39; or \&#39;desc\&#39;  &lt;br/&gt;         - \\&lt;field\\&gt; can only be a valid field for the dataset table that can be ordered on  &lt;br/&gt;         - \\&lt;field\\&gt; can start with the prefix \&#39;metadata.\&#39; so that nested values within the field \&#39;metadata\&#39;  &lt;br/&gt;             (represented by the GWDM JSON structure) can be used to order on.  &lt;br/&gt;  &lt;br/&gt;
@@ -10145,55 +10094,6 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
-         * Get dataset by id
-         * @summary IntegrationDatasetController@show
-         * @param {number} id dataset id
-         * @param {string} [schemaModel] Alternative output schema model.
-         * @param {string} [schemaVersion] Alternative output schema version.
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        fetchDatasetsIntegrations: async (id: number, schemaModel?: string, schemaVersion?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('fetchDatasetsIntegrations', 'id', id)
-            const localVarPath = `/api/v1/integrations/datasets/{id}`
-                .replace('{id}', encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            if (schemaModel !== undefined) {
-                localVarQueryParameter['schema_model'] = schemaModel;
-            }
-
-            if (schemaVersion !== undefined) {
-                localVarQueryParameter['schema_version'] = schemaVersion;
-            }
-
-            localVarHeaderParameter['Accept'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Get publicly visible dataset by id
          * @summary DatasetController@showActive
          * @param {number} id dataset id
@@ -10259,50 +10159,6 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
             // verify required parameter 'id' is not null or undefined
             assertParamExists('patchDatasets', 'id', id)
             const localVarPath = `/api/v1/datasets/{id}`
-                .replace('{id}', encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            if (unarchive !== undefined) {
-                localVarQueryParameter['unarchive'] = unarchive;
-            }
-
-            localVarHeaderParameter['Accept'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Patch dataset by id
-         * @summary IntegrationDatasetController@edit
-         * @param {number} id dataset id
-         * @param {string} [unarchive] Unarchive a dataset
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        patchDatasetsIntegrations: async (id: number, unarchive?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('patchDatasetsIntegrations', 'id', id)
-            const localVarPath = `/api/v1/integrations/datasets/{id}`
                 .replace('{id}', encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -10470,60 +10326,6 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * Update a dataset with a new dataset version
-         * @summary IntegrationDatasetController@update
-         * @param {number} id dataset id
-         * @param {UpdateDatasetsRequest} updateDatasetsRequest Pass user credentials
-         * @param {string} [inputSchema] Input schema model.
-         * @param {string} [inputVersion] Input schema version.
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        updateDatasetsIntegrations: async (id: number, updateDatasetsRequest: UpdateDatasetsRequest, inputSchema?: string, inputVersion?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('updateDatasetsIntegrations', 'id', id)
-            // verify required parameter 'updateDatasetsRequest' is not null or undefined
-            assertParamExists('updateDatasetsIntegrations', 'updateDatasetsRequest', updateDatasetsRequest)
-            const localVarPath = `/api/v1/integrations/datasets/{id}`
-                .replace('{id}', encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            if (inputSchema !== undefined) {
-                localVarQueryParameter['input_schema'] = inputSchema;
-            }
-
-            if (inputVersion !== undefined) {
-                localVarQueryParameter['input_version'] = inputVersion;
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarHeaderParameter['Accept'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateDatasetsRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Update a dataset with a new dataset version
          * @summary DatasetController@update
          * @param {number} id dataset id
          * @param {UpdateDatasetsRequest} updateDatasetsRequest 
@@ -10652,22 +10454,6 @@ export const DatasetsApiFp = function(configuration?: Configuration) {
         },
         /**
          * Create a new dataset
-         * @summary IntegrationDatasetController@store
-         * @param {DatasetsTestRequest} datasetsTestRequest Pass user credentials
-         * @param {string} [inputSchema] Input schema model.
-         * @param {string} [inputVersion] Input schema version.
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        async createDatasetsIntegrations(datasetsTestRequest: DatasetsTestRequest, inputSchema?: string, inputVersion?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateDarIntegration201Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createDatasetsIntegrations(datasetsTestRequest, inputSchema, inputVersion, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DatasetsApi.createDatasetsIntegrations']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Create a new dataset
          * @summary DatasetController@store
          * @param {CreateDatasetsV2Request} createDatasetsV2Request Pass user credentials
          * @param {*} [options] Override http request option.
@@ -10705,20 +10491,6 @@ export const DatasetsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteDatasets(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DatasetsApi.deleteDatasets']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Delete a dataset
-         * @summary IntegrationDatasetController@destroy
-         * @param {number} id dataset id
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        async deleteDatasetsIntegrations(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteApplications200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteDatasetsIntegrations(id, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DatasetsApi.deleteDatasetsIntegrations']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -10835,24 +10607,6 @@ export const DatasetsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Get All Datasets
-         * @summary IntegrationDatasetController@index
-         * @param {number} teamId team id
-         * @param {string} [pid] get based on a pid
-         * @param {string} [sort] Field and direction (colon separated) to sort by (default: \&#39;created:desc\&#39;) ... &lt;br/&gt; &lt;br/&gt;         - ?sort&#x3D;\\&lt;field\\&gt;:\\&lt;direction\\&gt; &lt;br/&gt;         - \\&lt;direction\\&gt; can only be \&#39;asc\&#39; or \&#39;desc\&#39;  &lt;br/&gt;         - \\&lt;field\\&gt; can only be a valid field for the dataset table that can be ordered on  &lt;br/&gt;         - \\&lt;field\\&gt; can start with the prefix \&#39;metadata.\&#39; so that nested values within the field \&#39;metadata\&#39;  &lt;br/&gt;             (represented by the GWDM JSON structure) can be used to order on.  &lt;br/&gt;  &lt;br/&gt;
-         * @param {string} [title] Three or more characters to filter dataset titles by
-         * @param {string} [status] Dataset status to filter by (\&#39;ACTIVE\&#39;, \&#39;DRAFT\&#39;, \&#39;ARCHIVED\&#39;)
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        async fetchAllDatasetsIntegrations(teamId: number, pid?: string, sort?: string, title?: string, status?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FetchAllDatasets200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.fetchAllDatasetsIntegrations(teamId, pid, sort, title, status, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DatasetsApi.fetchAllDatasetsIntegrations']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
          * Returns a list of all datasets
          * @summary DatasetController@index
          * @param {string} [sort] Field and direction (colon separated) to sort by (default: \&#39;created:desc\&#39;) ... &lt;br/&gt; &lt;br/&gt;         - ?sort&#x3D;\\&lt;field\\&gt;:\\&lt;direction\\&gt; &lt;br/&gt;         - \\&lt;direction\\&gt; can only be \&#39;asc\&#39; or \&#39;desc\&#39;  &lt;br/&gt;         - \\&lt;field\\&gt; can only be a valid field for the dataset table that can be ordered on  &lt;br/&gt;         - \\&lt;field\\&gt; can start with the prefix \&#39;metadata.\&#39; so that nested values within the field \&#39;metadata\&#39;  &lt;br/&gt;             (represented by the GWDM JSON structure) can be used to order on.  &lt;br/&gt;  &lt;br/&gt;
@@ -10886,22 +10640,6 @@ export const DatasetsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Get dataset by id
-         * @summary IntegrationDatasetController@show
-         * @param {number} id dataset id
-         * @param {string} [schemaModel] Alternative output schema model.
-         * @param {string} [schemaVersion] Alternative output schema version.
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        async fetchDatasetsIntegrations(id: number, schemaModel?: string, schemaVersion?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FetchDatasets200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.fetchDatasetsIntegrations(id, schemaModel, schemaVersion, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DatasetsApi.fetchDatasetsIntegrations']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
          * Get publicly visible dataset by id
          * @summary DatasetController@showActive
          * @param {number} id dataset id
@@ -10930,21 +10668,6 @@ export const DatasetsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.patchDatasets(id, unarchive, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DatasetsApi.patchDatasets']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Patch dataset by id
-         * @summary IntegrationDatasetController@edit
-         * @param {number} id dataset id
-         * @param {string} [unarchive] Unarchive a dataset
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        async patchDatasetsIntegrations(id: number, unarchive?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteApplications200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.patchDatasetsIntegrations(id, unarchive, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DatasetsApi.patchDatasetsIntegrations']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -10989,23 +10712,6 @@ export const DatasetsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateDatasets(id, updateDatasetsRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DatasetsApi.updateDatasets']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * Update a dataset with a new dataset version
-         * @summary IntegrationDatasetController@update
-         * @param {number} id dataset id
-         * @param {UpdateDatasetsRequest} updateDatasetsRequest Pass user credentials
-         * @param {string} [inputSchema] Input schema model.
-         * @param {string} [inputVersion] Input schema version.
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        async updateDatasetsIntegrations(id: number, updateDatasetsRequest: UpdateDatasetsRequest, inputSchema?: string, inputVersion?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FetchDatasets200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateDatasetsIntegrations(id, updateDatasetsRequest, inputSchema, inputVersion, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DatasetsApi.updateDatasetsIntegrations']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -11071,19 +10777,6 @@ export const DatasetsApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * Create a new dataset
-         * @summary IntegrationDatasetController@store
-         * @param {DatasetsTestRequest} datasetsTestRequest Pass user credentials
-         * @param {string} [inputSchema] Input schema model.
-         * @param {string} [inputVersion] Input schema version.
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        createDatasetsIntegrations(datasetsTestRequest: DatasetsTestRequest, inputSchema?: string, inputVersion?: string, options?: RawAxiosRequestConfig): AxiosPromise<CreateDarIntegration201Response> {
-            return localVarFp.createDatasetsIntegrations(datasetsTestRequest, inputSchema, inputVersion, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Create a new dataset
          * @summary DatasetController@store
          * @param {CreateDatasetsV2Request} createDatasetsV2Request Pass user credentials
          * @param {*} [options] Override http request option.
@@ -11113,17 +10806,6 @@ export const DatasetsApiFactory = function (configuration?: Configuration, baseP
          */
         deleteDatasets(id: number, options?: RawAxiosRequestConfig): AxiosPromise<DeleteApplications200Response> {
             return localVarFp.deleteDatasets(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Delete a dataset
-         * @summary IntegrationDatasetController@destroy
-         * @param {number} id dataset id
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        deleteDatasetsIntegrations(id: number, options?: RawAxiosRequestConfig): AxiosPromise<DeleteApplications200Response> {
-            return localVarFp.deleteDatasetsIntegrations(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Delete a dataset
@@ -11215,21 +10897,6 @@ export const DatasetsApiFactory = function (configuration?: Configuration, baseP
             return localVarFp.fetchAllDatasets(teamId, pid, sort, title, status, options).then((request) => request(axios, basePath));
         },
         /**
-         * Get All Datasets
-         * @summary IntegrationDatasetController@index
-         * @param {number} teamId team id
-         * @param {string} [pid] get based on a pid
-         * @param {string} [sort] Field and direction (colon separated) to sort by (default: \&#39;created:desc\&#39;) ... &lt;br/&gt; &lt;br/&gt;         - ?sort&#x3D;\\&lt;field\\&gt;:\\&lt;direction\\&gt; &lt;br/&gt;         - \\&lt;direction\\&gt; can only be \&#39;asc\&#39; or \&#39;desc\&#39;  &lt;br/&gt;         - \\&lt;field\\&gt; can only be a valid field for the dataset table that can be ordered on  &lt;br/&gt;         - \\&lt;field\\&gt; can start with the prefix \&#39;metadata.\&#39; so that nested values within the field \&#39;metadata\&#39;  &lt;br/&gt;             (represented by the GWDM JSON structure) can be used to order on.  &lt;br/&gt;  &lt;br/&gt;
-         * @param {string} [title] Three or more characters to filter dataset titles by
-         * @param {string} [status] Dataset status to filter by (\&#39;ACTIVE\&#39;, \&#39;DRAFT\&#39;, \&#39;ARCHIVED\&#39;)
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        fetchAllDatasetsIntegrations(teamId: number, pid?: string, sort?: string, title?: string, status?: string, options?: RawAxiosRequestConfig): AxiosPromise<FetchAllDatasets200Response> {
-            return localVarFp.fetchAllDatasetsIntegrations(teamId, pid, sort, title, status, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Returns a list of all datasets
          * @summary DatasetController@index
          * @param {string} [sort] Field and direction (colon separated) to sort by (default: \&#39;created:desc\&#39;) ... &lt;br/&gt; &lt;br/&gt;         - ?sort&#x3D;\\&lt;field\\&gt;:\\&lt;direction\\&gt; &lt;br/&gt;         - \\&lt;direction\\&gt; can only be \&#39;asc\&#39; or \&#39;desc\&#39;  &lt;br/&gt;         - \\&lt;field\\&gt; can only be a valid field for the dataset table that can be ordered on  &lt;br/&gt;         - \\&lt;field\\&gt; can start with the prefix \&#39;metadata.\&#39; so that nested values within the field \&#39;metadata\&#39;  &lt;br/&gt;             (represented by the GWDM JSON structure) can be used to order on.  &lt;br/&gt;  &lt;br/&gt;
@@ -11257,19 +10924,6 @@ export const DatasetsApiFactory = function (configuration?: Configuration, baseP
             return localVarFp.fetchDatasets(id, _export, schemaModel, schemaVersion, options).then((request) => request(axios, basePath));
         },
         /**
-         * Get dataset by id
-         * @summary IntegrationDatasetController@show
-         * @param {number} id dataset id
-         * @param {string} [schemaModel] Alternative output schema model.
-         * @param {string} [schemaVersion] Alternative output schema version.
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        fetchDatasetsIntegrations(id: number, schemaModel?: string, schemaVersion?: string, options?: RawAxiosRequestConfig): AxiosPromise<FetchDatasets200Response> {
-            return localVarFp.fetchDatasetsIntegrations(id, schemaModel, schemaVersion, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Get publicly visible dataset by id
          * @summary DatasetController@showActive
          * @param {number} id dataset id
@@ -11293,18 +10947,6 @@ export const DatasetsApiFactory = function (configuration?: Configuration, baseP
          */
         patchDatasets(id: number, unarchive?: string, options?: RawAxiosRequestConfig): AxiosPromise<DeleteApplications200Response> {
             return localVarFp.patchDatasets(id, unarchive, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Patch dataset by id
-         * @summary IntegrationDatasetController@edit
-         * @param {number} id dataset id
-         * @param {string} [unarchive] Unarchive a dataset
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        patchDatasetsIntegrations(id: number, unarchive?: string, options?: RawAxiosRequestConfig): AxiosPromise<DeleteApplications200Response> {
-            return localVarFp.patchDatasetsIntegrations(id, unarchive, options).then((request) => request(axios, basePath));
         },
         /**
          * Patch dataset by id
@@ -11340,20 +10982,6 @@ export const DatasetsApiFactory = function (configuration?: Configuration, baseP
          */
         updateDatasets(id: number, updateDatasetsRequest: UpdateDatasetsRequest, options?: RawAxiosRequestConfig): AxiosPromise<CreateDarIntegration201Response> {
             return localVarFp.updateDatasets(id, updateDatasetsRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Update a dataset with a new dataset version
-         * @summary IntegrationDatasetController@update
-         * @param {number} id dataset id
-         * @param {UpdateDatasetsRequest} updateDatasetsRequest Pass user credentials
-         * @param {string} [inputSchema] Input schema model.
-         * @param {string} [inputVersion] Input schema version.
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        updateDatasetsIntegrations(id: number, updateDatasetsRequest: UpdateDatasetsRequest, inputSchema?: string, inputVersion?: string, options?: RawAxiosRequestConfig): AxiosPromise<FetchDatasets200Response> {
-            return localVarFp.updateDatasetsIntegrations(id, updateDatasetsRequest, inputSchema, inputVersion, options).then((request) => request(axios, basePath));
         },
         /**
          * Update a dataset with a new dataset version
@@ -11412,20 +11040,6 @@ export class DatasetsApi extends BaseAPI {
 
     /**
      * Create a new dataset
-     * @summary IntegrationDatasetController@store
-     * @param {DatasetsTestRequest} datasetsTestRequest Pass user credentials
-     * @param {string} [inputSchema] Input schema model.
-     * @param {string} [inputVersion] Input schema version.
-     * @param {*} [options] Override http request option.
-     * @deprecated
-     * @throws {RequiredError}
-     */
-    public createDatasetsIntegrations(datasetsTestRequest: DatasetsTestRequest, inputSchema?: string, inputVersion?: string, options?: RawAxiosRequestConfig) {
-        return DatasetsApiFp(this.configuration).createDatasetsIntegrations(datasetsTestRequest, inputSchema, inputVersion, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Create a new dataset
      * @summary DatasetController@store
      * @param {CreateDatasetsV2Request} createDatasetsV2Request Pass user credentials
      * @param {*} [options] Override http request option.
@@ -11457,18 +11071,6 @@ export class DatasetsApi extends BaseAPI {
      */
     public deleteDatasets(id: number, options?: RawAxiosRequestConfig) {
         return DatasetsApiFp(this.configuration).deleteDatasets(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Delete a dataset
-     * @summary IntegrationDatasetController@destroy
-     * @param {number} id dataset id
-     * @param {*} [options] Override http request option.
-     * @deprecated
-     * @throws {RequiredError}
-     */
-    public deleteDatasetsIntegrations(id: number, options?: RawAxiosRequestConfig) {
-        return DatasetsApiFp(this.configuration).deleteDatasetsIntegrations(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -11569,22 +11171,6 @@ export class DatasetsApi extends BaseAPI {
     }
 
     /**
-     * Get All Datasets
-     * @summary IntegrationDatasetController@index
-     * @param {number} teamId team id
-     * @param {string} [pid] get based on a pid
-     * @param {string} [sort] Field and direction (colon separated) to sort by (default: \&#39;created:desc\&#39;) ... &lt;br/&gt; &lt;br/&gt;         - ?sort&#x3D;\\&lt;field\\&gt;:\\&lt;direction\\&gt; &lt;br/&gt;         - \\&lt;direction\\&gt; can only be \&#39;asc\&#39; or \&#39;desc\&#39;  &lt;br/&gt;         - \\&lt;field\\&gt; can only be a valid field for the dataset table that can be ordered on  &lt;br/&gt;         - \\&lt;field\\&gt; can start with the prefix \&#39;metadata.\&#39; so that nested values within the field \&#39;metadata\&#39;  &lt;br/&gt;             (represented by the GWDM JSON structure) can be used to order on.  &lt;br/&gt;  &lt;br/&gt;
-     * @param {string} [title] Three or more characters to filter dataset titles by
-     * @param {string} [status] Dataset status to filter by (\&#39;ACTIVE\&#39;, \&#39;DRAFT\&#39;, \&#39;ARCHIVED\&#39;)
-     * @param {*} [options] Override http request option.
-     * @deprecated
-     * @throws {RequiredError}
-     */
-    public fetchAllDatasetsIntegrations(teamId: number, pid?: string, sort?: string, title?: string, status?: string, options?: RawAxiosRequestConfig) {
-        return DatasetsApiFp(this.configuration).fetchAllDatasetsIntegrations(teamId, pid, sort, title, status, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * Returns a list of all datasets
      * @summary DatasetController@index
      * @param {string} [sort] Field and direction (colon separated) to sort by (default: \&#39;created:desc\&#39;) ... &lt;br/&gt; &lt;br/&gt;         - ?sort&#x3D;\\&lt;field\\&gt;:\\&lt;direction\\&gt; &lt;br/&gt;         - \\&lt;direction\\&gt; can only be \&#39;asc\&#39; or \&#39;desc\&#39;  &lt;br/&gt;         - \\&lt;field\\&gt; can only be a valid field for the dataset table that can be ordered on  &lt;br/&gt;         - \\&lt;field\\&gt; can start with the prefix \&#39;metadata.\&#39; so that nested values within the field \&#39;metadata\&#39;  &lt;br/&gt;             (represented by the GWDM JSON structure) can be used to order on.  &lt;br/&gt;  &lt;br/&gt;
@@ -11614,20 +11200,6 @@ export class DatasetsApi extends BaseAPI {
     }
 
     /**
-     * Get dataset by id
-     * @summary IntegrationDatasetController@show
-     * @param {number} id dataset id
-     * @param {string} [schemaModel] Alternative output schema model.
-     * @param {string} [schemaVersion] Alternative output schema version.
-     * @param {*} [options] Override http request option.
-     * @deprecated
-     * @throws {RequiredError}
-     */
-    public fetchDatasetsIntegrations(id: number, schemaModel?: string, schemaVersion?: string, options?: RawAxiosRequestConfig) {
-        return DatasetsApiFp(this.configuration).fetchDatasetsIntegrations(id, schemaModel, schemaVersion, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * Get publicly visible dataset by id
      * @summary DatasetController@showActive
      * @param {number} id dataset id
@@ -11652,19 +11224,6 @@ export class DatasetsApi extends BaseAPI {
      */
     public patchDatasets(id: number, unarchive?: string, options?: RawAxiosRequestConfig) {
         return DatasetsApiFp(this.configuration).patchDatasets(id, unarchive, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Patch dataset by id
-     * @summary IntegrationDatasetController@edit
-     * @param {number} id dataset id
-     * @param {string} [unarchive] Unarchive a dataset
-     * @param {*} [options] Override http request option.
-     * @deprecated
-     * @throws {RequiredError}
-     */
-    public patchDatasetsIntegrations(id: number, unarchive?: string, options?: RawAxiosRequestConfig) {
-        return DatasetsApiFp(this.configuration).patchDatasetsIntegrations(id, unarchive, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -11703,21 +11262,6 @@ export class DatasetsApi extends BaseAPI {
      */
     public updateDatasets(id: number, updateDatasetsRequest: UpdateDatasetsRequest, options?: RawAxiosRequestConfig) {
         return DatasetsApiFp(this.configuration).updateDatasets(id, updateDatasetsRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Update a dataset with a new dataset version
-     * @summary IntegrationDatasetController@update
-     * @param {number} id dataset id
-     * @param {UpdateDatasetsRequest} updateDatasetsRequest Pass user credentials
-     * @param {string} [inputSchema] Input schema model.
-     * @param {string} [inputVersion] Input schema version.
-     * @param {*} [options] Override http request option.
-     * @deprecated
-     * @throws {RequiredError}
-     */
-    public updateDatasetsIntegrations(id: number, updateDatasetsRequest: UpdateDatasetsRequest, inputSchema?: string, inputVersion?: string, options?: RawAxiosRequestConfig) {
-        return DatasetsApiFp(this.configuration).updateDatasetsIntegrations(id, updateDatasetsRequest, inputSchema, inputVersion, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13056,112 +12600,6 @@ export class IntegrationDataUseRegistersApi extends BaseAPI {
 
 
 /**
- * IntegrationsDatasetsTestApi - axios parameter creator
- */
-export const IntegrationsDatasetsTestApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * Integrations datasets test
-         * @summary IntegrationDatasetController@datasetTest
-         * @param {DatasetsTestRequest} datasetsTestRequest Pass datasets payload
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        integrationsDatasetsTest: async (datasetsTestRequest: DatasetsTestRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'datasetsTestRequest' is not null or undefined
-            assertParamExists('integrationsDatasetsTest', 'datasetsTestRequest', datasetsTestRequest)
-            const localVarPath = `/api/v1/integrations/datasets/test`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarHeaderParameter['Accept'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(datasetsTestRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * IntegrationsDatasetsTestApi - functional programming interface
- */
-export const IntegrationsDatasetsTestApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = IntegrationsDatasetsTestApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * Integrations datasets test
-         * @summary IntegrationDatasetController@datasetTest
-         * @param {DatasetsTestRequest} datasetsTestRequest Pass datasets payload
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        async integrationsDatasetsTest(datasetsTestRequest: DatasetsTestRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateDarIntegration201Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.integrationsDatasetsTest(datasetsTestRequest, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['IntegrationsDatasetsTestApi.integrationsDatasetsTest']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-    }
-};
-
-/**
- * IntegrationsDatasetsTestApi - factory interface
- */
-export const IntegrationsDatasetsTestApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = IntegrationsDatasetsTestApiFp(configuration)
-    return {
-        /**
-         * Integrations datasets test
-         * @summary IntegrationDatasetController@datasetTest
-         * @param {DatasetsTestRequest} datasetsTestRequest Pass datasets payload
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        integrationsDatasetsTest(datasetsTestRequest: DatasetsTestRequest, options?: RawAxiosRequestConfig): AxiosPromise<CreateDarIntegration201Response> {
-            return localVarFp.integrationsDatasetsTest(datasetsTestRequest, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * IntegrationsDatasetsTestApi - object-oriented interface
- */
-export class IntegrationsDatasetsTestApi extends BaseAPI {
-    /**
-     * Integrations datasets test
-     * @summary IntegrationDatasetController@datasetTest
-     * @param {DatasetsTestRequest} datasetsTestRequest Pass datasets payload
-     * @param {*} [options] Override http request option.
-     * @deprecated
-     * @throws {RequiredError}
-     */
-    public integrationsDatasetsTest(datasetsTestRequest: DatasetsTestRequest, options?: RawAxiosRequestConfig) {
-        return IntegrationsDatasetsTestApiFp(this.configuration).integrationsDatasetsTest(datasetsTestRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
-
-/**
  * LicenseApi - axios parameter creator
  */
 export const LicenseApiAxiosParamCreator = function (configuration?: Configuration) {
@@ -13373,7 +12811,7 @@ export const MetricsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async fetchKeyMetricsV2(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FetchKeyMetricsV2200Response>> {
+        async fetchKeyMetricsV2(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FetchDatasetLinkCheckResultsV2200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.fetchKeyMetricsV2(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['MetricsApi.fetchKeyMetricsV2']?.[localVarOperationServerIndex]?.url;
@@ -13394,7 +12832,7 @@ export const MetricsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetchKeyMetricsV2(options?: RawAxiosRequestConfig): AxiosPromise<FetchKeyMetricsV2200Response> {
+        fetchKeyMetricsV2(options?: RawAxiosRequestConfig): AxiosPromise<FetchDatasetLinkCheckResultsV2200Response> {
             return localVarFp.fetchKeyMetricsV2(options).then((request) => request(axios, basePath));
         },
     };
@@ -13418,10 +12856,138 @@ export class MetricsApi extends BaseAPI {
 
 
 /**
+ * NightlyDatasetTestsApi - axios parameter creator
+ */
+export const NightlyDatasetTestsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Get the results of the nightly dataset reachability check, with a summary and a list of failures
+         * @summary NightlyDatasetTestController@index
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        fetchNightlyDatasetTestsV2: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v2/nightly_dataset_tests`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * NightlyDatasetTestsApi - functional programming interface
+ */
+export const NightlyDatasetTestsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = NightlyDatasetTestsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Get the results of the nightly dataset reachability check, with a summary and a list of failures
+         * @summary NightlyDatasetTestController@index
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async fetchNightlyDatasetTestsV2(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FetchDatasetLinkCheckResultsV2200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.fetchNightlyDatasetTestsV2(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['NightlyDatasetTestsApi.fetchNightlyDatasetTestsV2']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * NightlyDatasetTestsApi - factory interface
+ */
+export const NightlyDatasetTestsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = NightlyDatasetTestsApiFp(configuration)
+    return {
+        /**
+         * Get the results of the nightly dataset reachability check, with a summary and a list of failures
+         * @summary NightlyDatasetTestController@index
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        fetchNightlyDatasetTestsV2(options?: RawAxiosRequestConfig): AxiosPromise<FetchDatasetLinkCheckResultsV2200Response> {
+            return localVarFp.fetchNightlyDatasetTestsV2(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * NightlyDatasetTestsApi - object-oriented interface
+ */
+export class NightlyDatasetTestsApi extends BaseAPI {
+    /**
+     * Get the results of the nightly dataset reachability check, with a summary and a list of failures
+     * @summary NightlyDatasetTestController@index
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public fetchNightlyDatasetTestsV2(options?: RawAxiosRequestConfig) {
+        return NightlyDatasetTestsApiFp(this.configuration).fetchNightlyDatasetTestsV2(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * ProjectGrantApi - axios parameter creator
  */
 export const ProjectGrantApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * Create a project grant (and initial version)
+         * @summary ProjectGrantController@store
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createProjectGrant: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v1/project_grants`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * Get all project grants
          * @summary ProjectGrantController@index
@@ -13531,6 +13097,18 @@ export const ProjectGrantApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ProjectGrantApiAxiosParamCreator(configuration)
     return {
         /**
+         * Create a project grant (and initial version)
+         * @summary ProjectGrantController@store
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createProjectGrant(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateProjectGrant201Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createProjectGrant(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ProjectGrantApi.createProjectGrant']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Get all project grants
          * @summary ProjectGrantController@index
          * @param {string} [pid] Filter by dataset pid
@@ -13572,6 +13150,15 @@ export const ProjectGrantApiFactory = function (configuration?: Configuration, b
     const localVarFp = ProjectGrantApiFp(configuration)
     return {
         /**
+         * Create a project grant (and initial version)
+         * @summary ProjectGrantController@store
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createProjectGrant(options?: RawAxiosRequestConfig): AxiosPromise<CreateProjectGrant201Response> {
+            return localVarFp.createProjectGrant(options).then((request) => request(axios, basePath));
+        },
+        /**
          * Get all project grants
          * @summary ProjectGrantController@index
          * @param {string} [pid] Filter by dataset pid
@@ -13604,6 +13191,16 @@ export const ProjectGrantApiFactory = function (configuration?: Configuration, b
  * ProjectGrantApi - object-oriented interface
  */
 export class ProjectGrantApi extends BaseAPI {
+    /**
+     * Create a project grant (and initial version)
+     * @summary ProjectGrantController@store
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public createProjectGrant(options?: RawAxiosRequestConfig) {
+        return ProjectGrantApiFp(this.configuration).createProjectGrant(options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * Get all project grants
      * @summary ProjectGrantController@index
@@ -17324,53 +16921,6 @@ export const TeamFederationsApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * Edit federation for team
-         * @summary FederationController@edit
-         * @param {number} teamId team id
-         * @param {number} federationId federation id
-         * @param {CreateFederationTeamRequest} createFederationTeamRequest Pass user credentials
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        editFederationTeam: async (teamId: number, federationId: number, createFederationTeamRequest: CreateFederationTeamRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'teamId' is not null or undefined
-            assertParamExists('editFederationTeam', 'teamId', teamId)
-            // verify required parameter 'federationId' is not null or undefined
-            assertParamExists('editFederationTeam', 'federationId', federationId)
-            // verify required parameter 'createFederationTeamRequest' is not null or undefined
-            assertParamExists('editFederationTeam', 'createFederationTeamRequest', createFederationTeamRequest)
-            const localVarPath = `/api/v1/teams/{teamId}/federations/{federationId}`
-                .replace('{teamId}', encodeURIComponent(String(teamId)))
-                .replace('{federationId}', encodeURIComponent(String(federationId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarHeaderParameter['Accept'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createFederationTeamRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Get federation by federation id from team id
          * @summary FederationController@show
          * @param {number} teamId team id
@@ -17662,21 +17212,6 @@ export const TeamFederationsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Edit federation for team
-         * @summary FederationController@edit
-         * @param {number} teamId team id
-         * @param {number} federationId federation id
-         * @param {CreateFederationTeamRequest} createFederationTeamRequest Pass user credentials
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async editFederationTeam(teamId: number, federationId: number, createFederationTeamRequest: CreateFederationTeamRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateDarIntegration201Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.editFederationTeam(teamId, federationId, createFederationTeamRequest, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['TeamFederationsApi.editFederationTeam']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
          * Get federation by federation id from team id
          * @summary FederationController@show
          * @param {number} teamId team id
@@ -17792,18 +17327,6 @@ export const TeamFederationsApiFactory = function (configuration?: Configuration
             return localVarFp.deleteFederation(teamId, federationId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Edit federation for team
-         * @summary FederationController@edit
-         * @param {number} teamId team id
-         * @param {number} federationId federation id
-         * @param {CreateFederationTeamRequest} createFederationTeamRequest Pass user credentials
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        editFederationTeam(teamId: number, federationId: number, createFederationTeamRequest: CreateFederationTeamRequest, options?: RawAxiosRequestConfig): AxiosPromise<CreateDarIntegration201Response> {
-            return localVarFp.editFederationTeam(teamId, federationId, createFederationTeamRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Get federation by federation id from team id
          * @summary FederationController@show
          * @param {number} teamId team id
@@ -17898,19 +17421,6 @@ export class TeamFederationsApi extends BaseAPI {
      */
     public deleteFederation(teamId: number, federationId: number, options?: RawAxiosRequestConfig) {
         return TeamFederationsApiFp(this.configuration).deleteFederation(teamId, federationId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Edit federation for team
-     * @summary FederationController@edit
-     * @param {number} teamId team id
-     * @param {number} federationId federation id
-     * @param {CreateFederationTeamRequest} createFederationTeamRequest Pass user credentials
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    public editFederationTeam(teamId: number, federationId: number, createFederationTeamRequest: CreateFederationTeamRequest, options?: RawAxiosRequestConfig) {
-        return TeamFederationsApiFp(this.configuration).editFederationTeam(teamId, federationId, createFederationTeamRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

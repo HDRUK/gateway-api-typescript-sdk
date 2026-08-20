@@ -1,4 +1,4 @@
-# FetchKeyMetricsV2200Response
+# CreateProjectGrant201Response
 
 
 ## Properties
@@ -6,14 +6,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message** | **string** |  | [optional] [default to undefined]
-**data** | **Array&lt;Array&lt;any&gt;&gt;** |  | [optional] [default to undefined]
+**data** | **object** |  | [optional] [default to undefined]
 
 ## Example
 
 ```typescript
-import { FetchKeyMetricsV2200Response } from '@hdruk/gateway-api-sdk';
+import { CreateProjectGrant201Response } from '@hdruk/gateway-api-sdk';
 
-const instance: FetchKeyMetricsV2200Response = {
+const instance: CreateProjectGrant201Response = {
     message,
     data,
 };

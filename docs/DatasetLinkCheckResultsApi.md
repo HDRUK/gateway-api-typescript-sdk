@@ -1,28 +1,28 @@
-# MetricsApi
+# DatasetLinkCheckResultsApi
 
 All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**fetchKeyMetricsV2**](#fetchkeymetricsv2) | **GET** /api/v2/metrics | KeyMetricController@index|
+|[**fetchDatasetLinkCheckResultsV2**](#fetchdatasetlinkcheckresultsv2) | **GET** /api/v2/dataset_link_check_results | DatasetLinkCheckResultController@index|
 
-# **fetchKeyMetricsV2**
-> FetchDatasetLinkCheckResultsV2200Response fetchKeyMetricsV2()
+# **fetchDatasetLinkCheckResultsV2**
+> FetchDatasetLinkCheckResultsV2200Response fetchDatasetLinkCheckResultsV2()
 
-Get key metrics
+Get the confirmed dead links (HTTP 404, verified across multiple checks) found in active dataset metadata by the nightly link check
 
 ### Example
 
 ```typescript
 import {
-    MetricsApi,
+    DatasetLinkCheckResultsApi,
     Configuration
 } from '@hdruk/gateway-api-sdk';
 
 const configuration = new Configuration();
-const apiInstance = new MetricsApi(configuration);
+const apiInstance = new DatasetLinkCheckResultsApi(configuration);
 
-const { status, data } = await apiInstance.fetchKeyMetricsV2();
+const { status, data } = await apiInstance.fetchDatasetLinkCheckResultsV2();
 ```
 
 ### Parameters

@@ -6,11 +6,9 @@ All URIs are relative to *http://localhost*
 |------------- | ------------- | -------------|
 |[**countUniqueFields**](#countuniquefields) | **GET** /api/v1/datasets/count/{field} | DatasetController@count|
 |[**createDatasets**](#createdatasets) | **POST** /api/v1/datasets | DatasetController@store|
-|[**createDatasetsIntegrations**](#createdatasetsintegrations) | **POST** /api/v1/integrations/datasets | IntegrationDatasetController@store|
 |[**createDatasetsV2**](#createdatasetsv2) | **POST** /api/v2/datasets | DatasetController@store|
 |[**createTeamDatasetsV2**](#createteamdatasetsv2) | **POST** /api/v2/teams/{teamId}/datasets | TeamDatasetController@store|
 |[**deleteDatasets**](#deletedatasets) | **DELETE** /api/v1/datasets/{id} | DatasetController@destroy|
-|[**deleteDatasetsIntegrations**](#deletedatasetsintegrations) | **DELETE** /api/v1/integrations/datasets/{id} | IntegrationDatasetController@destroy|
 |[**deleteDatasetsV2**](#deletedatasetsv2) | **DELETE** /api/v2/datasets/{id} | Delete a dataset|
 |[**deleteTeamDatasetsV2**](#deleteteamdatasetsv2) | **DELETE** /api/v2/teams/{teamId}/datasets/{id} | TeamDatasetController@destroy|
 |[**exportDatasetMetadata**](#exportdatasetmetadata) | **GET** /api/v1/datasets/export_metadata/{id} | DatasetController@exportMetadata|
@@ -19,17 +17,13 @@ All URIs are relative to *http://localhost*
 |[**exportMockDataset**](#exportmockdataset) | **GET** /api/v1/datasets/export/mock | DatasetController@exportMock|
 |[**exportMockDatasetV2**](#exportmockdatasetv2) | **GET** /api/v2/datasets/export/mock | DatasetController@exportMock|
 |[**fetchAllDatasets**](#fetchalldatasets) | **GET** /api/v1/datasets | DatasetController@index|
-|[**fetchAllDatasetsIntegrations**](#fetchalldatasetsintegrations) | **GET** /api/v1/integrations/datasets | IntegrationDatasetController@index|
 |[**fetchAllDatasetsV2**](#fetchalldatasetsv2) | **GET** /api/v2/datasets | DatasetController@index|
 |[**fetchDatasets**](#fetchdatasets) | **GET** /api/v1/datasets/{id} | DatasetController@show|
-|[**fetchDatasetsIntegrations**](#fetchdatasetsintegrations) | **GET** /api/v1/integrations/datasets/{id} | IntegrationDatasetController@show|
 |[**fetchDatasetsV2**](#fetchdatasetsv2) | **GET** /api/v2/datasets/{id} | DatasetController@showActive|
 |[**patchDatasets**](#patchdatasets) | **PATCH** /api/v1/datasets/{id} | DatasetController@edit|
-|[**patchDatasetsIntegrations**](#patchdatasetsintegrations) | **PATCH** /api/v1/integrations/datasets/{id} | IntegrationDatasetController@edit|
 |[**patchDatasetsV2**](#patchdatasetsv2) | **PATCH** /api/v2/datasets/{id} | DatasetController@edit|
 |[**patchTeamDatasetsV2**](#patchteamdatasetsv2) | **PATCH** /api/v2/teams/{teamId}/datasets/{id} | TeamDatasetController@edit|
 |[**updateDatasets**](#updatedatasets) | **PUT** /api/v1/datasets/{id} | DatasetController@update|
-|[**updateDatasetsIntegrations**](#updatedatasetsintegrations) | **PUT** /api/v1/integrations/datasets/{id} | IntegrationDatasetController@update|
 |[**updateDatasetsV2**](#updatedatasetsv2) | **PUT** /api/v2/datasets/{id} | DatasetController@update|
 |[**updateTeamDatasetsV2**](#updateteamdatasetsv2) | **PUT** /api/v2/teams/{teamId}/datasets/{id} | TeamDatasetController@update|
 
@@ -116,66 +110,6 @@ const { status, data } = await apiInstance.createDatasets(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **createDatasetsRequest** | **CreateDatasetsRequest**| Pass user credentials | |
-
-
-### Return type
-
-**CreateDarIntegration201Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Created |  -  |
-|**401** | Unauthorized |  -  |
-|**500** | Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createDatasetsIntegrations**
-> CreateDarIntegration201Response createDatasetsIntegrations(datasetsTestRequest)
-
-Create a new dataset
-
-### Example
-
-```typescript
-import {
-    DatasetsApi,
-    Configuration,
-    DatasetsTestRequest
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DatasetsApi(configuration);
-
-let datasetsTestRequest: DatasetsTestRequest; //Pass user credentials
-let inputSchema: string; //Input schema model. (optional) (default to undefined)
-let inputVersion: string; //Input schema version. (optional) (default to undefined)
-
-const { status, data } = await apiInstance.createDatasetsIntegrations(
-    datasetsTestRequest,
-    inputSchema,
-    inputVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **datasetsTestRequest** | **DatasetsTestRequest**| Pass user credentials | |
-| **inputSchema** | [**string**] | Input schema model. | (optional) defaults to undefined|
-| **inputVersion** | [**string**] | Input schema version. | (optional) defaults to undefined|
 
 
 ### Return type
@@ -331,59 +265,6 @@ const apiInstance = new DatasetsApi(configuration);
 let id: number; //dataset id (default to undefined)
 
 const { status, data } = await apiInstance.deleteDatasets(
-    id
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **id** | [**number**] | dataset id | defaults to undefined|
-
-
-### Return type
-
-**DeleteApplications200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**404** | Not found response |  -  |
-|**200** | Success |  -  |
-|**500** | Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **deleteDatasetsIntegrations**
-> DeleteApplications200Response deleteDatasetsIntegrations()
-
-Delete a dataset
-
-### Example
-
-```typescript
-import {
-    DatasetsApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DatasetsApi(configuration);
-
-let id: number; //dataset id (default to undefined)
-
-const { status, data } = await apiInstance.deleteDatasetsIntegrations(
     id
 );
 ```
@@ -861,69 +742,6 @@ const { status, data } = await apiInstance.fetchAllDatasets(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **fetchAllDatasetsIntegrations**
-> FetchAllDatasets200Response fetchAllDatasetsIntegrations()
-
-Get All Datasets
-
-### Example
-
-```typescript
-import {
-    DatasetsApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DatasetsApi(configuration);
-
-let teamId: number; //team id (default to undefined)
-let pid: string; //get based on a pid (optional) (default to undefined)
-let sort: string; //Field and direction (colon separated) to sort by (default: \'created:desc\') ... <br/> <br/>         - ?sort=\\<field\\>:\\<direction\\> <br/>         - \\<direction\\> can only be \'asc\' or \'desc\'  <br/>         - \\<field\\> can only be a valid field for the dataset table that can be ordered on  <br/>         - \\<field\\> can start with the prefix \'metadata.\' so that nested values within the field \'metadata\'  <br/>             (represented by the GWDM JSON structure) can be used to order on.  <br/>  <br/> (optional) (default to undefined)
-let title: string; //Three or more characters to filter dataset titles by (optional) (default to undefined)
-let status: string; //Dataset status to filter by (\'ACTIVE\', \'DRAFT\', \'ARCHIVED\') (optional) (default to undefined)
-
-const { status, data } = await apiInstance.fetchAllDatasetsIntegrations(
-    teamId,
-    pid,
-    sort,
-    title,
-    status
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **teamId** | [**number**] | team id | defaults to undefined|
-| **pid** | [**string**] | get based on a pid | (optional) defaults to undefined|
-| **sort** | [**string**] | Field and direction (colon separated) to sort by (default: \&#39;created:desc\&#39;) ... &lt;br/&gt; &lt;br/&gt;         - ?sort&#x3D;\\&lt;field\\&gt;:\\&lt;direction\\&gt; &lt;br/&gt;         - \\&lt;direction\\&gt; can only be \&#39;asc\&#39; or \&#39;desc\&#39;  &lt;br/&gt;         - \\&lt;field\\&gt; can only be a valid field for the dataset table that can be ordered on  &lt;br/&gt;         - \\&lt;field\\&gt; can start with the prefix \&#39;metadata.\&#39; so that nested values within the field \&#39;metadata\&#39;  &lt;br/&gt;             (represented by the GWDM JSON structure) can be used to order on.  &lt;br/&gt;  &lt;br/&gt; | (optional) defaults to undefined|
-| **title** | [**string**] | Three or more characters to filter dataset titles by | (optional) defaults to undefined|
-| **status** | [**string**] | Dataset status to filter by (\&#39;ACTIVE\&#39;, \&#39;DRAFT\&#39;, \&#39;ARCHIVED\&#39;) | (optional) defaults to undefined|
-
-
-### Return type
-
-**FetchAllDatasets200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Success response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **fetchAllDatasetsV2**
 > FetchAllDatasets200Response fetchAllDatasetsV2()
 
@@ -1046,65 +864,6 @@ const { status, data } = await apiInstance.fetchDatasets(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **fetchDatasetsIntegrations**
-> FetchDatasets200Response fetchDatasetsIntegrations()
-
-Get dataset by id
-
-### Example
-
-```typescript
-import {
-    DatasetsApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DatasetsApi(configuration);
-
-let id: number; //dataset id (default to undefined)
-let schemaModel: string; //Alternative output schema model. (optional) (default to undefined)
-let schemaVersion: string; //Alternative output schema version. (optional) (default to undefined)
-
-const { status, data } = await apiInstance.fetchDatasetsIntegrations(
-    id,
-    schemaModel,
-    schemaVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **id** | [**number**] | dataset id | defaults to undefined|
-| **schemaModel** | [**string**] | Alternative output schema model. | (optional) defaults to undefined|
-| **schemaVersion** | [**string**] | Alternative output schema version. | (optional) defaults to undefined|
-
-
-### Return type
-
-**FetchDatasets200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Success response |  -  |
-|**401** | Unauthorized |  -  |
-|**404** | Not found response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **fetchDatasetsV2**
 > FetchDatasets200Response fetchDatasetsV2()
 
@@ -1187,61 +946,6 @@ let id: number; //dataset id (default to undefined)
 let unarchive: string; //Unarchive a dataset (optional) (default to undefined)
 
 const { status, data } = await apiInstance.patchDatasets(
-    id,
-    unarchive
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **id** | [**number**] | dataset id | defaults to undefined|
-| **unarchive** | [**string**] | Unarchive a dataset | (optional) defaults to undefined|
-
-
-### Return type
-
-**DeleteApplications200Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Success |  -  |
-|**500** | Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **patchDatasetsIntegrations**
-> DeleteApplications200Response patchDatasetsIntegrations()
-
-Patch dataset by id
-
-### Example
-
-```typescript
-import {
-    DatasetsApi,
-    Configuration
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DatasetsApi(configuration);
-
-let id: number; //dataset id (default to undefined)
-let unarchive: string; //Unarchive a dataset (optional) (default to undefined)
-
-const { status, data } = await apiInstance.patchDatasetsIntegrations(
     id,
     unarchive
 );
@@ -1429,69 +1133,6 @@ const { status, data } = await apiInstance.updateDatasets(
 ### Return type
 
 **CreateDarIntegration201Response**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**201** | Created |  -  |
-|**401** | Unauthorized |  -  |
-|**500** | Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateDatasetsIntegrations**
-> FetchDatasets200Response updateDatasetsIntegrations(updateDatasetsRequest)
-
-Update a dataset with a new dataset version
-
-### Example
-
-```typescript
-import {
-    DatasetsApi,
-    Configuration,
-    UpdateDatasetsRequest
-} from '@hdruk/gateway-api-sdk';
-
-const configuration = new Configuration();
-const apiInstance = new DatasetsApi(configuration);
-
-let id: number; //dataset id (default to undefined)
-let updateDatasetsRequest: UpdateDatasetsRequest; //Pass user credentials
-let inputSchema: string; //Input schema model. (optional) (default to undefined)
-let inputVersion: string; //Input schema version. (optional) (default to undefined)
-
-const { status, data } = await apiInstance.updateDatasetsIntegrations(
-    id,
-    updateDatasetsRequest,
-    inputSchema,
-    inputVersion
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **updateDatasetsRequest** | **UpdateDatasetsRequest**| Pass user credentials | |
-| **id** | [**number**] | dataset id | defaults to undefined|
-| **inputSchema** | [**string**] | Input schema model. | (optional) defaults to undefined|
-| **inputVersion** | [**string**] | Input schema version. | (optional) defaults to undefined|
-
-
-### Return type
-
-**FetchDatasets200Response**
 
 ### Authorization
 

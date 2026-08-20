@@ -1,28 +1,28 @@
-# MetricsApi
+# NightlyDatasetTestsApi
 
 All URIs are relative to *http://localhost*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**fetchKeyMetricsV2**](#fetchkeymetricsv2) | **GET** /api/v2/metrics | KeyMetricController@index|
+|[**fetchNightlyDatasetTestsV2**](#fetchnightlydatasettestsv2) | **GET** /api/v2/nightly_dataset_tests | NightlyDatasetTestController@index|
 
-# **fetchKeyMetricsV2**
-> FetchDatasetLinkCheckResultsV2200Response fetchKeyMetricsV2()
+# **fetchNightlyDatasetTestsV2**
+> FetchDatasetLinkCheckResultsV2200Response fetchNightlyDatasetTestsV2()
 
-Get key metrics
+Get the results of the nightly dataset reachability check, with a summary and a list of failures
 
 ### Example
 
 ```typescript
 import {
-    MetricsApi,
+    NightlyDatasetTestsApi,
     Configuration
 } from '@hdruk/gateway-api-sdk';
 
 const configuration = new Configuration();
-const apiInstance = new MetricsApi(configuration);
+const apiInstance = new NightlyDatasetTestsApi(configuration);
 
-const { status, data } = await apiInstance.fetchKeyMetricsV2();
+const { status, data } = await apiInstance.fetchNightlyDatasetTestsV2();
 ```
 
 ### Parameters

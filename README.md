@@ -1,4 +1,4 @@
-## @hdruk/gateway-api-sdk@0.0.0-test6
+## @hdruk/gateway-api-sdk@2.48.0
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @hdruk/gateway-api-sdk@0.0.0-test6 --save
+npm install @hdruk/gateway-api-sdk@2.48.0 --save
 ```
 
 _unPublished (not recommended):_
@@ -132,13 +132,12 @@ Class | Method | HTTP request | Description
 *DataUseRegistersApi* | [**updateDur**](docs/DataUseRegistersApi.md#updatedur) | **PUT** /api/v1/dur/{id} | Update a dur by id
 *DataUseRegistersApi* | [**updateDurV2ByTeamId**](docs/DataUseRegistersApi.md#updatedurv2byteamid) | **PUT** /api/v2/teams/{teamId}/dur/{id} | TeamDurController@update
 *DataUseRegistersApi* | [**uploadDur**](docs/DataUseRegistersApi.md#uploaddur) | **POST** /api/v1/dur/upload | DurController@upload
+*DatasetLinkCheckResultsApi* | [**fetchDatasetLinkCheckResultsV2**](docs/DatasetLinkCheckResultsApi.md#fetchdatasetlinkcheckresultsv2) | **GET** /api/v2/dataset_link_check_results | DatasetLinkCheckResultController@index
 *DatasetsApi* | [**countUniqueFields**](docs/DatasetsApi.md#countuniquefields) | **GET** /api/v1/datasets/count/{field} | DatasetController@count
 *DatasetsApi* | [**createDatasets**](docs/DatasetsApi.md#createdatasets) | **POST** /api/v1/datasets | DatasetController@store
-*DatasetsApi* | [**createDatasetsIntegrations**](docs/DatasetsApi.md#createdatasetsintegrations) | **POST** /api/v1/integrations/datasets | IntegrationDatasetController@store
 *DatasetsApi* | [**createDatasetsV2**](docs/DatasetsApi.md#createdatasetsv2) | **POST** /api/v2/datasets | DatasetController@store
 *DatasetsApi* | [**createTeamDatasetsV2**](docs/DatasetsApi.md#createteamdatasetsv2) | **POST** /api/v2/teams/{teamId}/datasets | TeamDatasetController@store
 *DatasetsApi* | [**deleteDatasets**](docs/DatasetsApi.md#deletedatasets) | **DELETE** /api/v1/datasets/{id} | DatasetController@destroy
-*DatasetsApi* | [**deleteDatasetsIntegrations**](docs/DatasetsApi.md#deletedatasetsintegrations) | **DELETE** /api/v1/integrations/datasets/{id} | IntegrationDatasetController@destroy
 *DatasetsApi* | [**deleteDatasetsV2**](docs/DatasetsApi.md#deletedatasetsv2) | **DELETE** /api/v2/datasets/{id} | Delete a dataset
 *DatasetsApi* | [**deleteTeamDatasetsV2**](docs/DatasetsApi.md#deleteteamdatasetsv2) | **DELETE** /api/v2/teams/{teamId}/datasets/{id} | TeamDatasetController@destroy
 *DatasetsApi* | [**exportDatasetMetadata**](docs/DatasetsApi.md#exportdatasetmetadata) | **GET** /api/v1/datasets/export_metadata/{id} | DatasetController@exportMetadata
@@ -147,17 +146,13 @@ Class | Method | HTTP request | Description
 *DatasetsApi* | [**exportMockDataset**](docs/DatasetsApi.md#exportmockdataset) | **GET** /api/v1/datasets/export/mock | DatasetController@exportMock
 *DatasetsApi* | [**exportMockDatasetV2**](docs/DatasetsApi.md#exportmockdatasetv2) | **GET** /api/v2/datasets/export/mock | DatasetController@exportMock
 *DatasetsApi* | [**fetchAllDatasets**](docs/DatasetsApi.md#fetchalldatasets) | **GET** /api/v1/datasets | DatasetController@index
-*DatasetsApi* | [**fetchAllDatasetsIntegrations**](docs/DatasetsApi.md#fetchalldatasetsintegrations) | **GET** /api/v1/integrations/datasets | IntegrationDatasetController@index
 *DatasetsApi* | [**fetchAllDatasetsV2**](docs/DatasetsApi.md#fetchalldatasetsv2) | **GET** /api/v2/datasets | DatasetController@index
 *DatasetsApi* | [**fetchDatasets**](docs/DatasetsApi.md#fetchdatasets) | **GET** /api/v1/datasets/{id} | DatasetController@show
-*DatasetsApi* | [**fetchDatasetsIntegrations**](docs/DatasetsApi.md#fetchdatasetsintegrations) | **GET** /api/v1/integrations/datasets/{id} | IntegrationDatasetController@show
 *DatasetsApi* | [**fetchDatasetsV2**](docs/DatasetsApi.md#fetchdatasetsv2) | **GET** /api/v2/datasets/{id} | DatasetController@showActive
 *DatasetsApi* | [**patchDatasets**](docs/DatasetsApi.md#patchdatasets) | **PATCH** /api/v1/datasets/{id} | DatasetController@edit
-*DatasetsApi* | [**patchDatasetsIntegrations**](docs/DatasetsApi.md#patchdatasetsintegrations) | **PATCH** /api/v1/integrations/datasets/{id} | IntegrationDatasetController@edit
 *DatasetsApi* | [**patchDatasetsV2**](docs/DatasetsApi.md#patchdatasetsv2) | **PATCH** /api/v2/datasets/{id} | DatasetController@edit
 *DatasetsApi* | [**patchTeamDatasetsV2**](docs/DatasetsApi.md#patchteamdatasetsv2) | **PATCH** /api/v2/teams/{teamId}/datasets/{id} | TeamDatasetController@edit
 *DatasetsApi* | [**updateDatasets**](docs/DatasetsApi.md#updatedatasets) | **PUT** /api/v1/datasets/{id} | DatasetController@update
-*DatasetsApi* | [**updateDatasetsIntegrations**](docs/DatasetsApi.md#updatedatasetsintegrations) | **PUT** /api/v1/integrations/datasets/{id} | IntegrationDatasetController@update
 *DatasetsApi* | [**updateDatasetsV2**](docs/DatasetsApi.md#updatedatasetsv2) | **PUT** /api/v2/datasets/{id} | DatasetController@update
 *DatasetsApi* | [**updateTeamDatasetsV2**](docs/DatasetsApi.md#updateteamdatasetsv2) | **PUT** /api/v2/teams/{teamId}/datasets/{id} | TeamDatasetController@update
 *DatasetsTestApi* | [**datasetsTest**](docs/DatasetsTestApi.md#datasetstest) | **POST** /api/v1/datasets/test | DatasetController@datasetTest
@@ -175,10 +170,11 @@ Class | Method | HTTP request | Description
 *IntegrationDataUseRegistersApi* | [**fetchAllDurIntegrations**](docs/IntegrationDataUseRegistersApi.md#fetchalldurintegrations) | **GET** /api/v1/integrations/dur | IntegrationDurController@index
 *IntegrationDataUseRegistersApi* | [**fetchDurByIdIntegrations**](docs/IntegrationDataUseRegistersApi.md#fetchdurbyidintegrations) | **GET** /api/v1/integrations/dur/{id} | IntegrationDurController@show
 *IntegrationDataUseRegistersApi* | [**updateDurIntegrations**](docs/IntegrationDataUseRegistersApi.md#updatedurintegrations) | **PUT** /api/v1/integrations/dur/{id} | Update a dur by id
-*IntegrationsDatasetsTestApi* | [**integrationsDatasetsTest**](docs/IntegrationsDatasetsTestApi.md#integrationsdatasetstest) | **POST** /api/v1/integrations/datasets/test | IntegrationDatasetController@datasetTest
 *LicenseApi* | [**fetchAllLicenses**](docs/LicenseApi.md#fetchalllicenses) | **GET** /api/v1/licenses | License@index
 *LicenseApi* | [**fetchLicenses**](docs/LicenseApi.md#fetchlicenses) | **GET** /api/v1/licenses/{id} | License@show
 *MetricsApi* | [**fetchKeyMetricsV2**](docs/MetricsApi.md#fetchkeymetricsv2) | **GET** /api/v2/metrics | KeyMetricController@index
+*NightlyDatasetTestsApi* | [**fetchNightlyDatasetTestsV2**](docs/NightlyDatasetTestsApi.md#fetchnightlydatasettestsv2) | **GET** /api/v2/nightly_dataset_tests | NightlyDatasetTestController@index
+*ProjectGrantApi* | [**createProjectGrant**](docs/ProjectGrantApi.md#createprojectgrant) | **POST** /api/v1/project_grants | ProjectGrantController@store
 *ProjectGrantApi* | [**fetchAllProjectGrants**](docs/ProjectGrantApi.md#fetchallprojectgrants) | **GET** /api/v1/project_grants | ProjectGrantController@index
 *ProjectGrantApi* | [**fetchProjectGrant**](docs/ProjectGrantApi.md#fetchprojectgrant) | **GET** /api/v1/project_grants/{id} | ProjectGrantController@show
 *PublicationApi* | [**countUniqueFieldsPublications**](docs/PublicationApi.md#countuniquefieldspublications) | **GET** /api/v1/publication/count/{field} | PublicationController@count
@@ -221,7 +217,6 @@ Class | Method | HTTP request | Description
 *TeamDataAccessTemplateApi* | [**teamDarTemplateCountUniqueFields**](docs/TeamDataAccessTemplateApi.md#teamdartemplatecountuniquefields) | **GET** /api/v1/teams/{teamId}/dar/templates/count/{field} | TeamDataAccessTemplateController@count
 *TeamFederationsApi* | [**createFederationTeam**](docs/TeamFederationsApi.md#createfederationteam) | **POST** /api/v1/teams/{teamId}/federations | FederationController@store
 *TeamFederationsApi* | [**deleteFederation**](docs/TeamFederationsApi.md#deletefederation) | **DELETE** /api/v1/teams/{teamId}/federations/{federationId} | FederationController@destroy
-*TeamFederationsApi* | [**editFederationTeam**](docs/TeamFederationsApi.md#editfederationteam) | **PATCH** /api/v1/teams/{teamId}/federations/{federationId} | FederationController@edit
 *TeamFederationsApi* | [**getFederationByFederationIdAndTeamId**](docs/TeamFederationsApi.md#getfederationbyfederationidandteamid) | **GET** /api/v1/teams/{teamId}/federations/{federationId} | FederationController@show
 *TeamFederationsApi* | [**getFederationHistory**](docs/TeamFederationsApi.md#getfederationhistory) | **GET** /api/v1/teams/{teamId}/federations/{federationId}/history | FederationController@history
 *TeamFederationsApi* | [**getFederationTeamId**](docs/TeamFederationsApi.md#getfederationteamid) | **GET** /api/v1/teams/{teamId}/federations | FederationController@index
@@ -289,6 +284,7 @@ Class | Method | HTTP request | Description
  - [CreateDurRequestTeamInner](docs/CreateDurRequestTeamInner.md)
  - [CreateDurRequestUsersInner](docs/CreateDurRequestUsersInner.md)
  - [CreateFederationTeamRequest](docs/CreateFederationTeamRequest.md)
+ - [CreateProjectGrant201Response](docs/CreateProjectGrant201Response.md)
  - [CreatePublicationsRequest](docs/CreatePublicationsRequest.md)
  - [CreatePublicationsRequestDatasetsInner](docs/CreatePublicationsRequestDatasetsInner.md)
  - [CreatePublicationsRequestToolsInner](docs/CreatePublicationsRequestToolsInner.md)
@@ -367,11 +363,11 @@ Class | Method | HTTP request | Description
  - [FetchDataProviderCollSummary200ResponseData](docs/FetchDataProviderCollSummary200ResponseData.md)
  - [FetchDataProviderColls200Response](docs/FetchDataProviderColls200Response.md)
  - [FetchDataProviderColls200ResponseDataInner](docs/FetchDataProviderColls200ResponseDataInner.md)
+ - [FetchDatasetLinkCheckResultsV2200Response](docs/FetchDatasetLinkCheckResultsV2200Response.md)
  - [FetchDatasets200Response](docs/FetchDatasets200Response.md)
  - [FetchDurById200Response](docs/FetchDurById200Response.md)
  - [FetchDurByIdIntegrations200Response](docs/FetchDurByIdIntegrations200Response.md)
  - [FetchDurByIdIntegrations200ResponseDataInner](docs/FetchDurByIdIntegrations200ResponseDataInner.md)
- - [FetchKeyMetricsV2200Response](docs/FetchKeyMetricsV2200Response.md)
  - [FetchLicenses200Response](docs/FetchLicenses200Response.md)
  - [FetchPublications200Response](docs/FetchPublications200Response.md)
  - [FetchQuestionBankQuestion200Response](docs/FetchQuestionBankQuestion200Response.md)
