@@ -1,4 +1,4 @@
-## @hdruk/gateway-api-sdk@2.49.0
+## @hdruk/gateway-api-sdk@2.50.0
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @hdruk/gateway-api-sdk@2.49.0 --save
+npm install @hdruk/gateway-api-sdk@2.50.0 --save
 ```
 
 _unPublished (not recommended):_
@@ -276,7 +276,6 @@ Class | Method | HTTP request | Description
  - [CreateDarTemplateRequest](docs/CreateDarTemplateRequest.md)
  - [CreateDarTemplateRequestQuestionsInner](docs/CreateDarTemplateRequestQuestionsInner.md)
  - [CreateDatasetsRequest](docs/CreateDatasetsRequest.md)
- - [CreateDatasetsV2Request](docs/CreateDatasetsV2Request.md)
  - [CreateDurIntegrationsRequest](docs/CreateDurIntegrationsRequest.md)
  - [CreateDurRequest](docs/CreateDurRequest.md)
  - [CreateDurRequestDatasetsInner](docs/CreateDurRequestDatasetsInner.md)
@@ -293,7 +292,6 @@ Class | Method | HTTP request | Description
  - [CreateQuestionBankQuestionRequestOptionsInnerChildrenInner](docs/CreateQuestionBankQuestionRequestOptionsInnerChildrenInner.md)
  - [CreateQuestionBankQuestionRequestOptionsInnerChildrenInnerOptionsInner](docs/CreateQuestionBankQuestionRequestOptionsInnerChildrenInnerOptionsInner.md)
  - [CreateTeamDarApplicationReviewRequest](docs/CreateTeamDarApplicationReviewRequest.md)
- - [CreateTeamDatasetsV2Request](docs/CreateTeamDatasetsV2Request.md)
  - [CreateToolsIntegrations400Response](docs/CreateToolsIntegrations400Response.md)
  - [CreateToolsIntegrationsRequest](docs/CreateToolsIntegrationsRequest.md)
  - [CreateToolsIntegrationsRequestDatasetInner](docs/CreateToolsIntegrationsRequestDatasetInner.md)

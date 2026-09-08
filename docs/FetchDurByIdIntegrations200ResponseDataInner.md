@@ -43,12 +43,9 @@ Name | Type | Description | Notes
 **request_category_type** | **string** |  | [optional] [default to undefined]
 **request_frequency** | **string** |  | [optional] [default to undefined]
 **access_type** | **string** |  | [optional] [default to undefined]
-**mongo_object_dar_id** | **string** |  | [optional] [default to undefined]
 **enabled** | **boolean** |  | [optional] [default to undefined]
 **last_activity** | **string** |  | [optional] [default to undefined]
 **counter** | **number** |  | [optional] [default to undefined]
-**mongo_object_id** | **string** |  | [optional] [default to undefined]
-**mongo_id** | **string** |  | [optional] [default to undefined]
 **datasets** | **Array&lt;any&gt;** |  | [optional] [default to undefined]
 **publications** | **Array&lt;any&gt;** |  | [optional] [default to undefined]
 **tools** | **Array&lt;any&gt;** |  | [optional] [default to undefined]
@@ -105,12 +102,9 @@ const instance: FetchDurByIdIntegrations200ResponseDataInner = {
     request_category_type,
     request_frequency,
     access_type,
-    mongo_object_dar_id,
     enabled,
     last_activity,
     counter,
-    mongo_object_id,
-    mongo_id,
     datasets,
     publications,
     tools,

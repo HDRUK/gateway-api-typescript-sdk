@@ -186,19 +186,7 @@ export interface CreateDatasetsRequest {
     'team_id'?: number;
     'user_id'?: number;
     'create_origin'?: string;
-    'mongo_object_id'?: string;
-    'mongo_id'?: string;
-    'mongo_pid'?: string;
     'datasetid'?: string;
-    'metadata'?: object;
-}
-export interface CreateDatasetsV2Request {
-    'team_id'?: number;
-    'user_id'?: number;
-    'create_origin'?: string;
-    'mongo_object_id'?: string;
-    'mongo_id'?: string;
-    'mongo_pid'?: string;
     'metadata'?: object;
 }
 export interface CreateDurIntegrationsRequest {
@@ -236,12 +224,9 @@ export interface CreateDurIntegrationsRequest {
     'request_category_type'?: string;
     'request_frequency'?: string;
     'access_type'?: string;
-    'mongo_object_dar_id'?: string;
     'enabled'?: boolean;
     'last_activity'?: string;
     'counter'?: number;
-    'mongo_object_id'?: string;
-    'mongo_id'?: string;
     'datasets'?: Array<any>;
     'keywords'?: Array<any>;
     'users'?: Array<any>;
@@ -294,12 +279,9 @@ export interface CreateDurRequest {
     'request_category_type'?: string;
     'request_frequency'?: string;
     'access_type'?: string;
-    'mongo_object_dar_id'?: string;
     'enabled'?: boolean;
     'last_activity'?: string;
     'counter'?: number;
-    'mongo_object_id'?: string;
-    'mongo_id'?: string;
     'datasets'?: Array<CreateDurRequestDatasetsInner>;
     'publications'?: Array<CreateDurRequestPublicationsInner>;
     'keywords'?: Array<string>;
@@ -366,7 +348,6 @@ export interface CreatePublicationsRequest {
     'journal_name'?: string;
     'abstract'?: string;
     'url'?: string;
-    'mongo_id'?: string;
     'datasets'?: Array<CreatePublicationsRequestDatasetsInner>;
     'tools'?: Array<CreatePublicationsRequestToolsInner>;
 }
@@ -418,13 +399,6 @@ export interface CreateQuestionBankQuestionRequestOptionsInnerChildrenInnerOptio
 }
 export interface CreateTeamDarApplicationReviewRequest {
     'comment': string;
-}
-export interface CreateTeamDatasetsV2Request {
-    'create_origin'?: string;
-    'mongo_object_id'?: string;
-    'mongo_id'?: string;
-    'mongo_pid'?: string;
-    'metadata'?: object;
 }
 export interface CreateToolsIntegrations400Response {
     'message'?: string;
@@ -917,12 +891,9 @@ export interface FetchAllDurIntegrations200ResponseDataInner {
     'request_category_type'?: string;
     'request_frequency'?: string;
     'access_type'?: string;
-    'mongo_object_dar_id'?: string;
     'enabled'?: boolean;
     'last_activity'?: string;
     'counter'?: number;
-    'mongo_object_id'?: string;
-    'mongo_id'?: string;
     'datasets'?: Array<any>;
     'publications'?: Array<any>;
     'tools'?: Array<any>;
@@ -1204,12 +1175,9 @@ export interface FetchDurByIdIntegrations200ResponseDataInner {
     'request_category_type'?: string;
     'request_frequency'?: string;
     'access_type'?: string;
-    'mongo_object_dar_id'?: string;
     'enabled'?: boolean;
     'last_activity'?: string;
     'counter'?: number;
-    'mongo_object_id'?: string;
-    'mongo_id'?: string;
     'datasets'?: Array<any>;
     'publications'?: Array<any>;
     'tools'?: Array<any>;
@@ -2201,12 +2169,9 @@ export interface UpdateDurIntegrations200ResponseData {
     'request_category_type'?: string;
     'request_frequency'?: string;
     'access_type'?: string;
-    'mongo_object_dar_id'?: string;
     'enabled'?: boolean;
     'last_activity'?: string;
     'counter'?: number;
-    'mongo_object_id'?: string;
-    'mongo_id'?: string;
     'datasets'?: Array<any>;
     'keywords'?: Array<any>;
     'users'?: Array<any>;
@@ -2248,7 +2213,6 @@ export interface UpdatePublicationsRequest {
     'journal_name'?: string;
     'abstract'?: string;
     'url'?: string;
-    'mongo_id'?: string;
     'status'?: UpdatePublicationsRequestStatusEnum;
     'datasets'?: Array<CreatePublicationsRequestDatasetsInner>;
     'tools'?: Array<CreatePublicationsRequestToolsInner>;
@@ -9506,13 +9470,13 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * Create a new dataset
          * @summary DatasetController@store
-         * @param {CreateDatasetsV2Request} createDatasetsV2Request Pass user credentials
+         * @param {UpdateDatasetsRequest} updateDatasetsRequest Pass user credentials
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createDatasetsV2: async (createDatasetsV2Request: CreateDatasetsV2Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'createDatasetsV2Request' is not null or undefined
-            assertParamExists('createDatasetsV2', 'createDatasetsV2Request', createDatasetsV2Request)
+        createDatasetsV2: async (updateDatasetsRequest: UpdateDatasetsRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'updateDatasetsRequest' is not null or undefined
+            assertParamExists('createDatasetsV2', 'updateDatasetsRequest', updateDatasetsRequest)
             const localVarPath = `/api/v2/datasets`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -9535,7 +9499,7 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createDatasetsV2Request, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(updateDatasetsRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -9546,15 +9510,15 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
          * Create a new dataset for a team
          * @summary TeamDatasetController@store
          * @param {number} teamId team id
-         * @param {CreateTeamDatasetsV2Request} createTeamDatasetsV2Request Pass user credentials
+         * @param {PatchDatasetsV2Request} patchDatasetsV2Request Pass user credentials
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTeamDatasetsV2: async (teamId: number, createTeamDatasetsV2Request: CreateTeamDatasetsV2Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createTeamDatasetsV2: async (teamId: number, patchDatasetsV2Request: PatchDatasetsV2Request, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'teamId' is not null or undefined
             assertParamExists('createTeamDatasetsV2', 'teamId', teamId)
-            // verify required parameter 'createTeamDatasetsV2Request' is not null or undefined
-            assertParamExists('createTeamDatasetsV2', 'createTeamDatasetsV2Request', createTeamDatasetsV2Request)
+            // verify required parameter 'patchDatasetsV2Request' is not null or undefined
+            assertParamExists('createTeamDatasetsV2', 'patchDatasetsV2Request', patchDatasetsV2Request)
             const localVarPath = `/api/v2/teams/{teamId}/datasets`
                 .replace('{teamId}', encodeURIComponent(String(teamId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -9578,7 +9542,7 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createTeamDatasetsV2Request, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(patchDatasetsV2Request, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -10455,12 +10419,12 @@ export const DatasetsApiFp = function(configuration?: Configuration) {
         /**
          * Create a new dataset
          * @summary DatasetController@store
-         * @param {CreateDatasetsV2Request} createDatasetsV2Request Pass user credentials
+         * @param {UpdateDatasetsRequest} updateDatasetsRequest Pass user credentials
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createDatasetsV2(createDatasetsV2Request: CreateDatasetsV2Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateDarIntegration201Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createDatasetsV2(createDatasetsV2Request, options);
+        async createDatasetsV2(updateDatasetsRequest: UpdateDatasetsRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateDarIntegration201Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createDatasetsV2(updateDatasetsRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DatasetsApi.createDatasetsV2']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -10469,12 +10433,12 @@ export const DatasetsApiFp = function(configuration?: Configuration) {
          * Create a new dataset for a team
          * @summary TeamDatasetController@store
          * @param {number} teamId team id
-         * @param {CreateTeamDatasetsV2Request} createTeamDatasetsV2Request Pass user credentials
+         * @param {PatchDatasetsV2Request} patchDatasetsV2Request Pass user credentials
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createTeamDatasetsV2(teamId: number, createTeamDatasetsV2Request: CreateTeamDatasetsV2Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateDarIntegration201Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createTeamDatasetsV2(teamId, createTeamDatasetsV2Request, options);
+        async createTeamDatasetsV2(teamId: number, patchDatasetsV2Request: PatchDatasetsV2Request, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateDarIntegration201Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createTeamDatasetsV2(teamId, patchDatasetsV2Request, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DatasetsApi.createTeamDatasetsV2']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -10778,23 +10742,23 @@ export const DatasetsApiFactory = function (configuration?: Configuration, baseP
         /**
          * Create a new dataset
          * @summary DatasetController@store
-         * @param {CreateDatasetsV2Request} createDatasetsV2Request Pass user credentials
+         * @param {UpdateDatasetsRequest} updateDatasetsRequest Pass user credentials
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createDatasetsV2(createDatasetsV2Request: CreateDatasetsV2Request, options?: RawAxiosRequestConfig): AxiosPromise<CreateDarIntegration201Response> {
-            return localVarFp.createDatasetsV2(createDatasetsV2Request, options).then((request) => request(axios, basePath));
+        createDatasetsV2(updateDatasetsRequest: UpdateDatasetsRequest, options?: RawAxiosRequestConfig): AxiosPromise<CreateDarIntegration201Response> {
+            return localVarFp.createDatasetsV2(updateDatasetsRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * Create a new dataset for a team
          * @summary TeamDatasetController@store
          * @param {number} teamId team id
-         * @param {CreateTeamDatasetsV2Request} createTeamDatasetsV2Request Pass user credentials
+         * @param {PatchDatasetsV2Request} patchDatasetsV2Request Pass user credentials
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTeamDatasetsV2(teamId: number, createTeamDatasetsV2Request: CreateTeamDatasetsV2Request, options?: RawAxiosRequestConfig): AxiosPromise<CreateDarIntegration201Response> {
-            return localVarFp.createTeamDatasetsV2(teamId, createTeamDatasetsV2Request, options).then((request) => request(axios, basePath));
+        createTeamDatasetsV2(teamId: number, patchDatasetsV2Request: PatchDatasetsV2Request, options?: RawAxiosRequestConfig): AxiosPromise<CreateDarIntegration201Response> {
+            return localVarFp.createTeamDatasetsV2(teamId, patchDatasetsV2Request, options).then((request) => request(axios, basePath));
         },
         /**
          * Delete a dataset
@@ -11041,24 +11005,24 @@ export class DatasetsApi extends BaseAPI {
     /**
      * Create a new dataset
      * @summary DatasetController@store
-     * @param {CreateDatasetsV2Request} createDatasetsV2Request Pass user credentials
+     * @param {UpdateDatasetsRequest} updateDatasetsRequest Pass user credentials
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public createDatasetsV2(createDatasetsV2Request: CreateDatasetsV2Request, options?: RawAxiosRequestConfig) {
-        return DatasetsApiFp(this.configuration).createDatasetsV2(createDatasetsV2Request, options).then((request) => request(this.axios, this.basePath));
+    public createDatasetsV2(updateDatasetsRequest: UpdateDatasetsRequest, options?: RawAxiosRequestConfig) {
+        return DatasetsApiFp(this.configuration).createDatasetsV2(updateDatasetsRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * Create a new dataset for a team
      * @summary TeamDatasetController@store
      * @param {number} teamId team id
-     * @param {CreateTeamDatasetsV2Request} createTeamDatasetsV2Request Pass user credentials
+     * @param {PatchDatasetsV2Request} patchDatasetsV2Request Pass user credentials
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public createTeamDatasetsV2(teamId: number, createTeamDatasetsV2Request: CreateTeamDatasetsV2Request, options?: RawAxiosRequestConfig) {
-        return DatasetsApiFp(this.configuration).createTeamDatasetsV2(teamId, createTeamDatasetsV2Request, options).then((request) => request(this.axios, this.basePath));
+    public createTeamDatasetsV2(teamId: number, patchDatasetsV2Request: PatchDatasetsV2Request, options?: RawAxiosRequestConfig) {
+        return DatasetsApiFp(this.configuration).createTeamDatasetsV2(teamId, patchDatasetsV2Request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -17935,7 +17899,6 @@ export const ToolsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * Get all tools with optional filters and sorting
          * @summary Fetch all tools
-         * @param {string} [mongoId] Filter tools by mongo ID
          * @param {number} [teamId] Filter tools by team ID
          * @param {number} [userId] Filter tools by user ID
          * @param {string} [title] Filter tools by title
@@ -17944,7 +17907,7 @@ export const ToolsApiAxiosParamCreator = function (configuration?: Configuration
          * @deprecated
          * @throws {RequiredError}
          */
-        fetchAllTools: async (mongoId?: string, teamId?: number, userId?: number, title?: string, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        fetchAllTools: async (teamId?: number, userId?: number, title?: string, sort?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/v1/tools`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -17960,10 +17923,6 @@ export const ToolsApiAxiosParamCreator = function (configuration?: Configuration
             // authentication bearerAuth required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            if (mongoId !== undefined) {
-                localVarQueryParameter['mongo_id'] = mongoId;
-            }
 
             if (teamId !== undefined) {
                 localVarQueryParameter['team_id'] = teamId;
@@ -18484,7 +18443,6 @@ export const ToolsApiFp = function(configuration?: Configuration) {
         /**
          * Get all tools with optional filters and sorting
          * @summary Fetch all tools
-         * @param {string} [mongoId] Filter tools by mongo ID
          * @param {number} [teamId] Filter tools by team ID
          * @param {number} [userId] Filter tools by user ID
          * @param {string} [title] Filter tools by title
@@ -18493,8 +18451,8 @@ export const ToolsApiFp = function(configuration?: Configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-        async fetchAllTools(mongoId?: string, teamId?: number, userId?: number, title?: string, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FetchAllTools200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.fetchAllTools(mongoId, teamId, userId, title, sort, options);
+        async fetchAllTools(teamId?: number, userId?: number, title?: string, sort?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FetchAllTools200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.fetchAllTools(teamId, userId, title, sort, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ToolsApi.fetchAllTools']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -18740,7 +18698,6 @@ export const ToolsApiFactory = function (configuration?: Configuration, basePath
         /**
          * Get all tools with optional filters and sorting
          * @summary Fetch all tools
-         * @param {string} [mongoId] Filter tools by mongo ID
          * @param {number} [teamId] Filter tools by team ID
          * @param {number} [userId] Filter tools by user ID
          * @param {string} [title] Filter tools by title
@@ -18749,8 +18706,8 @@ export const ToolsApiFactory = function (configuration?: Configuration, basePath
          * @deprecated
          * @throws {RequiredError}
          */
-        fetchAllTools(mongoId?: string, teamId?: number, userId?: number, title?: string, sort?: string, options?: RawAxiosRequestConfig): AxiosPromise<FetchAllTools200Response> {
-            return localVarFp.fetchAllTools(mongoId, teamId, userId, title, sort, options).then((request) => request(axios, basePath));
+        fetchAllTools(teamId?: number, userId?: number, title?: string, sort?: string, options?: RawAxiosRequestConfig): AxiosPromise<FetchAllTools200Response> {
+            return localVarFp.fetchAllTools(teamId, userId, title, sort, options).then((request) => request(axios, basePath));
         },
         /**
          * Get All Tools
@@ -18977,7 +18934,6 @@ export class ToolsApi extends BaseAPI {
     /**
      * Get all tools with optional filters and sorting
      * @summary Fetch all tools
-     * @param {string} [mongoId] Filter tools by mongo ID
      * @param {number} [teamId] Filter tools by team ID
      * @param {number} [userId] Filter tools by user ID
      * @param {string} [title] Filter tools by title
@@ -18986,8 +18942,8 @@ export class ToolsApi extends BaseAPI {
      * @deprecated
      * @throws {RequiredError}
      */
-    public fetchAllTools(mongoId?: string, teamId?: number, userId?: number, title?: string, sort?: string, options?: RawAxiosRequestConfig) {
-        return ToolsApiFp(this.configuration).fetchAllTools(mongoId, teamId, userId, title, sort, options).then((request) => request(this.axios, this.basePath));
+    public fetchAllTools(teamId?: number, userId?: number, title?: string, sort?: string, options?: RawAxiosRequestConfig) {
+        return ToolsApiFp(this.configuration).fetchAllTools(teamId, userId, title, sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

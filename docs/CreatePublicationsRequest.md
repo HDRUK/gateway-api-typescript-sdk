@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **journal_name** | **string** |  | [optional] [default to undefined]
 **_abstract** | **string** |  | [optional] [default to undefined]
 **url** | **string** |  | [optional] [default to undefined]
-**mongo_id** | **string** |  | [optional] [default to undefined]
 **datasets** | [**Array&lt;CreatePublicationsRequestDatasetsInner&gt;**](CreatePublicationsRequestDatasetsInner.md) |  | [optional] [default to undefined]
 **tools** | [**Array&lt;CreatePublicationsRequestToolsInner&gt;**](CreatePublicationsRequestToolsInner.md) |  | [optional] [default to undefined]
 
@@ -31,7 +30,6 @@ const instance: CreatePublicationsRequest = {
     journal_name,
     _abstract,
     url,
-    mongo_id,
     datasets,
     tools,
 };

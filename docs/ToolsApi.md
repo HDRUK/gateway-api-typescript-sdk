@@ -607,14 +607,12 @@ import {
 const configuration = new Configuration();
 const apiInstance = new ToolsApi(configuration);
 
-let mongoId: string; //Filter tools by mongo ID (optional) (default to undefined)
 let teamId: number; //Filter tools by team ID (optional) (default to undefined)
 let userId: number; //Filter tools by user ID (optional) (default to undefined)
 let title: string; //Filter tools by title (optional) (default to undefined)
 let sort: string; //Sort tools by a specific field and direction, e.g., \'name:asc\' or \'created_at:desc\' (optional) (default to undefined)
 
 const { status, data } = await apiInstance.fetchAllTools(
-    mongoId,
     teamId,
     userId,
     title,
@@ -626,7 +624,6 @@ const { status, data } = await apiInstance.fetchAllTools(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **mongoId** | [**string**] | Filter tools by mongo ID | (optional) defaults to undefined|
 | **teamId** | [**number**] | Filter tools by team ID | (optional) defaults to undefined|
 | **userId** | [**number**] | Filter tools by user ID | (optional) defaults to undefined|
 | **title** | [**string**] | Filter tools by title | (optional) defaults to undefined|

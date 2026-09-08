@@ -136,7 +136,7 @@ const { status, data } = await apiInstance.createDatasets(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createDatasetsV2**
-> CreateDarIntegration201Response createDatasetsV2(createDatasetsV2Request)
+> CreateDarIntegration201Response createDatasetsV2(updateDatasetsRequest)
 
 Create a new dataset
 
@@ -146,16 +146,16 @@ Create a new dataset
 import {
     DatasetsApi,
     Configuration,
-    CreateDatasetsV2Request
+    UpdateDatasetsRequest
 } from '@hdruk/gateway-api-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DatasetsApi(configuration);
 
-let createDatasetsV2Request: CreateDatasetsV2Request; //Pass user credentials
+let updateDatasetsRequest: UpdateDatasetsRequest; //Pass user credentials
 
 const { status, data } = await apiInstance.createDatasetsV2(
-    createDatasetsV2Request
+    updateDatasetsRequest
 );
 ```
 
@@ -163,7 +163,7 @@ const { status, data } = await apiInstance.createDatasetsV2(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **createDatasetsV2Request** | **CreateDatasetsV2Request**| Pass user credentials | |
+| **updateDatasetsRequest** | **UpdateDatasetsRequest**| Pass user credentials | |
 
 
 ### Return type
@@ -190,7 +190,7 @@ const { status, data } = await apiInstance.createDatasetsV2(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createTeamDatasetsV2**
-> CreateDarIntegration201Response createTeamDatasetsV2(createTeamDatasetsV2Request)
+> CreateDarIntegration201Response createTeamDatasetsV2(patchDatasetsV2Request)
 
 Create a new dataset for a team
 
@@ -200,18 +200,18 @@ Create a new dataset for a team
 import {
     DatasetsApi,
     Configuration,
-    CreateTeamDatasetsV2Request
+    PatchDatasetsV2Request
 } from '@hdruk/gateway-api-sdk';
 
 const configuration = new Configuration();
 const apiInstance = new DatasetsApi(configuration);
 
 let teamId: number; //team id (default to undefined)
-let createTeamDatasetsV2Request: CreateTeamDatasetsV2Request; //Pass user credentials
+let patchDatasetsV2Request: PatchDatasetsV2Request; //Pass user credentials
 
 const { status, data } = await apiInstance.createTeamDatasetsV2(
     teamId,
-    createTeamDatasetsV2Request
+    patchDatasetsV2Request
 );
 ```
 
@@ -219,7 +219,7 @@ const { status, data } = await apiInstance.createTeamDatasetsV2(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **createTeamDatasetsV2Request** | **CreateTeamDatasetsV2Request**| Pass user credentials | |
+| **patchDatasetsV2Request** | **PatchDatasetsV2Request**| Pass user credentials | |
 | **teamId** | [**number**] | team id | defaults to undefined|
 
 
