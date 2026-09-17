@@ -1,6 +1,6 @@
 {
   "name": "@hdruk/gateway-api-sdk",
-  "version": "2.50.0",
+  "version": "2.51.0",
   "description": "OpenAPI client for @hdruk/gateway-api-sdk",
   "author": "OpenAPI-Generator Contributors",
   "repository": {
