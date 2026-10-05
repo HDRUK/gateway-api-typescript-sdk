@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **is_running** | **boolean** |  | [optional] [default to undefined]
 **notifications** | **Array&lt;any&gt;** |  | [optional] [default to undefined]
 **last_run_at** | **string** |  | [optional] [default to undefined]
+**progress** | [**GetFederationTeamId200ResponseDataInnerProgress**](GetFederationTeamId200ResponseDataInnerProgress.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -48,6 +49,7 @@ const instance: GetFederationTeamId200ResponseDataInner = {
     is_running,
     notifications,
     last_run_at,
+    progress,
 };
 ```
 

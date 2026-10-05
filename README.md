@@ -1,4 +1,4 @@
-## @hdruk/gateway-api-sdk@2.53.0
+## @hdruk/gateway-api-sdk@2.54.0
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @hdruk/gateway-api-sdk@2.53.0 --save
+npm install @hdruk/gateway-api-sdk@2.54.0 --save
 ```
 
 _unPublished (not recommended):_
@@ -400,6 +400,7 @@ Class | Method | HTTP request | Description
  - [GetFederationHistory200ResponseDataInnerFailedDatasetsInner](docs/GetFederationHistory200ResponseDataInnerFailedDatasetsInner.md)
  - [GetFederationTeamId200Response](docs/GetFederationTeamId200Response.md)
  - [GetFederationTeamId200ResponseDataInner](docs/GetFederationTeamId200ResponseDataInner.md)
+ - [GetFederationTeamId200ResponseDataInnerProgress](docs/GetFederationTeamId200ResponseDataInnerProgress.md)
  - [Keyword](docs/Keyword.md)
  - [License](docs/License.md)
  - [LoginRequest](docs/LoginRequest.md)
@@ -418,6 +419,8 @@ Class | Method | HTTP request | Description
  - [RegisterRequest](docs/RegisterRequest.md)
  - [RetrieveWidgetData200Response](docs/RetrieveWidgetData200Response.md)
  - [RetrieveWidgetData403Response](docs/RetrieveWidgetData403Response.md)
+ - [RunFederation404Response](docs/RunFederation404Response.md)
+ - [RunFederation409Response](docs/RunFederation409Response.md)
  - [SavedSearch](docs/SavedSearch.md)
  - [SearchCollections200Response](docs/SearchCollections200Response.md)
  - [SearchCollections200ResponseDataInner](docs/SearchCollections200ResponseDataInner.md)

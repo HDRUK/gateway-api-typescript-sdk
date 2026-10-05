@@ -1390,6 +1390,7 @@ export interface GetFederationByFederationIdAndTeamId200ResponseData {
     'tested'?: boolean;
     'notifications'?: Array<any>;
     'is_running'?: boolean;
+    'progress'?: GetFederationTeamId200ResponseDataInnerProgress | null;
 }
 export interface GetFederationHistory200Response {
     'current_page'?: number;
@@ -1461,6 +1462,17 @@ export interface GetFederationTeamId200ResponseDataInner {
     'is_running'?: boolean;
     'notifications'?: Array<any>;
     'last_run_at'?: string | null;
+    'progress'?: GetFederationTeamId200ResponseDataInnerProgress | null;
+}
+/**
+ * Only present while a sync is actively in progress
+ */
+export interface GetFederationTeamId200ResponseDataInnerProgress {
+    'total'?: number;
+    'processed'?: number;
+    'failed'?: number;
+    'pending'?: number;
+    'started_at'?: string;
 }
 /**
  * A keyword record used to tag datasets, tools, collections, DURs and publications
@@ -1656,6 +1668,12 @@ export interface RetrieveWidgetData200Response {
     'collections'?: Array<object>;
 }
 export interface RetrieveWidgetData403Response {
+    'message'?: string;
+}
+export interface RunFederation404Response {
+    'message'?: string;
+}
+export interface RunFederation409Response {
     'message'?: string;
 }
 /**
