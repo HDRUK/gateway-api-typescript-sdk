@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **included_data_uses** | **string** |  | [optional] [default to undefined]
 **included_scripts** | **string** |  | [optional] [default to undefined]
 **included_collections** | **string** |  | [optional] [default to undefined]
+**included_publications** | **string** |  | [optional] [default to undefined]
 **include_search_bar** | **boolean** |  | [optional] [default to undefined]
 **include_cohort_link** | **boolean** |  | [optional] [default to undefined]
 **size_width** | **number** |  | [optional] [default to undefined]
@@ -40,6 +41,7 @@ const instance: Widget = {
     included_data_uses,
     included_scripts,
     included_collections,
+    included_publications,
     include_search_bar,
     include_cohort_link,
     size_width,

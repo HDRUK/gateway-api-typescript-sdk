@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **included_data_uses** | **Array&lt;number&gt;** |  | [optional] [default to undefined]
 **included_scripts** | **Array&lt;number&gt;** |  | [optional] [default to undefined]
 **included_collections** | **Array&lt;number&gt;** |  | [optional] [default to undefined]
+**included_publications** | **Array&lt;number&gt;** |  | [optional] [default to undefined]
 **data_custodian_entities_ids** | **Array&lt;number&gt;** |  | [optional] [default to undefined]
 
 ## Example
@@ -37,6 +38,7 @@ const instance: CreateWidgetRequest = {
     included_data_uses,
     included_scripts,
     included_collections,
+    included_publications,
     data_custodian_entities_ids,
 };
 ```

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **tools** | **Array&lt;object&gt;** |  | [optional] [default to undefined]
 **collections** | **Array&lt;object&gt;** |  | [optional] [default to undefined]
 **durs** | **Array&lt;object&gt;** |  | [optional] [default to undefined]
+**publications** | **Array&lt;object&gt;** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -20,6 +21,7 @@ const instance: FetchWidgetDataSources200Response = {
     tools,
     collections,
     durs,
+    publications,
 };
 ```
 

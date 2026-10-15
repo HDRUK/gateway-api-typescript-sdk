@@ -487,6 +487,7 @@ export interface CreateWidgetRequest {
     'included_data_uses'?: Array<number>;
     'included_scripts'?: Array<number>;
     'included_collections'?: Array<number>;
+    'included_publications'?: Array<number>;
     'data_custodian_entities_ids'?: Array<number>;
 }
 
@@ -1341,6 +1342,7 @@ export interface FetchWidgetDataSources200Response {
     'tools'?: Array<object>;
     'collections'?: Array<object>;
     'durs'?: Array<object>;
+    'publications'?: Array<object>;
 }
 export interface FetchWidgetDataSources400Response {
     'message'?: string;
@@ -1666,6 +1668,7 @@ export interface RetrieveWidgetData200Response {
     'data_uses'?: Array<object>;
     'scripts'?: Array<object>;
     'collections'?: Array<object>;
+    'publications'?: Array<object>;
 }
 export interface RetrieveWidgetData403Response {
     'message'?: string;
@@ -2042,6 +2045,7 @@ export const TrackWidgetEventRequestEntityTypeEnum = {
     Tool: 'tool',
     Collection: 'collection',
     Dur: 'dur',
+    Publication: 'publication',
 } as const;
 
 export type TrackWidgetEventRequestEntityTypeEnum = typeof TrackWidgetEventRequestEntityTypeEnum[keyof typeof TrackWidgetEventRequestEntityTypeEnum];
@@ -2342,6 +2346,7 @@ export interface UpdateWidgetRequest {
     'data_custodian_entities_ids'?: Array<number>;
     'included_scripts'?: Array<number>;
     'included_collections'?: Array<number>;
+    'included_publications'?: Array<number>;
 }
 
 export const UpdateWidgetRequestUnitEnum = {
@@ -2439,6 +2444,7 @@ export interface Widget {
     'included_data_uses'?: string | null;
     'included_scripts'?: string | null;
     'included_collections'?: string | null;
+    'included_publications'?: string | null;
     'include_search_bar'?: boolean;
     'include_cohort_link'?: boolean;
     'size_width'?: number | null;
@@ -10311,10 +10317,12 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
          * @summary DatasetController@update
          * @param {number} id dataset id
          * @param {UpdateDatasetsRequest} updateDatasetsRequest 
+         * @param {boolean} [validateInput] Set to false to skip TRASER input validation (ignored for draft datasets, which always skip validation)
+         * @param {boolean} [validateOutput] Set to false to skip TRASER output validation (ignored for draft datasets, which always skip validation)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDatasetsV2: async (id: number, updateDatasetsRequest: UpdateDatasetsRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateDatasetsV2: async (id: number, updateDatasetsRequest: UpdateDatasetsRequest, validateInput?: boolean, validateOutput?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateDatasetsV2', 'id', id)
             // verify required parameter 'updateDatasetsRequest' is not null or undefined
@@ -10335,6 +10343,14 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
             // authentication bearerAuth required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (validateInput !== undefined) {
+                localVarQueryParameter['validate_input'] = validateInput;
+            }
+
+            if (validateOutput !== undefined) {
+                localVarQueryParameter['validate_output'] = validateOutput;
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
             localVarHeaderParameter['Accept'] = 'application/json';
@@ -10701,11 +10717,13 @@ export const DatasetsApiFp = function(configuration?: Configuration) {
          * @summary DatasetController@update
          * @param {number} id dataset id
          * @param {UpdateDatasetsRequest} updateDatasetsRequest 
+         * @param {boolean} [validateInput] Set to false to skip TRASER input validation (ignored for draft datasets, which always skip validation)
+         * @param {boolean} [validateOutput] Set to false to skip TRASER output validation (ignored for draft datasets, which always skip validation)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateDatasetsV2(id: number, updateDatasetsRequest: UpdateDatasetsRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateDarIntegration201Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateDatasetsV2(id, updateDatasetsRequest, options);
+        async updateDatasetsV2(id: number, updateDatasetsRequest: UpdateDatasetsRequest, validateInput?: boolean, validateOutput?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateDarIntegration201Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateDatasetsV2(id, updateDatasetsRequest, validateInput, validateOutput, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DatasetsApi.updateDatasetsV2']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -10970,11 +10988,13 @@ export const DatasetsApiFactory = function (configuration?: Configuration, baseP
          * @summary DatasetController@update
          * @param {number} id dataset id
          * @param {UpdateDatasetsRequest} updateDatasetsRequest 
+         * @param {boolean} [validateInput] Set to false to skip TRASER input validation (ignored for draft datasets, which always skip validation)
+         * @param {boolean} [validateOutput] Set to false to skip TRASER output validation (ignored for draft datasets, which always skip validation)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDatasetsV2(id: number, updateDatasetsRequest: UpdateDatasetsRequest, options?: RawAxiosRequestConfig): AxiosPromise<CreateDarIntegration201Response> {
-            return localVarFp.updateDatasetsV2(id, updateDatasetsRequest, options).then((request) => request(axios, basePath));
+        updateDatasetsV2(id: number, updateDatasetsRequest: UpdateDatasetsRequest, validateInput?: boolean, validateOutput?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<CreateDarIntegration201Response> {
+            return localVarFp.updateDatasetsV2(id, updateDatasetsRequest, validateInput, validateOutput, options).then((request) => request(axios, basePath));
         },
         /**
          * Update a team dataset with a new dataset version
@@ -11251,11 +11271,13 @@ export class DatasetsApi extends BaseAPI {
      * @summary DatasetController@update
      * @param {number} id dataset id
      * @param {UpdateDatasetsRequest} updateDatasetsRequest 
+     * @param {boolean} [validateInput] Set to false to skip TRASER input validation (ignored for draft datasets, which always skip validation)
+     * @param {boolean} [validateOutput] Set to false to skip TRASER output validation (ignored for draft datasets, which always skip validation)
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    public updateDatasetsV2(id: number, updateDatasetsRequest: UpdateDatasetsRequest, options?: RawAxiosRequestConfig) {
-        return DatasetsApiFp(this.configuration).updateDatasetsV2(id, updateDatasetsRequest, options).then((request) => request(this.axios, this.basePath));
+    public updateDatasetsV2(id: number, updateDatasetsRequest: UpdateDatasetsRequest, validateInput?: boolean, validateOutput?: boolean, options?: RawAxiosRequestConfig) {
+        return DatasetsApiFp(this.configuration).updateDatasetsV2(id, updateDatasetsRequest, validateInput, validateOutput, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -19337,7 +19359,7 @@ export const WidgetsApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * Fetch lightweight data (id, name, etc.) for multiple teams across datasets, tools, collections, and DURS
+         * Fetch lightweight data (id, name, etc.) for multiple teams across datasets, tools, collections, DURS and publications
          * @summary WidgetController@getWidgetData
          * @param {number} teamId Team ID
          * @param {string} teamIds Comma-separated list of team IDs to filter data
@@ -19382,7 +19404,7 @@ export const WidgetsApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * Fetches datasets, data uses, scripts, and collections linked to a widget
+         * Fetches datasets, data uses, scripts, collections and publications linked to a widget
          * @summary Retrieve data related to a widget
          * @param {number} teamId Team ID
          * @param {number} id Widget ID
@@ -19635,7 +19657,7 @@ export const WidgetsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Fetch lightweight data (id, name, etc.) for multiple teams across datasets, tools, collections, and DURS
+         * Fetch lightweight data (id, name, etc.) for multiple teams across datasets, tools, collections, DURS and publications
          * @summary WidgetController@getWidgetData
          * @param {number} teamId Team ID
          * @param {string} teamIds Comma-separated list of team IDs to filter data
@@ -19649,7 +19671,7 @@ export const WidgetsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Fetches datasets, data uses, scripts, and collections linked to a widget
+         * Fetches datasets, data uses, scripts, collections and publications linked to a widget
          * @summary Retrieve data related to a widget
          * @param {number} teamId Team ID
          * @param {number} id Widget ID
@@ -19762,7 +19784,7 @@ export const WidgetsApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.fetchWidget(teamId, id, options).then((request) => request(axios, basePath));
         },
         /**
-         * Fetch lightweight data (id, name, etc.) for multiple teams across datasets, tools, collections, and DURS
+         * Fetch lightweight data (id, name, etc.) for multiple teams across datasets, tools, collections, DURS and publications
          * @summary WidgetController@getWidgetData
          * @param {number} teamId Team ID
          * @param {string} teamIds Comma-separated list of team IDs to filter data
@@ -19773,7 +19795,7 @@ export const WidgetsApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.fetchWidgetDataSources(teamId, teamIds, options).then((request) => request(axios, basePath));
         },
         /**
-         * Fetches datasets, data uses, scripts, and collections linked to a widget
+         * Fetches datasets, data uses, scripts, collections and publications linked to a widget
          * @summary Retrieve data related to a widget
          * @param {number} teamId Team ID
          * @param {number} id Widget ID
@@ -19876,7 +19898,7 @@ export class WidgetsApi extends BaseAPI {
     }
 
     /**
-     * Fetch lightweight data (id, name, etc.) for multiple teams across datasets, tools, collections, and DURS
+     * Fetch lightweight data (id, name, etc.) for multiple teams across datasets, tools, collections, DURS and publications
      * @summary WidgetController@getWidgetData
      * @param {number} teamId Team ID
      * @param {string} teamIds Comma-separated list of team IDs to filter data
@@ -19888,7 +19910,7 @@ export class WidgetsApi extends BaseAPI {
     }
 
     /**
-     * Fetches datasets, data uses, scripts, and collections linked to a widget
+     * Fetches datasets, data uses, scripts, collections and publications linked to a widget
      * @summary Retrieve data related to a widget
      * @param {number} teamId Team ID
      * @param {number} id Widget ID

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **data_uses** | **Array&lt;object&gt;** |  | [optional] [default to undefined]
 **scripts** | **Array&lt;object&gt;** |  | [optional] [default to undefined]
 **collections** | **Array&lt;object&gt;** |  | [optional] [default to undefined]
+**publications** | **Array&lt;object&gt;** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -20,6 +21,7 @@ const instance: RetrieveWidgetData200Response = {
     data_uses,
     scripts,
     collections,
+    publications,
 };
 ```
 

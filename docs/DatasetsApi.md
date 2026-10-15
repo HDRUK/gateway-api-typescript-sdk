@@ -1172,10 +1172,14 @@ const apiInstance = new DatasetsApi(configuration);
 
 let id: number; //dataset id (default to undefined)
 let updateDatasetsRequest: UpdateDatasetsRequest; //
+let validateInput: boolean; //Set to false to skip TRASER input validation (ignored for draft datasets, which always skip validation) (optional) (default to undefined)
+let validateOutput: boolean; //Set to false to skip TRASER output validation (ignored for draft datasets, which always skip validation) (optional) (default to undefined)
 
 const { status, data } = await apiInstance.updateDatasetsV2(
     id,
-    updateDatasetsRequest
+    updateDatasetsRequest,
+    validateInput,
+    validateOutput
 );
 ```
 
@@ -1185,6 +1189,8 @@ const { status, data } = await apiInstance.updateDatasetsV2(
 |------------- | ------------- | ------------- | -------------|
 | **updateDatasetsRequest** | **UpdateDatasetsRequest**|  | |
 | **id** | [**number**] | dataset id | defaults to undefined|
+| **validateInput** | [**boolean**] | Set to false to skip TRASER input validation (ignored for draft datasets, which always skip validation) | (optional) defaults to undefined|
+| **validateOutput** | [**boolean**] | Set to false to skip TRASER output validation (ignored for draft datasets, which always skip validation) | (optional) defaults to undefined|
 
 
 ### Return type

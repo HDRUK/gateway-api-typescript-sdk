@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **data_custodian_entities_ids** | **Array&lt;number&gt;** |  | [optional] [default to undefined]
 **included_scripts** | **Array&lt;number&gt;** |  | [optional] [default to undefined]
 **included_collections** | **Array&lt;number&gt;** |  | [optional] [default to undefined]
+**included_publications** | **Array&lt;number&gt;** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -38,6 +39,7 @@ const instance: UpdateWidgetRequest = {
     data_custodian_entities_ids,
     included_scripts,
     included_collections,
+    included_publications,
 };
 ```
 
