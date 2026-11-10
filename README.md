@@ -1,4 +1,4 @@
-## @hdruk/gateway-api-sdk@2.56.0
+## @hdruk/gateway-api-sdk@2.57.0
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @hdruk/gateway-api-sdk@2.56.0 --save
+npm install @hdruk/gateway-api-sdk@2.57.0 --save
 ```
 
 _unPublished (not recommended):_
@@ -51,6 +51,7 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AdminApi* | [**revokeAllTokensV2**](docs/AdminApi.md#revokealltokensv2) | **POST** /api/v2/admin/tokens/revoke_all | TokenRevocationController@revokeAll
 *ApplicationApi* | [**createApplications**](docs/ApplicationApi.md#createapplications) | **POST** /api/v1/applications | ApplicationController@store
 *ApplicationApi* | [**deleteApplications**](docs/ApplicationApi.md#deleteapplications) | **DELETE** /api/v1/applications/{id} | ApplicationController@delete
 *ApplicationApi* | [**editApplications**](docs/ApplicationApi.md#editapplications) | **PATCH** /api/v1/applications/{id} | ApplicationController@edit
@@ -419,6 +420,8 @@ Class | Method | HTTP request | Description
  - [RegisterRequest](docs/RegisterRequest.md)
  - [RetrieveWidgetData200Response](docs/RetrieveWidgetData200Response.md)
  - [RetrieveWidgetData403Response](docs/RetrieveWidgetData403Response.md)
+ - [RevokeAllTokensV2200Response](docs/RevokeAllTokensV2200Response.md)
+ - [RevokeAllTokensV2200ResponseData](docs/RevokeAllTokensV2200ResponseData.md)
  - [RunFederation404Response](docs/RunFederation404Response.md)
  - [RunFederation409Response](docs/RunFederation409Response.md)
  - [SavedSearch](docs/SavedSearch.md)

@@ -1412,7 +1412,7 @@ export interface GetFederationHistory200Response {
 export interface GetFederationHistory200ResponseDataInner {
     'job_uuid'?: string;
     'started_at'?: string;
-    'finished_at'?: string;
+    'finished_at'?: string | null;
     'status'?: GetFederationHistory200ResponseDataInnerStatusEnum;
     'message'?: string | null;
     'failed_datasets'?: Array<GetFederationHistory200ResponseDataInnerFailedDatasetsInner>;
@@ -1672,6 +1672,13 @@ export interface RetrieveWidgetData200Response {
 }
 export interface RetrieveWidgetData403Response {
     'message'?: string;
+}
+export interface RevokeAllTokensV2200Response {
+    'message'?: string;
+    'data'?: RevokeAllTokensV2200ResponseData;
+}
+export interface RevokeAllTokensV2200ResponseData {
+    'revoked_before'?: string;
 }
 export interface RunFederation404Response {
     'message'?: string;
@@ -2473,6 +2480,100 @@ export interface WidgetAnalytics200Response {
     'by_widget'?: Array<object>;
     'over_time'?: Array<object>;
 }
+
+/**
+ * AdminApi - axios parameter creator
+ */
+export const AdminApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Revoke every Gateway JWT issued up to now, including the caller\'s own. All users must sign in again.
+         * @summary TokenRevocationController@revokeAll
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        revokeAllTokensV2: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/v2/admin/tokens/revoke_all`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Accept'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * AdminApi - functional programming interface
+ */
+export const AdminApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = AdminApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Revoke every Gateway JWT issued up to now, including the caller\'s own. All users must sign in again.
+         * @summary TokenRevocationController@revokeAll
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async revokeAllTokensV2(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RevokeAllTokensV2200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.revokeAllTokensV2(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AdminApi.revokeAllTokensV2']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * AdminApi - factory interface
+ */
+export const AdminApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = AdminApiFp(configuration)
+    return {
+        /**
+         * Revoke every Gateway JWT issued up to now, including the caller\'s own. All users must sign in again.
+         * @summary TokenRevocationController@revokeAll
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        revokeAllTokensV2(options?: RawAxiosRequestConfig): AxiosPromise<RevokeAllTokensV2200Response> {
+            return localVarFp.revokeAllTokensV2(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * AdminApi - object-oriented interface
+ */
+export class AdminApi extends BaseAPI {
+    /**
+     * Revoke every Gateway JWT issued up to now, including the caller\'s own. All users must sign in again.
+     * @summary TokenRevocationController@revokeAll
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public revokeAllTokensV2(options?: RawAxiosRequestConfig) {
+        return AdminApiFp(this.configuration).revokeAllTokensV2(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
 
 /**
  * ApplicationApi - axios parameter creator
